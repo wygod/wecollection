@@ -1,0 +1,13 @@
+baseTcp:
+  master_host: 127.0.0.1
+  port: 5037
+
+database:
+  host: 127.0.0.1
+  port: 5432
+  username: postgres
+  password: test5432
+  database_name: datatest
+
+logHandler:
+  log_conf_path: log.conf
