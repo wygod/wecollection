@@ -162,11 +162,15 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation):
         content = []
         for per_element in self.ui_device.xpath(element).all():
             per_element_object = per_element.elem.getchildren()
-            for per_text in per_element_object:
-                temp = []
-                WeCollectionHandleMain.handler_recursion_text(per_text, temp)
-                if temp:
-                    content.append(" ".join(temp))
+            if per_element_object:
+                content_temp = []
+                for per_text in per_element_object:
+                    temp = []
+                    WeCollectionHandleMain.handler_recursion_text(per_text, temp)
+                    if temp:
+                        content_temp.append(" ".join(temp))
+                content.append(content_temp)
+            content.append(per_element.elem.get('text'))
 
         return content
 
@@ -199,23 +203,22 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation):
             self.ui_device(resourceId=NameCollectionENum.h64.value).click()
             return " ".join(timeing_task)
         else:
-            ord_text = self.get_sub_title(NameCollectionENum.fe0.value)
-            orc_text = self.get_sub_title(NameCollectionENum.feo.value)
             fe5_text = self.handler_receive_verify_info(NameCollectionENum.fe5.value)
-            return " ".join([ord_text, orc_text, " ".join(fe5_text)])
+            return " ".join(fe5_text)
 
     @staticmethod
     def handler_keep_data_complete(arg):
-        try:
-            int(arg[0].split(" ")[0])
-            flag = True
-        except Exception as e:
-            flag = False
-            print(e)
-
+        flag = False
         flag_price_status = False
-        if '￥' in arg[-1] or '$' in arg[-1] or '价' in arg[-1]:
-            flag_price_status = True
+        if type(arg) is list and len(arg) != 0:
+            try:
+                int(arg[0].split(" ")[0])
+                flag = True
+            except Exception as e:
+                flag = False
+                print(e)
+            if '￥' in arg[-1] or '$' in arg[-1] or '价' in arg[-1]:
+                flag_price_status = True
 
         return True if flag and flag_price_status else False
 
@@ -225,8 +228,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation):
         store_info_base = {}
         collection_result = []
         stop_cycle_condition = True
-        if self.ui_device(resourceId=NameCollectionENum.fl9.value).exists:
-            self.ui_device(resourceId=NameCollectionENum.fl9.value).click()
+        if True:#self.ui_device(resourceId=NameCollectionENum.fl9.value).exists:
+            # self.ui_device(resourceId=NameCollectionENum.fl9.value).click()
 
             while stop_cycle_condition:
 
@@ -236,9 +239,12 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation):
                     stop_cycle_condition = False
                 else:
                     text_price_content = self.handler_receive_verify_info(NameCollectionENum.fll_xpath.value)
+
                     text_keep_complete = filter(lambda x: WeCollectionHandleMain.handler_keep_data_complete(x),
                                                 text_price_content)
+
                     photo_content = self.handler_photo_product_info(NameCollectionENum.huu_xpath.value)
+
                     for index_value in text_keep_complete:
 
                         collection_result.append({
@@ -309,9 +315,10 @@ class WeCollectionOperator(WeCollectionHandleMain):
         self.parse_config_value = WeConfigParse.parse_base_config('config/config.yaml')
         self.elements_value = WeConfigParse.parse_base_config('config/elements.yaml')
         WeCollectionHandleMain.__init__(self, self.parse_config_value, device_ip)
-        self.destroy_current_app()
-        self.start_current_app()
-        self.move_to_button()
+        self.handler_live_product_info()
+        # self.destroy_current_app()
+        # self.start_current_app()
+        # self.move_to_button()
 
     def cycle_living_store(self):
         for per_nuw_key, per_nuw_value in self.elements_value.items():

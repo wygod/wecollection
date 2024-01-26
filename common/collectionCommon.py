@@ -1,4 +1,5 @@
 # -*- encoding:utf-8 -*-
+import time
 
 from common import *
 from CollectionEnum.collectionEnum import NameCollectionENum
@@ -70,6 +71,7 @@ class InitDeviceApp(InitVenv):
         self.ui_device.app_stop("com.tencent.mm")
 
     def move_to_button(self):
+        time.sleep(1)
         if self.ui_device.xpath('//*[@text="发现"]').exists:
             self.ui_device.xpath('//*[@text="发现"]').click()
             time.sleep(1)
