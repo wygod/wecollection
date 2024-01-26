@@ -32,13 +32,44 @@ class NameCollectionENum(Enum):
     l7g = "com.tencent.mm:id/l7g"
     mug = "com.tencent.mm:id/mug"
     fl9 = 'com.tencent.mm:id/fl9'
+    l51 = 'com.tencent.mm:id/l51'
+    lc_ = 'com.tencent.mm:id/lc_'
+    lc_xpath = '//*[@resource-id="com.tencent.mm:id/lc_'
 
     b1i = "com.tencent.mm:id/b1i"
     aa4 = "com.tencent.mm:id/aa4"
 
     b1h = "com.tencent.mm:id/b1h"
-
     mm_alert_cancel_btn = "com.tencent.mm:id/mm_alert_cancel_btn"
+
+    l77 = '//*[@resource-id="com.tencent.mm:id/l77"]'
+    l74 = 'com.tencent.mm:id/l74'
+    # 頭像
+    fxf = "com.tencent.mm:id/fxf"
+    # 預約時間， 内容
+    p1j = "com.tencent.mm:id/p1j"
+    fe0 = 'com.tencent.mm:id/fe0'
+    feo = 'com.tencent.mm:id/feo'
+    ew7 = 'com.tencent.mm:id/ew7'
+    ew7_xpath = '//*[@resource-id="com.tencent.mm:id/ew7"]'
+
+    # 是否有多場預約
+    fe7 = 'com.tencent.mm:id/fe7'
+    # 沒有多場預約
+    fe5 = 'com.tencent.mm:id/fe5'
+    # content
+    jkq = 'com.tencent.mm:id/jkq'
+    # title
+    ord = 'com.tencent.mm:id/ord'
+    ord_xpath = '//*[@resource-id="com.tencent.mm:id/ord"]'
+    #time
+    orc = 'com.tencent.mm:id/orc'
+    orc_xpath = '//*[@resource-id="com.tencent.mm:id/orc"]'
+    # 退出预约
+    h64 = 'com.tencent.mm:id/h64'
+
+
+
 
     # check status
     enter_live_store_activity = 'com.tencent.mm/.plugin.finder.feed.ui.FinderLiveVisitorWithoutAffinityUI'

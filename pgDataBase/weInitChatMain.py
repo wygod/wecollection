@@ -18,6 +18,8 @@ class WeCollectionBaseInfo(Base):
     store_like_class = Column(String(length=20), comment='点赞数', nullable=True)
     store_class = Column(String(length=100), comment='分类', nullable=True)
     store_verify = Column(Text, comment='认证', nullable=True)
+    store_photo = Column(Text, comment='頭像', nullable=True)
+    store_live_feature = Column(String(length=100), comment='預約時間', nullable=True)
     store_update_date = Column(DATE, comment="更新时间", default=datetime.datetime.now(), nullable=False)
 
 
@@ -31,6 +33,7 @@ class WeCollectionShopProduct(Base):
     shop_product_description = Column(Text, comment='商品标题', nullable=False)
     shop_sale_price = Column(Text, comment='商品价格', nullable=True)
     shop_preferential = Column(String(length=100), comment='优惠劵', nullable=True)
+    shop_product_photo = Column(Text, comment='圖片', nullable=True)
     product_update_date = Column(DATE, default=datetime.datetime.now(), comment='商品更新时间', nullable=False)
 
 
