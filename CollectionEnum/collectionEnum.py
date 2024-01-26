@@ -16,6 +16,7 @@ class NameCollectionENum(Enum):
     obc = "com.tencent.mm:id/obc"
     cu2 = "com.tencent.mm:id/cu2"
 
+    fxd = 'com.tencent.mm:id/fxd'
     ifz = 'com.tencent.mm:id/ifz'
     g06 = 'com.tencent.mm:id/g06'
 
@@ -29,12 +30,23 @@ class NameCollectionENum(Enum):
     dio = 'com.tencent.mm:id/dio'
     mui = "com.tencent.mm:id/mui"
     l6m = "com.tencent.mm:id/l6m"
+    l6m_xpath = '//*[@resource-id="com.tencent.mm:id/l6m"]'
     l7g = "com.tencent.mm:id/l7g"
     mug = "com.tencent.mm:id/mug"
     fl9 = 'com.tencent.mm:id/fl9'
     l51 = 'com.tencent.mm:id/l51'
+    l51_xpath = '//*[@resource-id="com.tencent.mm:id/l51"]'
     lc_ = 'com.tencent.mm:id/lc_'
-    lc_xpath = '//*[@resource-id="com.tencent.mm:id/lc_'
+    lc_xpath = '//*[@resource-id="com.tencent.mm:id/lc_"]'
+    l7n = 'com.tencent.mm:id/l7n'
+    l7n_xpath = '//*[@resource-id="com.tencent.mm:id/l7n"]'
+
+    #index 和  图片
+    fll = 'com.tencent.mm:id/fll'
+    fll_xpath = '//*[@resource-id="com.tencent.mm:id/fll"]'
+    hhu = 'com.tencent.mm:id/hhu'
+    huu_xpath = '//*[@resource-id="com.tencent.mm:id/hhu"]'
+
 
     b1i = "com.tencent.mm:id/b1i"
     aa4 = "com.tencent.mm:id/aa4"
@@ -57,6 +69,8 @@ class NameCollectionENum(Enum):
     fe7 = 'com.tencent.mm:id/fe7'
     # 沒有多場預約
     fe5 = 'com.tencent.mm:id/fe5'
+    kp2 = 'com.tencent.mm:id/kp2'
+    kp2_xpath = '//*[@resource-id="com.tencent.mm:id/kp2"]'
     # content
     jkq = 'com.tencent.mm:id/jkq'
     # title

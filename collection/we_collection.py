@@ -28,8 +28,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation):
             self.ui_device.xpath("//android.widget.EditText").set_text(text)
             self.ui_device.xpath('//*[@content-desc="搜索"]').click()
             self.ui_device.xpath('//*[@content-desc="{}"]'.format(text)).click()
-            # 可以添加獲取數據
-            # 退
+            # 可以添加獲取數據退
             self.ui_device(resourceId=NameCollectionENum.aa4.value).click()
 
             self.ui_device.swipe(int(self.screen[0] * 0.1), int(self.screen[1] * 0.5),
@@ -75,6 +74,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation):
                     store_live_active_information = self.handler_live_active_level_info()
                     store_base_information = self.handle_live_store_base_info()
                     store_live_product_information, store_info_base = self.handler_live_product_info()
+
                     self.handle_we_collection_store_database(store_class,
                                                              store_base_information,
                                                              store_info_base,
@@ -124,7 +124,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation):
         store_base_info = {'store_name': self.get_sub_title(NameCollectionENum.fzn.value),
                            'store_addr': self.get_sub_title(NameCollectionENum.ov9.value),
                            'store_small_name': self.get_sub_title(NameCollectionENum.g06.value),
-                           'store_verify': self.handle_live_store_photo_info(NameCollectionENum.ifz.value),
+                           'store_verify': self.handle_live_store_photo_info(NameCollectionENum.fxd.value),
                            'store_live_feature': self.handler_all_timeing_live_info(),
                            'store_photo': self.handle_live_store_photo_info(NameCollectionENum.fxf.value)
                            }
@@ -158,15 +158,28 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation):
         content.append(" ".join(content))
 
     def handler_receive_verify_info(self, element):
+
         content = []
         for per_element in self.ui_device.xpath(element).all():
-            WeCollectionHandleMain.handler_recursion_text(per_element, content)
-        return " ".join(content)
+            per_element_object = per_element.elem.getchildren()
+            for per_text in per_element_object:
+                temp = []
+                WeCollectionHandleMain.handler_recursion_text(per_text, temp)
+                if temp:
+                    content.append(" ".join(temp))
 
-    def handler_timeing_live_info(self):
-        content = []
-        for element in self.ui_device.xpath(NameCollectionENum.jkq.value).all():
-            WeCollectionHandleMain.handler_recursion_text(element, content)
+        return content
+
+    def handler_photo_product_info(self, elem):
+        content = {}
+        content_list = self.ui_device.xpath(elem).all()
+        for temp in content_list:
+            temp.screenshot().save('bg.jpg')
+            temp_index = temp.elem.getchildren()
+            index = temp_index[1].get('text')
+            with open('bg.jpg', "rb") as b:
+                data = base64.b64encode(b.read())
+            content[index] = data
         return content
 
     @staticmethod
@@ -175,75 +188,72 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation):
             for k in elem.getchildren():
                 WeCollectionHandleMain.handler_recursion_text(k, result)
         else:
-            return result.append(elem.get('text'))
+            temp_text = elem.get('text')
+            if temp_text != '':
+                result.append(temp_text)
 
     def handler_all_timeing_live_info(self):
         if self.ui_device(resourceId=NameCollectionENum.fe7.value).exists:
             self.ui_device(resourceId=NameCollectionENum.fe7.value).click()
-            ord_text = self.handler_receive_verify_info(NameCollectionENum.ord_xpath.value)
-            orc_text = self.handler_receive_verify_info(NameCollectionENum.orc_xpath.value)
-            jkp_text = self.handler_receive_verify_info(NameCollectionENum.jkq.value)
+            timeing_task = self.handler_receive_verify_info(NameCollectionENum.kp2_xpath.value)
             self.ui_device(resourceId=NameCollectionENum.h64.value).click()
-            return "\n".join(map(lambda x: " ".join(x), zip(ord_text, orc_text, jkp_text)))
+            return " ".join(timeing_task)
         else:
             ord_text = self.get_sub_title(NameCollectionENum.fe0.value)
             orc_text = self.get_sub_title(NameCollectionENum.feo.value)
-            jkp_text = self.handler_receive_verify_info(NameCollectionENum.ew7_xpath.value)
-            return " ".join([ord_text, orc_text, jkp_text])
+            fe5_text = self.handler_receive_verify_info(NameCollectionENum.fe5.value)
+            return " ".join([ord_text, orc_text, " ".join(fe5_text)])
+
+    @staticmethod
+    def handler_keep_data_complete(arg):
+        try:
+            int(arg[0].split(" ")[0])
+            flag = True
+        except Exception as e:
+            flag = False
+            print(e)
+
+        flag_price_status = False
+        if '￥' in arg[-1] or '$' in arg[-1] or '价' in arg[-1]:
+            flag_price_status = True
+
+        return True if flag and flag_price_status else False
 
     def handler_live_product_info(self):
-        last_product = ""
+        last_product = 1
         store_status = True
         store_info_base = {}
         collection_result = []
         stop_cycle_condition = True
-        self.ui_device(resourceId=NameCollectionENum.fl9.value).click()
+        if self.ui_device(resourceId=NameCollectionENum.fl9.value).exists:
+            self.ui_device(resourceId=NameCollectionENum.fl9.value).click()
 
-        while stop_cycle_condition:
+            while stop_cycle_condition:
 
-            title_content = map(lambda x: x.elem.get('text'), self.ui_device.xpath('//*[@resource-id="{}"]'.format(
-                NameCollectionENum.l6m.value)).all())
+                index_max = self.handler_receive_verify_info(NameCollectionENum.l7n_xpath.value)
 
-            price_list = []
-
-            map(lambda x, y: WeCollectionHandleMain.handler_atom_info(x, y), price_list,
-                self.ui_device.xpath('//*[@resource-id="{}"]'.format(NameCollectionENum.l51.value)).all())
-
-
-            lc_list_all = []
-            lc_list = self.ui_device.xpath('//*[@resource-id="{}"]'.format(NameCollectionENum.lc_xpath.value)).all()
-            for i_price in range(len(lc_list)):
-                price_c_list = []
-                if i_price not in price_index:
-                    elem = lc_list[i_price].elem.getchildren()
-                    for per_elem in elem:
-                        price_c_list.append(per_elem.get('text'))
+                if last_product == int(max(index_max)):
+                    stop_cycle_condition = False
                 else:
-                    elem = lc_list[i_price].elem.getchildren()[0].getchildren()
-                    for j in elem:
-                        price_c_list.append(j.get('text'))
-                lc_list_all.append(" ".join(price_c_list))
+                    text_price_content = self.handler_receive_verify_info(NameCollectionENum.fll_xpath.value)
+                    text_keep_complete = filter(lambda x: WeCollectionHandleMain.handler_keep_data_complete(x),
+                                                text_price_content)
+                    photo_content = self.handler_photo_product_info(NameCollectionENum.huu_xpath.value)
+                    for index_value in text_keep_complete:
 
-            if last_product == title_list[-1]:
-                stop_cycle_condition = False
+                        collection_result.append({
+                            "store_product": index_value[1],
+                            "store_price": index_value[-1],
+                            "store_photo": photo_content[index_value[0].split(" ")[0]]
+                        })
 
-            last_product = title_list[-1]
+                if store_status:
+                    store_info_base["store_id"] = self.get_sub_title(NameCollectionENum.mui.value)
+                    store_info_base["store_point"] = self.get_sub_title(NameCollectionENum.mug.value)
+                    store_status = False
 
-            store_product_content = {"store_preferential": dio if dio != "" else "原价",
-                                     "store_product": store_product,
-                                     "store_price": self.get_sub_title(NameCollectionENum.l7g.value),
-                                     "store_real_price": self.get_sub_title(NameCollectionENum.mug.value),
-                                     "store_photo": self.handle_live_store_photo_info(NameCollectionENum.l74.value),
-                                     }
-            if store_status:
-                store_info_base["store_id"] = self.get_sub_title(NameCollectionENum.mui.value)
-                store_info_base["store_point"] = self.get_sub_title(NameCollectionENum.mug.value)
-                store_status = False
-
-            collection_result.append(store_product_content)
-
-            self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.9), int(self.screen[0] * 0.5),
-                                 int(self.screen[1] * 0.5), duration=0.5)
+                self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.95), int(self.screen[0] * 0.5),
+                                     int(self.screen[1] * 0.35), duration=0.1)
 
         return collection_result, store_info_base
 
@@ -265,15 +275,15 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation):
         self.insert_data_to_database(we_collection_store_product)
 
     def handle_we_collection_shop_database(self, store_base_information, store_live_product_information):
-
-        we_collection_shop_product = WeCollectionShopProduct()
-        we_collection_shop_product.we_chat_shop_name = store_base_information['store_name']
-        we_collection_shop_product.shop_product_description = store_live_product_information['store_product']
-        we_collection_shop_product.shop_sale_price = store_live_product_information['store_price']
-        we_collection_shop_product.shop_preferential = store_live_product_information['shop_preferential']
-        we_collection_shop_product.shop_product_photo = store_live_product_information['shop_product_photo']
-        we_collection_shop_product.product_update_date = datetime.datetime.now()
-        self.insert_data_to_database(we_collection_shop_product)
+        result = []
+        for meta_value in store_live_product_information:
+            we_collection_shop_product = WeCollectionShopProduct()
+            we_collection_shop_product.we_chat_shop_name = store_base_information['store_name']
+            we_collection_shop_product.shop_product_description = meta_value['store_product']
+            we_collection_shop_product.shop_sale_price = meta_value['store_price']
+            we_collection_shop_product.shop_product_photo = meta_value['store_photo']
+            we_collection_shop_product.product_update_date = datetime.datetime.now()
+        self.insert_data_to_database(result)
 
     def handle_we_collection_status_database(self, store_base_information):
 
@@ -299,6 +309,7 @@ class WeCollectionOperator(WeCollectionHandleMain):
         self.parse_config_value = WeConfigParse.parse_base_config('config/config.yaml')
         self.elements_value = WeConfigParse.parse_base_config('config/elements.yaml')
         WeCollectionHandleMain.__init__(self, self.parse_config_value, device_ip)
+        self.destroy_current_app()
         self.start_current_app()
         self.move_to_button()
 

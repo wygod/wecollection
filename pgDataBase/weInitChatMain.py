@@ -31,8 +31,7 @@ class WeCollectionShopProduct(Base):
     id = Column(Integer, comment='we_collection_store_id', primary_key=True, autoincrement=True)
     we_chat_shop_name = Column(Text, comment='商店名称', nullable=False)
     shop_product_description = Column(Text, comment='商品标题', nullable=False)
-    shop_sale_price = Column(Text, comment='商品价格', nullable=True)
-    shop_preferential = Column(String(length=100), comment='优惠劵', nullable=True)
+    shop_sale_price = Column(Text, comment='商品价格_优惠', nullable=True)
     shop_product_photo = Column(Text, comment='圖片', nullable=True)
     product_update_date = Column(DATE, default=datetime.datetime.now(), comment='商品更新时间', nullable=False)
 
