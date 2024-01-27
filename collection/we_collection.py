@@ -317,8 +317,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                  int(self.screen[1] * 0.35), duration=0.1)
             time.sleep(5)
 
-        self.ui_device.swipe(0, int(self.screen[1] * 0.95), int(self.screen[0] * 0.9),
-                             int(self.screen[1] * 0.35), duration=0.1)
+        self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.9),
+                             int(self.screen[1] * 0.5), duration=0.1)
 
         return collection_result, store_info_base
 
