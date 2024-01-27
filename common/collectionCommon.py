@@ -71,13 +71,11 @@ class InitDeviceApp(InitVenv):
         self.ui_device.app_stop("com.tencent.mm")
 
     def move_to_button(self):
-        time.sleep(1)
+        time.sleep(4)
         if self.ui_device.xpath('//*[@text="发现"]').exists:
             self.ui_device.xpath('//*[@text="发现"]').click()
-            time.sleep(1)
             if self.ui_device.xpath('//*[@text="直播"]').exists:
                 self.ui_device.xpath('//*[@text="直播"]').click()
-                time.sleep(1)
                 self.move_to_project_main()
             else:
                 raise CollectionElementNotFoundException('直播')
@@ -87,7 +85,7 @@ class InitDeviceApp(InitVenv):
     def move_to_project_main(self):
         if self.ui_device(resourceId=NameCollectionENum.igx.value).exists:
             self.ui_device(resourceId=NameCollectionENum.igx.value).click()
-
+        time.sleep(10)
         if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
             self.ui_device(resourceId=NameCollectionENum.b1h.value).click()
 

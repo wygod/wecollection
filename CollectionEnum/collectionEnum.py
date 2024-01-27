@@ -47,7 +47,6 @@ class NameCollectionENum(Enum):
     hhu = 'com.tencent.mm:id/hhu'
     huu_xpath = '//*[@resource-id="com.tencent.mm:id/hhu"]'
 
-
     b1i = "com.tencent.mm:id/b1i"
     aa4 = "com.tencent.mm:id/aa4"
 
@@ -71,6 +70,8 @@ class NameCollectionENum(Enum):
     fe5 = 'com.tencent.mm:id/fe5'
     kp2 = 'com.tencent.mm:id/kp2'
     kp2_xpath = '//*[@resource-id="com.tencent.mm:id/kp2"]'
+    # 查询多少场直播预约
+    fe9 = 'com.tencent.mm:id/fe9'
     # content
     jkq = 'com.tencent.mm:id/jkq'
     # title

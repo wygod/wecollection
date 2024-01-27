@@ -10,4 +10,4 @@ database:
   database_name: datatest
 
 logHandler:
-  log_conf_path: log.conf
+  log_conf_path: config/log.conf
