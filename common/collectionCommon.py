@@ -51,6 +51,19 @@ class InitDeviceApp(InitVenv):
         start_atx_cmd = "/data/local/tmp/atx-agent server stop"
         self.ui_device.shell(start_atx_cmd)
 
+    def check_now_activity_status(self):
+        activity_content = self.ui_device.shell('dumpsys activity top | grep ACTIVITY')
+        return activity_content
+
+    def check_running_activity(self):
+        content = self.check_now_activity_status()
+        if NameCollectionENum.we_chat_start_page.value in content:
+            self.move_to_button()
+        elif NameCollectionENum.enter_live_main_activity.value in content:
+            self.move_to_project_main()
+        else:
+            self.check_running_activity()
+
     def check_uiautomator2_status(self):
         return self.ui_device.uiautomator.running()
 
@@ -76,6 +89,8 @@ class InitDeviceApp(InitVenv):
             self.ui_device.xpath('//*[@text="直播"]').click()
             self.move_to_project_main()
         else:
+            time.sleep(4)
+
             self.move_to_live()
 
     def move_to_button(self):

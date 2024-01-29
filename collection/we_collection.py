@@ -22,17 +22,9 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         CollectionLog.__init__(self, config.logHandler.log_conf_path)
         self.screen = InitDeviceApp.screen_size(self)
 
-    def check_now_activity_status(self):
-        activity_content = InitDeviceApp.adb_client(self).shell('dumpsys activity top | grep ACTIVITY')
-        return activity_content
-
-    def check_running_activity(self, text, sub_text):
+    def check_activity_content(self, text, sub_text):
         content = self.check_now_activity_status()
-        if NameCollectionENum.we_chat_start_page.value in content:
-            self.move_to_button()
-        elif NameCollectionENum.enter_live_main_activity.value in content:
-            self.move_to_project_main()
-        elif NameCollectionENum.enter_more_live_activity.value in content:
+        if NameCollectionENum.enter_more_live_activity.value in content:
             self.move_to_main_page(text, sub_text)
         elif NameCollectionENum.enter_live_store_activity.value in content:
             self.click_enter_live_page(sub_text)
@@ -42,7 +34,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         elif NameCollectionENum.enter_store_profile_activity.value in content:
             self.handle_live_store_base_info()
         else:
-            self.check_running_activity(text, sub_text)
+            self.check_running_activity()
+            self.check_activity_content(text, sub_text)
 
     def handler_cancel_btn(self):
         if self.ui_device(resourceId=NameCollectionENum.mm_alert_cancel_btn.value).exists:
@@ -78,11 +71,12 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                         self.ui_device(resourceId=NameCollectionENum.igx.value).click_exists()
                     else:
                         self.rotating_logger.info('--{} :{} == {} : not found --'.format(text, sub_text, 'fs4'))
-                        raise CollectionElementNotFoundException('fs4')
+                        self.check_activity_content(text, sub_text)
                 else:
                     self.rotating_logger.info('--{} :{} == {} : not found --'.format(text, sub_text, 'nqn'))
-                    raise CollectionElementNotFoundException('nqn')
+                    self.check_activity_content(text, sub_text)
         else:
+            self.check_activity_content(text, sub_text)
             self.rotating_logger.info('--{} :{} == {} : not found --'.format(text, sub_text, 'Num'))
 
     def click_enter_live_page(self, store_class):
@@ -179,8 +173,6 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                  duration=0.5)
         time.sleep(2)
         self.ui_device(resourceId=NameCollectionENum.aa4.value).click()
-        # self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[1] * 0.7), int(self.screen[1] * 0.5),
-        #                      duration=0.1)
 
         return store_base_info
 
