@@ -65,41 +65,43 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
     def click_enter_live_page(self, store_class):
 
         store_name = ""
-
+        iter_s = 0
         while True:
-            time.sleep(3)
-
+            time.sleep(1.0)
             sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
+            print(sub_store_name)
             self.rotating_logger.info('--click live page: {} -- {} --'.format(store_class, sub_store_name))
             if sub_store_name == "" or sub_store_name == store_name:
                 self.rotating_logger.info('--click end page: {} -- {} --'.format(store_class, sub_store_name))
                 break
-            else:
-                if self.updated_store_data(sub_store_name):
-                    self.rotating_logger.info('--click live info: {} -- {} --'.format(store_class, sub_store_name))
-                    store_live_active_information = self.handler_live_active_level_info()
-                    store_base_information = self.handle_live_store_base_info()
-                    store_live_product_information, store_info_base = self.handler_live_product_info()
 
-                    self.rotating_logger.info('--click live info end : {} -- {} --'.format(store_class, sub_store_name))
+            if self.updated_store_data(sub_store_name):
+                self.rotating_logger.info('--click live info: {} -- {} --'.format(store_class, sub_store_name))
+                store_live_active_information = self.handler_live_active_level_info()
+                store_base_information = self.handle_live_store_base_info()
+                store_live_product_information, store_info_base = self.handler_live_product_info()
 
-                    self.handle_we_collection_store_database(store_class,
-                                                             store_base_information,
-                                                             store_info_base,
-                                                             store_live_active_information)
+                self.rotating_logger.info('--click live info end : {} -- {} --'.format(store_class, sub_store_name))
 
-                    self.rotating_logger.info('--click live info shop start : {} -- {} --'.format(store_class,
-                                                                                                  sub_store_name))
-                    self.handle_we_collection_shop_database(store_base_information, store_live_product_information)
-                    self.rotating_logger.info(
-                        '--click live info shop end : {} -- {} --'.format(store_class, sub_store_name))
-                    self.handle_we_collection_status_database(store_base_information)
-                    self.rotating_logger.info('--write live info end: {} -- {} --'.format(store_class, sub_store_name))
+                self.handle_we_collection_store_database(store_class,
+                                                         store_base_information,
+                                                         store_info_base,
+                                                         store_live_active_information)
 
+                self.rotating_logger.info('--click live info shop start : {} -- {} --'.format(store_class,
+                                                                                              sub_store_name))
+                self.handle_we_collection_shop_database(store_base_information, store_live_product_information)
+                self.rotating_logger.info(
+                    '--click live info shop end : {} -- {} --'.format(store_class, sub_store_name))
+                self.handle_we_collection_status_database(store_base_information)
+                self.rotating_logger.info('--write live info end: {} -- {} --'.format(store_class, sub_store_name))
             store_name = sub_store_name
-
+            print('exec ----{}'.format(iter_s))
+            iter_s = iter_s + 1
+            time.sleep(3)
             self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7), int(self.screen[0] * 0.5),
-                                 int(self.screen[1] * 0.3), duration=0.1)
+                                 int(self.screen[1] * 0.15), duration=0.5)
+            print('exec ----{}'.format(iter_s))
 
         # self.ui_device.swipe(int(self.screen[0] * 0.6), int(self.screen[1] * 0.9), int(self.screen[0] * 0.6),
         #                      int(self.screen[1] * 0.4), duration=0.5)
@@ -140,8 +142,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             self.ui_device(resourceId=NameCollectionENum.mm_alert_cancel_btn.value).click()
         time.sleep(2)
         store_base_info = {'store_name': self.get_sub_title(NameCollectionENum.fzn.value),
-                           'store_addr': self.get_sub_title(NameCollectionENum.ov9.value),
-                           'store_small_name': self.get_sub_title(NameCollectionENum.g06.value),
+                           'store_province_city': self.get_sub_title(NameCollectionENum.ov9.value),
+                           'video_name': self.get_sub_title(NameCollectionENum.g06.value),
                            'store_verify': self.handle_live_store_photo_info(NameCollectionENum.fxd.value),
                            'store_live_feature': self.handler_all_timeing_live_info(),
                            'store_photo': self.handle_live_store_photo_info(NameCollectionENum.fxf.value)
@@ -155,20 +157,21 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.ui_device(resourceId=NameCollectionENum.obc.value, text="更多信息").click()
                 time.sleep(4)
                 if self.ui_device(resourceId=NameCollectionENum.cu2.value).exists:
-                    store_base_info['store_id'] = self.get_sub_title(NameCollectionENum.cu2.value)
-                    self.rotating_logger.info('--enter store base info === : {}'.format(store_base_info['store_id']))
+                    store_base_info['finder_id'] = self.get_sub_title(NameCollectionENum.cu2.value)
+                    self.rotating_logger.info('--enter store base info === : {}'.format(store_base_info['finder_id']))
             time.sleep(1)
             self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
                                  duration=0.5)
-
-        self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[1] * 0.7), int(self.screen[1] * 0.5),
-                             duration=0.1)
+        time.sleep(1)
+        self.ui_device(resourceId=NameCollectionENum.aa4.value).click()
+        # self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[1] * 0.7), int(self.screen[1] * 0.5),
+        #                      duration=0.1)
 
         return store_base_info
 
     def handler_live_active_level_info(self):
-        store_active = {'active_number': self.get_sub_title(NameCollectionENum.i94.value),
-                        'like_number': self.get_sub_title(NameCollectionENum.f6i.value)}
+        store_active = {'store_look_hot_class': self.get_sub_title(NameCollectionENum.i94.value),
+                        'store_like_class': self.get_sub_title(NameCollectionENum.f6i.value)}
         return store_active
 
     @staticmethod
@@ -304,15 +307,15 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 print(photo_content)
                 for index_value in text_keep_complete:
                     temp = {
-                        "store_product": index_value[1],
-                        "store_price": index_value[-1]
+                        "shop_product_description": index_value[1],
+                        "shop_sale_price": index_value[-1]
                     }
 
                     key = index_value[0].split(" ")[0] if " " in index_value[0] else index_value[0]
                     if key in photo_content.keys():
-                        temp["store_photo"] = str(photo_content[key])
+                        temp["shop_product_photo"] = str(photo_content[key])
                     else:
-                        temp["store_photo"] = ""
+                        temp["shop_product_photo"] = ""
 
                     collection_result.append(temp)
 
@@ -330,74 +333,86 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 last_product = int(max(index_max)) if index_max else 1
 
                 self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.95), int(self.screen[0] * 0.5),
-                                     int(self.screen[1] * 0.35), duration=0.1)
-                time.sleep(5)
+                                     int(self.screen[1] * 0.35), duration=0.5)
+                time.sleep(2)
 
         self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.22),
                              int(self.screen[0] * 0.5), int(self.screen[1]),
-                             duration=0.1)
+                             duration=0.5, steps=1)
 
         return collection_result, store_info_base
 
     def handle_we_collection_store_database(self, store_class, store_base_information,
                                             store_info_base, store_live_active_information):
-
-        store_id = self.session.query(WeCollectionBaseInfo).filter_by(
-            finder_id='{}'.format(store_base_information['store_id'])).first()
-        if not store_id:
-            we_collection_store_product = WeCollectionBaseInfo()
-            we_collection_store_product.finder_id = store_base_information['store_id']
-            we_collection_store_product.video_name = store_base_information['store_name']
-            we_collection_store_product.store_name = store_base_information['store_name']
-            we_collection_store_product.store_province_city = store_base_information['store_addr']
-            we_collection_store_product.store_point = store_info_base['store_point']
-            we_collection_store_product.store_look_hot_class = store_live_active_information['active_number']
-            we_collection_store_product.store_like_class = store_live_active_information['like_number']
-            we_collection_store_product.store_photo = store_base_information['store_photo']
-            we_collection_store_product.store_live_feature = store_base_information['store_live_feature']
-            we_collection_store_product.store_class = store_class
-            we_collection_store_product.store_verify = store_base_information['store_verify']
-            we_collection_store_product.store_update_date = datetime.datetime.now()
-            self.insert_data_to_database(we_collection_store_product)
-            self.rotating_logger.info("writing database {}".format(store_base_information['store_id']))
-        else:
-            self.session.query(WeCollectionBaseInfo).filter_by(
-                finder_id='{}'.format(store_base_information['store_id'])).update(
-                {'store_point': store_info_base['store_point'],
-                 'store_look_hot_class': store_live_active_information['active_number'],
-                 'store_like_class': store_live_active_information['like_number'],
-                 'store_live_feature': store_base_information['store_live_feature']})
-            self.session.commit()
+        if 'finder_id' in store_base_information.keys():
+            try:
+                store_id = self.session.query(WeCollectionBaseInfo).filter_by(
+                    finder_id='{}'.format(store_base_information['finder_id'])).first()
+                if not store_id:
+                    we_collection_store_product = WeCollectionBaseInfo()
+                    we_collection_store_product.finder_id = store_base_information['finder_id']
+                    we_collection_store_product.video_name = store_base_information['store_name']
+                    we_collection_store_product.store_name = store_base_information['store_name']
+                    we_collection_store_product.store_province_city = store_base_information['store_province_city']
+                    we_collection_store_product.store_point = store_info_base['store_point']
+                    we_collection_store_product.store_look_hot_class = store_live_active_information['store_look_hot_class']
+                    we_collection_store_product.store_like_class = store_live_active_information['store_like_class']
+                    we_collection_store_product.store_photo = store_base_information['store_photo']
+                    we_collection_store_product.store_live_feature = store_base_information['store_live_feature']
+                    we_collection_store_product.store_class = store_class
+                    we_collection_store_product.store_verify = store_base_information['store_verify']
+                    we_collection_store_product.store_update_date = datetime.datetime.now()
+                    self.insert_data_to_database(we_collection_store_product)
+                    self.rotating_logger.info("writing database {}".format(store_base_information['finder_id']))
+                else:
+                    self.session.query(WeCollectionBaseInfo).filter_by(
+                        finder_id='{}'.format(store_base_information['finder_id'])).update(
+                        {'store_point': store_info_base['store_point'],
+                         'store_look_hot_class': store_live_active_information['store_look_hot_class'],
+                         'store_like_class': store_live_active_information['store_like_class'],
+                         'store_live_feature': store_base_information['store_live_feature']})
+                    self.session.commit()
+            except Exception as e:
+                print(e)
 
     def handle_we_collection_shop_database(self, store_base_information, store_live_product_information):
-        result = []
-        for meta_value in store_live_product_information:
-            we_collection_shop_product = WeCollectionShopProduct()
-            we_collection_shop_product.we_chat_shop_name = store_base_information['store_name']
-            we_collection_shop_product.shop_product_description = meta_value['store_product']
-            we_collection_shop_product.shop_sale_price = meta_value['store_price']
-            we_collection_shop_product.shop_product_photo = meta_value['store_photo']
-            we_collection_shop_product.product_update_date = datetime.datetime.now()
-        self.insert_data_to_database(result)
+        if 'store_name' in store_base_information.keys():
+            result = []
+            for meta_value in store_live_product_information:
+                try:
+                    we_collection_shop_product = WeCollectionShopProduct()
+                    we_collection_shop_product.we_chat_shop_name = store_base_information['store_name']
+                    we_collection_shop_product.shop_product_description = meta_value['shop_product_description']
+                    we_collection_shop_product.shop_sale_price = meta_value['shop_sale_price']
+                    we_collection_shop_product.shop_product_photo = meta_value['shop_product_photo']
+                    we_collection_shop_product.product_update_date = datetime.datetime.now()
+                except Exception as e:
+                    print(e)
+            self.insert_data_to_database(result)
 
     def handle_we_collection_status_database(self, store_base_information):
-        store_id = self.session.query(CheckCollectionStatus).filter_by(
-            finder_id='{}'.format(store_base_information['store_id'])).first()
-        if not store_id:
-            we_collection_status = CheckCollectionStatus()
-            we_collection_status.finder_id = store_base_information["store_id"]
-            we_collection_status.finder_store_name = store_base_information["store_name"]
-            we_collection_status.finder_id_status = 1
-            we_collection_status.finder_id_update_date = datetime.datetime.now()
-            self.insert_data_to_database(we_collection_status)
-        else:
-            self.session.query(CheckCollectionStatus).filter_by(
-                finder_id='{}'.format(store_base_information['store_id'])).update(
-                {
-                    "finder_id_update_date": datetime.datetime.now()
-                }
-            )
-            self.session.commit()
+        if 'finder_id' in store_base_information.keys():
+            try:
+                store_id = self.session.query(CheckCollectionStatus).filter_by(
+                    finder_id='{}'.format(store_base_information['finder_id'])).first()
+                if not store_id:
+                    we_collection_status = CheckCollectionStatus()
+                    we_collection_status.finder_id = store_base_information["finder_id"]
+                    we_collection_status.finder_store_name = store_base_information["store_name"]
+                    we_collection_status.finder_id_status = 1
+                    we_collection_status.finder_id_update_date = datetime.datetime.now()
+                    self.insert_data_to_database(we_collection_status)
+                else:
+                    self.session.query(CheckCollectionStatus).filter_by(
+                        finder_id='{}'.format(store_base_information['finder_id'])).update(
+                        {
+                            "finder_id_update_date": datetime.datetime.now()
+                        }
+                    )
+                    self.session.commit()
+            except Exception as e:
+                print(e)
+
 
 
 class WeConfigParse:
@@ -424,14 +439,14 @@ class WeCollectionOperator(WeCollectionHandleMain):
         for per_nuw_key, per_nuw_value in self.elements_value.items():
             if main_iter_number > 5:
                 self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0, int(self.screen[1] * 0.2),
-                                     duration=1)
+                                     duration=1, steps=2)
                 main_iter_number = 0
             sub_main_iter_number = 0
             for per_value in per_nuw_value:
                 if sub_main_iter_number > 5:
                     self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0,
                                          int(self.screen[1] * 0.2),
-                                         duration=1)
+                                         duration=1, steps=2)
                     sub_main_iter_number = 0
                 if per_nuw_key != per_value:
                     self.move_to_main_page(per_nuw_key, per_value)
