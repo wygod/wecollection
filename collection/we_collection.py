@@ -16,29 +16,16 @@ from collectionException.collectionSelfDefineException import CollectionElementN
 
 class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog):
 
-    def __init__(self, config, device_ip):
+    def __init__(self, config, device_ip, elements_value):
         InitDeviceApp.__init__(self, config, device_ip)
         InitDatabaseOperation.__init__(self, config)
         CollectionLog.__init__(self, config.logHandler.log_conf_path)
         self.screen = InitDeviceApp.screen_size(self)
-
-    def check_activity_content(self, text, sub_text):
-        content = self.check_now_activity_status()
-        if NameCollectionENum.enter_more_live_activity.value in content:
-            self.move_to_main_page(text, sub_text)
-        elif NameCollectionENum.enter_live_store_activity.value in content:
-            self.click_enter_live_page(sub_text)
-        elif NameCollectionENum.enter_store_permission_activity in content:
-            self.handler_cancel_btn()
-            self.handle_live_store_base_info()
-        elif NameCollectionENum.enter_store_profile_activity.value in content:
-            self.handle_live_store_base_info()
-        else:
-            self.check_running_activity()
-            self.check_activity_content(text, sub_text)
+        self.elements_value = elements_value
 
     def handler_cancel_btn(self):
-        if self.ui_device(resourceId=NameCollectionENum.mm_alert_cancel_btn.value).exists:
+        content = self.check_now_activity_status().output
+        if NameCollectionENum.enter_store_permission_activity.value in content:
             self.ui_device(resourceId=NameCollectionENum.mm_alert_cancel_btn.value).click()
 
     def search_key_word_page(self, text):
@@ -55,68 +42,99 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                  int(self.screen[0]), int(self.screen[1] * 0.5),
                                  duration=0.5)
 
-    def move_to_main_page(self, text, sub_text, sub_text_is_use=True):
+    def iter_to_live(self):
+        content = self.check_now_activity_status().output
+        if NameCollectionENum.enter_more_live_activity.value in content:
+            main_iter_number = 0
+            for per_nuw_key, per_nuw_value in self.elements_value.items():
+                if main_iter_number > 5:
+                    self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0,
+                                         int(self.screen[1] * 0.2),
+                                         duration=1, steps=2)
+                    time.sleep(3)
+                    main_iter_number = 0
+                sub_main_iter_number = 0
+                for per_value in per_nuw_value:
+                    if sub_main_iter_number > 5:
+                        self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0,
+                                             int(self.screen[1] * 0.2),
+                                             duration=1, steps=2)
+                        time.sleep(3)
+                        sub_main_iter_number = 0
+                    if per_nuw_key != per_value:
+                        self.move_to_main_page(per_nuw_key, per_value)
+                        sub_main_iter_number = sub_main_iter_number + 1
+                    else:
+                        self.move_to_main_page(per_nuw_key, None)
+                main_iter_number = main_iter_number + 1
+        elif NameCollectionENum.enter_live_main_activity.value in content:
+            self.move_to_project_main()
+            self.iter_to_live()
+        else:
+            self.start_current_app()
+            self.iter_to_live()
+
+    def move_to_main_page(self, text, sub_text):
         time.sleep(5)
         self.rotating_logger.info('--{} : {} --'.format(text, sub_text))
+
         if self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).exists:
             self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).click()
             time.sleep(1.0)
-            if sub_text_is_use:
-                if self.ui_device(resourceId=NameCollectionENum.nqn.value, text='{}'.format(sub_text)).exists:
-                    self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
-                    time.sleep(1.0)
-                    if self.ui_device(resourceId=NameCollectionENum.fs4.value).exists:
-                        self.ui_device(resourceId=NameCollectionENum.fs4.value).click()
-                        self.click_enter_live_page(sub_text)
-                        self.ui_device(resourceId=NameCollectionENum.igx.value).click_exists()
-                    else:
-                        self.rotating_logger.info('--{} :{} == {} : not found --'.format(text, sub_text, 'fs4'))
-                        self.check_activity_content(text, sub_text)
+            if self.ui_device(resourceId=NameCollectionENum.nqn.value, text='{}'.format(sub_text)).exists:
+                self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
+                time.sleep(1.0)
+                if self.ui_device(resourceId=NameCollectionENum.fs4.value).exists:
+                    self.ui_device(resourceId=NameCollectionENum.fs4.value).click()
+                    self.click_enter_live_page(sub_text)
+                    self.ui_device(resourceId=NameCollectionENum.igx.value).click_exists()
                 else:
-                    self.rotating_logger.info('--{} :{} == {} : not found --'.format(text, sub_text, 'nqn'))
-                    self.check_activity_content(text, sub_text)
+                    time.sleep(3)
+                    self.move_to_main_page(text, sub_text)
+            else:
+                self.rotating_logger.info('--{} :{} == {} : not found --'.format(text, sub_text, 'nqp'))
         else:
-            self.check_activity_content(text, sub_text)
             self.rotating_logger.info('--{} :{} == {} : not found --'.format(text, sub_text, 'Num'))
 
     def click_enter_live_page(self, store_class):
 
-        store_name = ""
-        while True:
-            time.sleep(2.0)
-            sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
-            self.rotating_logger.info('--click live page: {} -- {} --'.format(store_class, sub_store_name))
-            if sub_store_name == "" or sub_store_name == store_name:
-                self.rotating_logger.info('--click end page: {} -- {} --'.format(store_class, sub_store_name))
-                break
+        content = self.check_now_activity_status().output
+        if NameCollectionENum.enter_live_store_activity.value in content:
+            store_name = ""
+            while True:
+                time.sleep(2.0)
+                sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
+                self.rotating_logger.info('--click live page: {} -- {} --'.format(store_class, sub_store_name))
+                if sub_store_name == "" or sub_store_name == store_name:
+                    self.rotating_logger.info('--click end page: {} -- {} --'.format(store_class, sub_store_name))
+                    break
 
-            if self.updated_store_data(sub_store_name):
-                self.rotating_logger.info('--click live info: {} -- {} --'.format(store_class, sub_store_name))
-                store_live_active_information = self.handler_live_active_level_info()
-                store_base_information = self.handle_live_store_base_info()
-                store_live_product_information, store_info_base = self.handler_live_product_info()
+                if self.updated_store_data(sub_store_name):
+                    self.rotating_logger.info('--click live info: {} -- {} --'.format(store_class, sub_store_name))
+                    store_live_active_information = self.handler_live_active_level_info()
+                    store_base_information = self.handle_live_store_base_info()
+                    store_live_product_information, store_info_base = self.handler_live_product_info()
 
-                self.rotating_logger.info('--click live info end : {} -- {} --'.format(store_class, sub_store_name))
+                    self.rotating_logger.info('--click live info end : {} -- {} --'.format(store_class, sub_store_name))
 
-                self.handle_we_collection_store_database(store_class,
-                                                         store_base_information,
-                                                         store_info_base,
-                                                         store_live_active_information)
+                    self.handle_we_collection_store_database(store_class,
+                                                             store_base_information,
+                                                             store_info_base,
+                                                             store_live_active_information)
 
-                self.rotating_logger.info('--click live info shop start : {} -- {} --'.format(store_class,
-                                                                                              sub_store_name))
-                self.handle_we_collection_shop_database(store_base_information, store_live_product_information)
-                self.rotating_logger.info(
-                    '--click live info shop end : {} -- {} --'.format(store_class, sub_store_name))
-                self.handle_we_collection_status_database(store_base_information)
-                self.rotating_logger.info('--write live info end: {} -- {} --'.format(store_class, sub_store_name))
-            store_name = sub_store_name
-            print('exec ----{}'.format(iter_s))
-            iter_s = iter_s + 1
-            time.sleep(3)
-            self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7), int(self.screen[0] * 0.5),
-                                 int(self.screen[1] * 0.15), duration=0.5)
-            print('exec ----{}'.format(iter_s))
+                    self.rotating_logger.info('--click live info shop start : {} -- {} --'.format(store_class,
+                                                                                                  sub_store_name))
+                    self.handle_we_collection_shop_database(store_base_information, store_live_product_information)
+                    self.rotating_logger.info(
+                        '--click live info shop end : {} -- {} --'.format(store_class, sub_store_name))
+                    self.handle_we_collection_status_database(store_base_information)
+                    self.rotating_logger.info('--write live info end: {} -- {} --'.format(store_class, sub_store_name))
+                store_name = sub_store_name
+                time.sleep(3)
+                self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7), int(self.screen[0] * 0.5),
+                                     int(self.screen[1] * 0.15), duration=0.5)
+        elif NameCollectionENum.enter_more_live_activity.value in content:
+            self.iter_to_live()
 
     def updated_store_data(self, store_name):
 
@@ -139,9 +157,6 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 data = base64.b64encode(b.read())
         return data
 
-    def check_close_live(self):
-        pass
-
     def get_sub_title(self, text):
         return self.ui_device(resourceId=text).get_text() if self.ui_device(resourceId=text).exists else ""
 
@@ -150,6 +165,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         self.rotating_logger.info('--enter store info')
         time.sleep(3)
         self.handler_cancel_btn()
+
         store_base_info = {'store_name': self.get_sub_title(NameCollectionENum.fzn.value),
                            'store_province_city': self.get_sub_title(NameCollectionENum.ov9.value),
                            'video_name': self.get_sub_title(NameCollectionENum.g06.value),
@@ -361,7 +377,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     we_collection_store_product.store_name = store_base_information['store_name']
                     we_collection_store_product.store_province_city = store_base_information['store_province_city']
                     we_collection_store_product.store_point = store_info_base['store_point']
-                    we_collection_store_product.store_look_hot_class = store_live_active_information['store_look_hot_class']
+                    we_collection_store_product.store_look_hot_class = store_live_active_information[
+                        'store_look_hot_class']
                     we_collection_store_product.store_like_class = store_live_active_information['store_like_class']
                     we_collection_store_product.store_photo = store_base_information['store_photo']
                     we_collection_store_product.store_live_feature = store_base_information['store_live_feature']
@@ -441,24 +458,4 @@ class WeCollectionOperator(WeCollectionHandleMain):
         self.move_to_button()
 
     def cycle_living_store(self):
-        main_iter_number = 0
-        for per_nuw_key, per_nuw_value in self.elements_value.items():
-            if main_iter_number > 5:
-                self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0, int(self.screen[1] * 0.2),
-                                     duration=1, steps=2)
-                time.sleep(3)
-                main_iter_number = 0
-            sub_main_iter_number = 0
-            for per_value in per_nuw_value:
-                if sub_main_iter_number > 5:
-                    self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0,
-                                         int(self.screen[1] * 0.2),
-                                         duration=1, steps=2)
-                    time.sleep(3)
-                    sub_main_iter_number = 0
-                if per_nuw_key != per_value:
-                    self.move_to_main_page(per_nuw_key, per_value)
-                    sub_main_iter_number = sub_main_iter_number + 1
-                else:
-                    self.move_to_main_page(per_nuw_key, None, False)
-            main_iter_number = main_iter_number + 1
+        self.iter_to_live(self.elements_value)

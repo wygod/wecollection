@@ -41,9 +41,8 @@ class InitDeviceApp(InitVenv):
 
     def check_atx_instrument(self):
         try:
-            start_instrument_cmd = "am instrument -w -r -e debug false -e class com.github.uiautomator.stub.Stub com.github.uiautomator.test/androidx.test.runner.AndroidJUnitRunner > /data/local/tmp/log.txt"
+            start_instrument_cmd = "am instrument -w -r -e debug false -e class com.github.uiautomator.stub.Stub com.github.uiautomator.test/androidx.test.runner.AndroidJUnitRunner"
             self.ui_device.shell(start_instrument_cmd, timeout=random.randint(5, 8))
-
         except Exception as e:
             print(e)
 
@@ -54,15 +53,6 @@ class InitDeviceApp(InitVenv):
     def check_now_activity_status(self):
         activity_content = self.ui_device.shell('dumpsys activity top | grep ACTIVITY')
         return activity_content
-
-    def check_running_activity(self):
-        content = self.check_now_activity_status()
-        if NameCollectionENum.we_chat_start_page.value in content:
-            self.move_to_button()
-        elif NameCollectionENum.enter_live_main_activity.value in content:
-            self.move_to_project_main()
-        else:
-            self.check_running_activity()
 
     def check_uiautomator2_status(self):
         return self.ui_device.uiautomator.running()
@@ -78,20 +68,30 @@ class InitDeviceApp(InitVenv):
         if self.ui_device.xpath('//*[@text="微信"]').exists:
             self.ui_device.xpath('//*[@text="微信"]').click()
         else:
-            raise CollectionElementNotFoundException('微信')
+            self.start_current_app()
 
     def destroy_current_app(self):
-        self.ui_device.app_stop("com.tencent.mm")
+        content = self.check_now_activity_status()
+        if NameCollectionENum.we_chat_start_page.value in content.output:
+            self.ui_device.app_stop("com.tencent.mm")
+            print('stop app')
 
     def move_to_live(self):
         time.sleep(1)
         if self.ui_device.xpath('//*[@text="直播"]').exists:
             self.ui_device.xpath('//*[@text="直播"]').click()
+            time.sleep(2)
             self.move_to_project_main()
         else:
-            time.sleep(4)
-
-            self.move_to_live()
+            time.sleep(2)
+            content = self.check_now_activity_status().output
+            if NameCollectionENum.we_chat_start_page.value in content:
+                if self.ui_device.xpath('//*[@text="直播"]').exists:
+                    self.ui_device.xpath('//*[@text="直播"]').click()
+                else:
+                    self.move_to_button()
+            else:
+                self.start_current_app()
 
     def move_to_button(self):
         time.sleep(4)
@@ -99,15 +99,27 @@ class InitDeviceApp(InitVenv):
             self.ui_device.xpath('//*[@text="发现"]').click()
             self.move_to_live()
         else:
-            self.start_current_app()
+            time.sleep(2)
+            content = self.check_now_activity_status()
+            if NameCollectionENum.we_chat_start_page.value in content.output:
+                self.move_to_button()
+            else:
+                self.start_current_app()
 
     def move_to_project_main(self):
-        if self.ui_device(resourceId=NameCollectionENum.igx.value).exists:
+        time.sleep(3)
+        content = self.check_now_activity_status().output
+        if NameCollectionENum.enter_live_store_activity.value in content:
             self.ui_device(resourceId=NameCollectionENum.igx.value).click()
+            time.sleep(2)
+            if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
+                self.ui_device(resourceId=NameCollectionENum.b1h.value).click()
+        elif NameCollectionENum.enter_live_main_activity.value in content:
+            if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
+                self.ui_device(resourceId=NameCollectionENum.b1h.value).click()
+        else:
+            self.start_current_app()
 
-        time.sleep(10)
-        if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
-            self.ui_device(resourceId=NameCollectionENum.b1h.value).click()
 
     def get_menu_list_text(self, source_id):
         if self.ui_device(resourceId=source_id).exists:
