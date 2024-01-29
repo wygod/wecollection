@@ -44,10 +44,11 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         self.rotating_logger.info('--{} : {} --'.format(text, sub_text))
         if self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).exists:
             self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).click()
+            time.sleep(1.0)
             if sub_text_is_use:
                 if self.ui_device(resourceId=NameCollectionENum.nqn.value, text='{}'.format(sub_text)).exists:
                     self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
-                    time.sleep(3)
+                    time.sleep(1.0)
                     if self.ui_device(resourceId=NameCollectionENum.fs4.value).exists:
                         self.ui_device(resourceId=NameCollectionENum.fs4.value).click()
                         self.click_enter_live_page(sub_text)
@@ -152,7 +153,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         time.sleep(3)
         if self.ui_device(resourceId=NameCollectionENum.jqi.value).exists:
             self.ui_device(resourceId=NameCollectionENum.jqi.value).click()
-            self.ui_device.implicitly_wait()
+            time.sleep(2)
             if self.ui_device(resourceId=NameCollectionENum.obc.value, text="更多信息").exists:
                 self.ui_device(resourceId=NameCollectionENum.obc.value, text="更多信息").click()
                 time.sleep(4)
@@ -162,7 +163,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             time.sleep(1)
             self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
                                  duration=0.5)
-        time.sleep(1)
+        time.sleep(2)
         self.ui_device(resourceId=NameCollectionENum.aa4.value).click()
         # self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[1] * 0.7), int(self.screen[1] * 0.5),
         #                      duration=0.1)
@@ -225,11 +226,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 result.append(temp_text)
 
     def handler_all_timeing_live_info(self):
-        time.sleep(1)
+        time.sleep(3)
         if self.ui_device(resourceId=NameCollectionENum.fe7.value).exists:
-            time.sleep(1)
             self.ui_device(resourceId=NameCollectionENum.fe7.value).click()
-
+            time.sleep(2)
             number_contain_txt = self.get_sub_title(NameCollectionENum.fe9.value)
             live_number = re.findall(r'\d+', number_contain_txt) if number_contain_txt != '' else []
             num_live = math.ceil(int(live_number[0]) / 6) if live_number else 1
@@ -240,7 +240,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     timeing_task_list.extend(timeing_task)
                 self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.92),
                                      int(self.screen[0] * 0.5), int(self.screen[1] * 0.45))
-            self.ui_device.implicitly_wait()
+            time.sleep(2)
             self.ui_device(resourceId=NameCollectionENum.h64.value).click()
             return "\n".join(set([" ".join(iter_text) for iter_text in timeing_task_list]))
         else:
@@ -281,8 +281,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         if self.ui_device(resourceId=NameCollectionENum.fl9.value).exists:
             self.ui_device(resourceId=NameCollectionENum.fl9.value).click()
             print("start sleep 3")
-            time.sleep(3)
 
+        time.sleep(3)
         self.rotating_logger.info("iter store info")
         i = 0
         while stop_cycle_condition:
@@ -386,6 +386,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     we_collection_shop_product.shop_sale_price = meta_value['shop_sale_price']
                     we_collection_shop_product.shop_product_photo = meta_value['shop_product_photo']
                     we_collection_shop_product.product_update_date = datetime.datetime.now()
+                    result.append(we_collection_shop_product)
                 except Exception as e:
                     print(e)
             self.insert_data_to_database(result)
@@ -414,7 +415,6 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 print(e)
 
 
-
 class WeConfigParse:
     def __init__(self):
         pass
@@ -440,6 +440,7 @@ class WeCollectionOperator(WeCollectionHandleMain):
             if main_iter_number > 5:
                 self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0, int(self.screen[1] * 0.2),
                                      duration=1, steps=2)
+                time.sleep(3)
                 main_iter_number = 0
             sub_main_iter_number = 0
             for per_value in per_nuw_value:
@@ -447,6 +448,7 @@ class WeCollectionOperator(WeCollectionHandleMain):
                     self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0,
                                          int(self.screen[1] * 0.2),
                                          duration=1, steps=2)
+                    time.sleep(3)
                     sub_main_iter_number = 0
                 if per_nuw_key != per_value:
                     self.move_to_main_page(per_nuw_key, per_value)
