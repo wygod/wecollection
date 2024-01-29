@@ -24,6 +24,29 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
 
     def check_now_activity_status(self):
         activity_content = InitDeviceApp.adb_client(self).shell('dumpsys activity top | grep ACTIVITY')
+        return activity_content
+
+    def check_running_activity(self, text, sub_text):
+        content = self.check_now_activity_status()
+        if NameCollectionENum.we_chat_start_page.value in content:
+            self.move_to_button()
+        elif NameCollectionENum.enter_live_main_activity.value in content:
+            self.move_to_project_main()
+        elif NameCollectionENum.enter_more_live_activity.value in content:
+            self.move_to_main_page(text, sub_text)
+        elif NameCollectionENum.enter_live_store_activity.value in content:
+            self.click_enter_live_page(sub_text)
+        elif NameCollectionENum.enter_store_permission_activity in content:
+            self.handler_cancel_btn()
+            self.handle_live_store_base_info()
+        elif NameCollectionENum.enter_store_profile_activity.value in content:
+            self.handle_live_store_base_info()
+        else:
+            self.check_running_activity(text, sub_text)
+
+    def handler_cancel_btn(self):
+        if self.ui_device(resourceId=NameCollectionENum.mm_alert_cancel_btn.value).exists:
+            self.ui_device(resourceId=NameCollectionENum.mm_alert_cancel_btn.value).click()
 
     def search_key_word_page(self, text):
 
@@ -61,16 +84,13 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     raise CollectionElementNotFoundException('nqn')
         else:
             self.rotating_logger.info('--{} :{} == {} : not found --'.format(text, sub_text, 'Num'))
-            raise CollectionElementNotFoundException('Num')
 
     def click_enter_live_page(self, store_class):
 
         store_name = ""
-        iter_s = 0
         while True:
-            time.sleep(1.0)
+            time.sleep(2.0)
             sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
-            print(sub_store_name)
             self.rotating_logger.info('--click live page: {} -- {} --'.format(store_class, sub_store_name))
             if sub_store_name == "" or sub_store_name == store_name:
                 self.rotating_logger.info('--click end page: {} -- {} --'.format(store_class, sub_store_name))
@@ -104,9 +124,6 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                  int(self.screen[1] * 0.15), duration=0.5)
             print('exec ----{}'.format(iter_s))
 
-        # self.ui_device.swipe(int(self.screen[0] * 0.6), int(self.screen[1] * 0.9), int(self.screen[0] * 0.6),
-        #                      int(self.screen[1] * 0.4), duration=0.5)
-
     def updated_store_data(self, store_name):
 
         update_data = self.session.query(CheckCollectionStatus).filter_by(
@@ -121,7 +138,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
 
     def handle_live_store_photo_info(self, element):
         data = '沒有發現認證信息'
-        if self.ui_device(resourceId=element).exists:  # NameCollectionENum.ifz.value
+        if self.ui_device(resourceId=element).exists:
             p = self.ui_device(resourceId=element).screenshot()
             p.save('tmp.jpg')
             with open('tmp.jpg', "rb") as b:
@@ -137,11 +154,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
     def handle_live_store_base_info(self):
         self.ui_device(resourceId=NameCollectionENum.k3o.value).click()
         self.rotating_logger.info('--enter store info')
-        time.sleep(7)
-
-        if self.ui_device(resourceId=NameCollectionENum.mm_alert_cancel_btn.value).exists:
-            self.ui_device(resourceId=NameCollectionENum.mm_alert_cancel_btn.value).click()
-        time.sleep(2)
+        time.sleep(3)
+        self.handler_cancel_btn()
         store_base_info = {'store_name': self.get_sub_title(NameCollectionENum.fzn.value),
                            'store_province_city': self.get_sub_title(NameCollectionENum.ov9.value),
                            'video_name': self.get_sub_title(NameCollectionENum.g06.value),

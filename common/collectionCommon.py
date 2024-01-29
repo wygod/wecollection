@@ -70,21 +70,26 @@ class InitDeviceApp(InitVenv):
     def destroy_current_app(self):
         self.ui_device.app_stop("com.tencent.mm")
 
+    def move_to_live(self):
+        time.sleep(1)
+        if self.ui_device.xpath('//*[@text="直播"]').exists:
+            self.ui_device.xpath('//*[@text="直播"]').click()
+            self.move_to_project_main()
+        else:
+            self.move_to_live()
+
     def move_to_button(self):
         time.sleep(4)
         if self.ui_device.xpath('//*[@text="发现"]').exists:
             self.ui_device.xpath('//*[@text="发现"]').click()
-            if self.ui_device.xpath('//*[@text="直播"]').exists:
-                self.ui_device.xpath('//*[@text="直播"]').click()
-                self.move_to_project_main()
-            else:
-                raise CollectionElementNotFoundException('直播')
+            self.move_to_live()
         else:
-            raise CollectionElementNotFoundException('发现')
+            self.start_current_app()
 
     def move_to_project_main(self):
         if self.ui_device(resourceId=NameCollectionENum.igx.value).exists:
             self.ui_device(resourceId=NameCollectionENum.igx.value).click()
+
         time.sleep(10)
         if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
             self.ui_device(resourceId=NameCollectionENum.b1h.value).click()

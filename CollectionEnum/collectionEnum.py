@@ -87,12 +87,20 @@ class NameCollectionENum(Enum):
     gy1 = 'com.tencent.mm:id/gy1'
     muv = 'com.tencent.mm:id/muv'
     # check status
+    # 直播间
     enter_live_store_activity = 'com.tencent.mm/.plugin.finder.feed.ui.FinderLiveVisitorWithoutAffinityUI'
+    # 更多直播页面
     enter_more_live_activity = 'com.tencent.mm/.plugin.finder.nearby.live.square.find.FinderLiveFindPageUI'
+    # 直播列表页面
     enter_live_main_activity = 'com.tencent.mm/.plugin.finder.nearby.newlivesquare.FinderLiveSquareNewEntranceUI'
+    # 搜索页面
     enter_search_page_activity = 'com.tencent.mm/.plugin.lite.ui.WxaLiteAppLiteUI'
+    # 直播详情基本信息
     enter_store_profile_activity = 'com.tencent.mm/.plugin.finder.feed.ui.FinderProfileUI'
+    # 搜索页面详细
     enter_store_detail_activity = 'com.tencent.mm/.plugin.appbrand.ui.AppBrandPluginUI'
+    # 授权页面
     enter_store_permission_activity = 'com.tencent.mm/.pluginsdk.permission.RequestFloatWindowPermissionDialog'
+    #开始页面
     we_chat_start_page = 'com.tencent.mm/.ui.LauncherUI'
 
