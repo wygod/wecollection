@@ -34,6 +34,7 @@ class NameCollectionENum(Enum):
     l7g = "com.tencent.mm:id/l7g"
     mug = "com.tencent.mm:id/mug"
     fl9 = 'com.tencent.mm:id/fl9'
+    mub = 'com.tencent.mm:id/mub'
     l51 = 'com.tencent.mm:id/l51'
     l51_xpath = '//*[@resource-id="com.tencent.mm:id/l51"]'
     lc_ = 'com.tencent.mm:id/lc_'
@@ -82,10 +83,9 @@ class NameCollectionENum(Enum):
     orc_xpath = '//*[@resource-id="com.tencent.mm:id/orc"]'
     # 退出预约
     h64 = 'com.tencent.mm:id/h64'
-
-
-
-
+    # 推出物品頁
+    gy1 = 'com.tencent.mm:id/gy1'
+    muv = 'com.tencent.mm:id/muv'
     # check status
     enter_live_store_activity = 'com.tencent.mm/.plugin.finder.feed.ui.FinderLiveVisitorWithoutAffinityUI'
     enter_more_live_activity = 'com.tencent.mm/.plugin.finder.nearby.live.square.find.FinderLiveFindPageUI'
