@@ -100,6 +100,7 @@ class InitDeviceApp(InitVenv):
             if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
                 self.ui_device(resourceId=NameCollectionENum.b1h.value).click()
         elif NameCollectionENum.enter_live_main_activity.value in content:
+            time.sleep(2)
             if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
                 self.ui_device(resourceId=NameCollectionENum.b1h.value).click()
 

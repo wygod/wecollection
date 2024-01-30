@@ -7,6 +7,7 @@ class NameCollectionENum(Enum):
     nuw = 'com.tencent.mm:id/nuw'
     nqn = 'com.tencent.mm:id/nqn'
     fs4 = 'com.tencent.mm:id/fs4'
+    k69 = 'com.tencent.mm:id/k69'
     igx = "com.tencent.mm:id/igx"
     fuv = 'com.tencent.mm:id/fuv'
 
