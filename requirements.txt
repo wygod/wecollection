@@ -28,7 +28,7 @@ six==1.16.0
 SQLAlchemy==2.0.25
 tornado==6.4
 typing_extensions==4.9.0
-uiautomator2==2.16.25
+uiautomator2==2.16.22
 urllib3==2.1.0
 -e git+https://github.com/alibaba/web-editor.git@fd7bd4da6c3e954987f36182899064ce6d65c902#egg=weditor
 whichcraft==0.6.1

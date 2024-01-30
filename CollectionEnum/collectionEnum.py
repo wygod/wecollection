@@ -3,6 +3,7 @@ from enum import Enum
 
 
 class NameCollectionENum(Enum):
+    mm = 'com.tencent.mm'
     nuw = 'com.tencent.mm:id/nuw'
     nqn = 'com.tencent.mm:id/nqn'
     fs4 = 'com.tencent.mm:id/fs4'

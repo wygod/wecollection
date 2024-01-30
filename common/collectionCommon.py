@@ -44,6 +44,7 @@ class InitDeviceApp(InitVenv):
             start_instrument_cmd = "am instrument -w -r -e debug false -e class com.github.uiautomator.stub.Stub com.github.uiautomator.test/androidx.test.runner.AndroidJUnitRunner"
             self.ui_device.shell(start_instrument_cmd, timeout=random.randint(5, 8))
         except Exception as e:
+            print('check value')
             print(e)
 
     def stop_atx_agent(self):
@@ -64,50 +65,34 @@ class InitDeviceApp(InitVenv):
         self.ui_device.uiautomator.stop()
 
     def start_current_app(self):
-
+        print('easy')
         if self.ui_device.xpath('//*[@text="微信"]').exists:
             self.ui_device.xpath('//*[@text="微信"]').click()
-        else:
-            self.start_current_app()
+            print('--in click wechat --')
 
     def destroy_current_app(self):
         content = self.check_now_activity_status()
-        if NameCollectionENum.we_chat_start_page.value in content.output:
+        if NameCollectionENum.mm.value in content.output:
             self.ui_device.app_stop("com.tencent.mm")
             print('stop app')
 
     def move_to_live(self):
-        time.sleep(1)
+        # time.sleep(1)
         if self.ui_device.xpath('//*[@text="直播"]').exists:
             self.ui_device.xpath('//*[@text="直播"]').click()
-            time.sleep(2)
+            # time.sleep(2)
+            print('-- in live --')
             self.move_to_project_main()
-        else:
-            time.sleep(2)
-            content = self.check_now_activity_status().output
-            if NameCollectionENum.we_chat_start_page.value in content:
-                if self.ui_device.xpath('//*[@text="直播"]').exists:
-                    self.ui_device.xpath('//*[@text="直播"]').click()
-                else:
-                    self.move_to_button()
-            else:
-                self.start_current_app()
 
     def move_to_button(self):
-        time.sleep(4)
+        # time.sleep(4)
         if self.ui_device.xpath('//*[@text="发现"]').exists:
+            print('-- in find --')
             self.ui_device.xpath('//*[@text="发现"]').click()
             self.move_to_live()
-        else:
-            time.sleep(2)
-            content = self.check_now_activity_status()
-            if NameCollectionENum.we_chat_start_page.value in content.output:
-                self.move_to_button()
-            else:
-                self.start_current_app()
 
     def move_to_project_main(self):
-        time.sleep(3)
+        # time.sleep(3)
         content = self.check_now_activity_status().output
         if NameCollectionENum.enter_live_store_activity.value in content:
             self.ui_device(resourceId=NameCollectionENum.igx.value).click()
@@ -117,9 +102,6 @@ class InitDeviceApp(InitVenv):
         elif NameCollectionENum.enter_live_main_activity.value in content:
             if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
                 self.ui_device(resourceId=NameCollectionENum.b1h.value).click()
-        else:
-            self.start_current_app()
-
 
     def get_menu_list_text(self, source_id):
         if self.ui_device(resourceId=source_id).exists:
