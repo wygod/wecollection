@@ -52,6 +52,7 @@ class NameCollectionENum(Enum):
 
     b1i = "com.tencent.mm:id/b1i"
     aa4 = "com.tencent.mm:id/aa4"
+    indicator_btn = "com.tencent.mm:id/actionbar_up_indicator_btn"
 
     b1h = "com.tencent.mm:id/b1h"
     mm_alert_cancel_btn = "com.tencent.mm:id/mm_alert_cancel_btn"
