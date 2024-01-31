@@ -7,23 +7,18 @@ from collectionException.collectionSelfDefineException import CollectionElementN
 
 
 class InitVenv:
-    def __init__(self, config):
+    def __init__(self, config, device_serial):
         self.host = config.baseTcp.master_host
         self.port = config.baseTcp.port
+        self.device_serial = device_serial
         self.adb_client_shell = self.adb_client()
+        self.ui_device = self.ui_connect()
 
     def adb_client(self):
         return adbClient(host=self.host, port=self.port)
 
     def adb_device_list(self):
         return [sub_adb.serial for sub_adb in self.adb_client_shell.devices()]
-
-
-class InitDeviceApp(InitVenv):
-    def __init__(self, config, device_serial):
-        super(InitVenv, self).__init__(config)
-        self.device_serial = device_serial
-        self.ui_device = self.ui_connect()
 
     def ui_connect(self):
         device = u2.connect(self.device_serial)
@@ -32,24 +27,31 @@ class InitDeviceApp(InitVenv):
             device.uiautomator.start()
         return device
 
-    def screen_size(self):
-        return self.ui_device.window_size()
-
     def start_atx_agent(self):
         start_atx_cmd = "/data/local/tmp/atx-agent server -d"
         self.ui_device.shell(start_atx_cmd)
 
-    def check_atx_instrument(self):
+    def check_atx_instrument(self, low=8):
         try:
             start_instrument_cmd = "am instrument -w -r -e debug false -e class com.github.uiautomator.stub.Stub com.github.uiautomator.test/androidx.test.runner.AndroidJUnitRunner"
-            self.ui_device.shell(start_instrument_cmd, timeout=random.randint(5, 8))
+            self.ui_device.shell(start_instrument_cmd, timeout=random.randint(low, 2*low))
         except Exception as e:
             print('check value')
             print(e)
+        finally:
+            self.ui_device.uiautomator.start()
 
     def stop_atx_agent(self):
         start_atx_cmd = "/data/local/tmp/atx-agent server stop"
         self.ui_device.shell(start_atx_cmd)
+
+
+class InitDeviceApp(InitVenv):
+    def __init__(self, config, device_serial):
+        super(InitVenv, self).__init__(config, device_serial)
+
+    def screen_size(self):
+        return self.ui_device.window_size()
 
     def check_now_activity_status(self):
         activity_content = self.ui_device.shell('dumpsys activity top | grep ACTIVITY')

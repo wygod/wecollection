@@ -21,6 +21,33 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         CollectionLog.__init__(self, config.logHandler.log_conf_path)
         self.screen = self.screen_size()
         self.elements_value = elements_value
+        self.last_class = ''
+
+    def check_spider_status(self):
+        content = self.check_now_activity_status().output
+        if NameCollectionENum.we_chat_start_page.value in content:
+            self.move_to_button()
+        elif NameCollectionENum.enter_live_main_activity.value in content:
+            self.move_to_project_main()
+            self.iter_to_live()
+        elif NameCollectionENum.enter_more_live_activity.value in content:
+            self.iter_to_live()
+        elif NameCollectionENum.enter_live_store_activity.value in content:
+            self.click_enter_live_page(self.last_class)
+        elif NameCollectionENum.enter_store_profile_activity.value in content:
+            self.handler_cancel_btn()
+            self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
+                                 steps=2)
+            time.sleep(2)
+            self.click_enter_live_page(self.last_class)
+        elif NameCollectionENum.enter_store_permission_activity.value in content:
+            self.handler_cancel_btn()
+            self.check_spider_status()
+        else:
+            self.start_current_app()
+            self.move_to_button()
+            self.move_to_live()
+            self.iter_to_live()
 
     def handler_cancel_btn(self):
         content = self.check_now_activity_status().output
@@ -62,10 +89,12 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                         time.sleep(3)
                         sub_main_iter_number = 0
                     if per_nuw_key != per_value:
+                        self.last_class = per_nuw_key+":"+per_value
                         self.move_to_main_page(per_nuw_key, per_value)
                         time.sleep(4)
                         sub_main_iter_number = sub_main_iter_number + 1
                     else:
+                        self.last_class = per_nuw_key
                         self.move_to_main_page(per_nuw_key, None)
                         time.sleep(4)
                 main_iter_number = main_iter_number + 1
@@ -100,7 +129,6 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         #     self.move_to_main_page(text, sub_text)
 
     def click_enter_live_page(self, store_class):
-
         store_name = ""
         while True:
             self.handler_cancel_btn()
@@ -140,10 +168,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     self.handle_we_collection_status_database(store_base_information)
                     self.rotating_logger.info('--write live info end: {} -- {} --'.format(store_class, sub_store_name))
                 store_name = sub_store_name
-                print('start screen next store')
                 time.sleep(1)
                 self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7), int(self.screen[0] * 0.5),
                                      int(self.screen[1] * 0.15), steps=2)
+                print('start screen next store')
 
     def updated_store_data(self, store_name):
 
@@ -475,15 +503,9 @@ class WeConfigParse:
 
 
 class WeCollectionOperator(WeCollectionHandleMain):
-    def __init__(self, device_ip):
-        self.parse_config_value = WeConfigParse.parse_base_config('config/config.yaml')
+    def __init__(self, parse_config_value, device_ip):
         self.elements_value = WeConfigParse.parse_base_config('config/elements.yaml')
-        WeCollectionHandleMain.__init__(self, self.parse_config_value, device_ip, self.elements_value)
-
-        self.destroy_current_app()
-        time.sleep(1)
-        self.start_current_app()
-        self.move_to_button()
+        WeCollectionHandleMain.__init__(self, parse_config_value, device_ip, self.elements_value)
 
     def cycle_living_store(self):
         self.iter_to_live()
