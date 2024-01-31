@@ -40,7 +40,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
 
             self.ui_device.swipe(int(self.screen[0] * 0.1), int(self.screen[1] * 0.5),
                                  int(self.screen[0]), int(self.screen[1] * 0.5),
-                                 duration=0.5)
+                                 steps=2)
 
     def iter_to_live(self):
         content = self.check_now_activity_status().output
@@ -50,7 +50,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 if main_iter_number > 5:
                     self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0,
                                          int(self.screen[1] * 0.2),
-                                         duration=1, steps=2)
+                                         steps=2)
                     time.sleep(3)
                     main_iter_number = 0
                 sub_main_iter_number = 0
@@ -58,7 +58,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     if sub_main_iter_number > 5:
                         self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0,
                                              int(self.screen[1] * 0.2),
-                                             duration=1, steps=2)
+                                             steps=2)
                         time.sleep(3)
                         sub_main_iter_number = 0
                     if per_nuw_key != per_value:
@@ -105,6 +105,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         while True:
             self.handler_cancel_btn()
             content = self.check_now_activity_status().output
+            print(content)
             if NameCollectionENum.enter_live_store_activity.value in content:
                 sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
                 self.rotating_logger.info('--click live page: {} -- {} --'.format(store_class, sub_store_name))
@@ -139,9 +140,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     self.handle_we_collection_status_database(store_base_information)
                     self.rotating_logger.info('--write live info end: {} -- {} --'.format(store_class, sub_store_name))
                 store_name = sub_store_name
-                self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7), int(self.screen[0] * 0.5),
-                                     int(self.screen[1] * 0.15), duration=0.5, steps=2)
+                print('start screen next store')
                 time.sleep(1)
+                self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7), int(self.screen[0] * 0.5),
+                                     int(self.screen[1] * 0.15), steps=2)
 
     def updated_store_data(self, store_name):
 
@@ -194,10 +196,12 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     if self.ui_device(resourceId=NameCollectionENum.cu2.value).exists:
                         store_base_info['finder_id'] = self.get_sub_title(NameCollectionENum.cu2.value)
                         self.rotating_logger.info('--enter store base info === : {}'.format(store_base_info['finder_id']))
-                self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
-                                     duration=0.5, steps=2)
+                        time.sleep(2)
+                        self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
+                                             steps=2)
+        time.sleep(2)
         self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
-                             duration=0.5, steps=2)
+                             steps=2)
         return store_base_info
 
     def handler_live_active_level_info(self):
@@ -285,7 +289,9 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 temp_key_all = 0
                 flag_price_status = False
                 if type(j) is list and len(j) != 0:
+                    print('---j -----: {}'.format(j))
                     try:
+                        # number = re.findall('\d+', j[0])
                         temp_key_all = int(j[0].split(" ")[0])
                         flag = True
                     except Exception as e:
@@ -309,12 +315,13 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         i = 0
         while True:
             content = self.check_now_activity_status().output
-            if NameCollectionENum.enter_store_profile_activity.value in content:
+            if NameCollectionENum.enter_live_store_activity.value not in content:
                 time.sleep(1)
                 i = i + 1
-            if NameCollectionENum.enter_live_store_activity.value in content:
+                print("total {} ---".format(i))
+            else:
                 break
-        print("total {} ---".format(i))
+
         content = self.check_now_activity_status().output
         if NameCollectionENum.enter_live_store_activity.value in content:
             self.handler_cancel_btn()
@@ -373,12 +380,12 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     last_product = int(max(index_max)) if index_max else 1
 
                     self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.95), int(self.screen[0] * 0.5),
-                                         int(self.screen[1] * 0.35), duration=0.5)
+                                         int(self.screen[1] * 0.35), steps=2)
                     # time.sleep(2)
 
             self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.22),
                                  int(self.screen[0] * 0.5), int(self.screen[1]),
-                                 duration=0.5, steps=1)
+                                 steps=2)
 
         return collection_result, store_info_base
 
@@ -390,28 +397,30 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     finder_id='{}'.format(store_base_information['finder_id'])).first()
                 if not store_id:
                     we_collection_store_product = WeCollectionBaseInfo()
-                    we_collection_store_product.finder_id = store_base_information['finder_id']
-                    we_collection_store_product.video_name = store_base_information['store_name']
-                    we_collection_store_product.store_name = store_base_information['store_name']
-                    we_collection_store_product.store_province_city = store_base_information['store_province_city']
-                    we_collection_store_product.store_point = store_info_base['store_point']
-                    we_collection_store_product.store_look_hot_class = store_live_active_information[
-                        'store_look_hot_class']
-                    we_collection_store_product.store_like_class = store_live_active_information['store_like_class']
-                    we_collection_store_product.store_photo = store_base_information['store_photo']
-                    we_collection_store_product.store_live_feature = store_base_information['store_live_feature']
+                    we_collection_store_product.finder_id = store_base_information.get('finder_id', '无')
+                    we_collection_store_product.video_name = store_base_information.get('store_name', '无')
+                    we_collection_store_product.store_name = store_base_information.get('store_name', '无')
+                    we_collection_store_product.store_province_city = store_base_information.get('store_province_city',
+                                                                                                 '无')
+                    we_collection_store_product.store_point = store_info_base.get('store_point', '无')
+                    we_collection_store_product.store_look_hot_class = store_live_active_information.get(
+                        'store_look_hot_class', '无')
+                    we_collection_store_product.store_like_class = store_live_active_information.get('store_like_class',
+                                                                                                     '无')
+                    we_collection_store_product.store_photo = store_base_information.get('store_photo', '无')
+                    we_collection_store_product.store_live_feature = store_base_information.get('store_live_feature', '无')
                     we_collection_store_product.store_class = store_class
-                    we_collection_store_product.store_verify = store_base_information['store_verify']
+                    we_collection_store_product.store_verify = store_base_information.get('store_verify', '无认证')
                     we_collection_store_product.store_update_date = datetime.datetime.now()
                     self.insert_data_to_database(we_collection_store_product)
                     self.rotating_logger.info("writing database {}".format(store_base_information['finder_id']))
                 else:
                     self.session.query(WeCollectionBaseInfo).filter_by(
                         finder_id='{}'.format(store_base_information['finder_id'])).update(
-                        {'store_point': store_info_base['store_point'],
-                         'store_look_hot_class': store_live_active_information['store_look_hot_class'],
-                         'store_like_class': store_live_active_information['store_like_class'],
-                         'store_live_feature': store_base_information['store_live_feature']})
+                        {'store_point': store_info_base.get('store_point', '暂无评分'),
+                         'store_look_hot_class': store_live_active_information.get('store_look_hot_class', '0'),
+                         'store_like_class': store_live_active_information.get('store_like_class', '0'),
+                         'store_live_feature': store_base_information.get('store_live_feature', '0')})
                     self.session.commit()
             except Exception as e:
                 print(e)
@@ -422,10 +431,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             for meta_value in store_live_product_information:
                 try:
                     we_collection_shop_product = WeCollectionShopProduct()
-                    we_collection_shop_product.we_chat_shop_name = store_base_information['store_name']
-                    we_collection_shop_product.shop_product_description = meta_value['shop_product_description']
-                    we_collection_shop_product.shop_sale_price = meta_value['shop_sale_price']
-                    we_collection_shop_product.shop_product_photo = meta_value['shop_product_photo']
+                    we_collection_shop_product.we_chat_shop_name = store_base_information.get('store_name', '0')
+                    we_collection_shop_product.shop_product_description = meta_value.get('shop_product_description', '0')
+                    we_collection_shop_product.shop_sale_price = meta_value.get('shop_sale_price', '0')
+                    we_collection_shop_product.shop_product_photo = meta_value.get('shop_product_photo', '0')
                     we_collection_shop_product.product_update_date = datetime.datetime.now()
                     result.append(we_collection_shop_product)
                 except Exception as e:
@@ -472,6 +481,7 @@ class WeCollectionOperator(WeCollectionHandleMain):
         WeCollectionHandleMain.__init__(self, self.parse_config_value, device_ip, self.elements_value)
 
         self.destroy_current_app()
+        time.sleep(1)
         self.start_current_app()
         self.move_to_button()
 
