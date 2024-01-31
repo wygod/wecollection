@@ -89,13 +89,18 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                         time.sleep(3)
                         sub_main_iter_number = 0
                     if per_nuw_key != per_value:
-                        self.last_class = per_nuw_key+":"+per_value
+                        self.last_class = per_nuw_key + ":" + per_value
                         self.move_to_main_page(per_nuw_key, per_value)
                         time.sleep(4)
+                        content = self.check_now_activity_status().output
+                        if NameCollectionENum.enter_more_live_activity.value not in content:
+                            self.check_spider_status()
                         sub_main_iter_number = sub_main_iter_number + 1
                     else:
                         self.last_class = per_nuw_key
                         self.move_to_main_page(per_nuw_key, None)
+                        if NameCollectionENum.enter_more_live_activity.value not in content:
+                            self.check_spider_status()
                         time.sleep(4)
                 main_iter_number = main_iter_number + 1
 
@@ -113,23 +118,9 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             time.sleep(1.0)
             self.ui_device(resourceId=NameCollectionENum.igx.value).click_exists()
 
-        # if NameCollectionENum.enter_live_main_activity.value in content:
-        #     self.ui_device(resourceId=NameCollectionENum.b1h.value).click()
-        #     self.move_to_main_page(text, sub_text)
-        # if NameCollectionENum.enter_live_store_activity.value in content:
-        #     self.click_enter_live_page(text if sub_text is None else text + " " + sub_text)
-        # if NameCollectionENum.we_chat_start_page.value in content:
-        #     self.move_to_button()
-        #     self.iter_to_live()
-        # if NameCollectionENum.enter_store_profile_activity.value in content:
-        #     self.handle_live_store_base_info()
-        #     self.click_enter_live_page(text + ' ' + sub_text)
-        # if NameCollectionENum.enter_store_permission_activity.value in content:
-        #     self.handler_cancel_btn()
-        #     self.move_to_main_page(text, sub_text)
-
     def click_enter_live_page(self, store_class):
         store_name = ""
+
         while True:
             self.handler_cancel_btn()
             content = self.check_now_activity_status().output
@@ -213,7 +204,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                'store_verify': self.handle_live_store_photo_info(NameCollectionENum.fxd.value),
                                'store_live_feature': self.handler_all_timeing_live_info(),
                                'store_photo': self.handle_live_store_photo_info(NameCollectionENum.fxf.value)
-                           }
+                               }
             self.rotating_logger.info('--enter store base info')
             if self.ui_device(resourceId=NameCollectionENum.jqi.value).exists:
                 self.ui_device(resourceId=NameCollectionENum.jqi.value).click()
@@ -223,9 +214,11 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     time.sleep(1)
                     if self.ui_device(resourceId=NameCollectionENum.cu2.value).exists:
                         store_base_info['finder_id'] = self.get_sub_title(NameCollectionENum.cu2.value)
-                        self.rotating_logger.info('--enter store base info === : {}'.format(store_base_info['finder_id']))
+                        self.rotating_logger.info(
+                            '--enter store base info === : {}'.format(store_base_info['finder_id']))
                         time.sleep(2)
-                        self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
+                        self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7),
+                                             int(self.screen[1] * 0.5),
                                              steps=2)
         time.sleep(2)
         self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
@@ -347,7 +340,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 time.sleep(1)
                 i = i + 1
                 print("total {} ---".format(i))
-            else:
+            if i > 10:
                 break
 
         content = self.check_now_activity_status().output
@@ -375,7 +368,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     self.rotating_logger.info("iter store info writing")
                     text_price_content = self.handler_receive_verify_info(NameCollectionENum.fll_xpath.value)
 
-                    text_keep_complete = WeCollectionHandleMain.handler_keep_data_complete(text_price_content, filter_dict)
+                    text_keep_complete = WeCollectionHandleMain.handler_keep_data_complete(text_price_content,
+                                                                                           filter_dict)
 
                     photo_content = self.handler_photo_product_info(NameCollectionENum.huu_xpath.value, have_dict,
                                                                     have_temp_dict)
@@ -407,7 +401,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
 
                     last_product = int(max(index_max)) if index_max else 1
 
-                    self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.95), int(self.screen[0] * 0.5),
+                    self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.95),
+                                         int(self.screen[0] * 0.5),
                                          int(self.screen[1] * 0.35), steps=2)
                     # time.sleep(2)
 
@@ -436,7 +431,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     we_collection_store_product.store_like_class = store_live_active_information.get('store_like_class',
                                                                                                      '无')
                     we_collection_store_product.store_photo = store_base_information.get('store_photo', '无')
-                    we_collection_store_product.store_live_feature = store_base_information.get('store_live_feature', '无')
+                    we_collection_store_product.store_live_feature = store_base_information.get('store_live_feature',
+                                                                                                '无')
                     we_collection_store_product.store_class = store_class
                     we_collection_store_product.store_verify = store_base_information.get('store_verify', '无认证')
                     we_collection_store_product.store_update_date = datetime.datetime.now()
@@ -460,7 +456,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 try:
                     we_collection_shop_product = WeCollectionShopProduct()
                     we_collection_shop_product.we_chat_shop_name = store_base_information.get('store_name', '0')
-                    we_collection_shop_product.shop_product_description = meta_value.get('shop_product_description', '0')
+                    we_collection_shop_product.shop_product_description = meta_value.get('shop_product_description',
+                                                                                         '0')
                     we_collection_shop_product.shop_sale_price = meta_value.get('shop_sale_price', '0')
                     we_collection_shop_product.shop_product_photo = meta_value.get('shop_product_photo', '0')
                     we_collection_shop_product.product_update_date = datetime.datetime.now()

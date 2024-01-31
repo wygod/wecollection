@@ -48,7 +48,7 @@ class InitVenv:
 
 class InitDeviceApp(InitVenv):
     def __init__(self, config, device_serial):
-        super(InitVenv, self).__init__(config, device_serial)
+        InitVenv.__init__(self, config=config, device_serial=device_serial)
 
     def screen_size(self):
         return self.ui_device.window_size()
