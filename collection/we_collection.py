@@ -78,6 +78,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         if self.ui_device(resourceId=NameCollectionENum.a_err_close.value).exists:
             self.ui_device(resourceId=NameCollectionENum.a_err_close.value).click()
             time.sleep(1)
+
         self.handler_cancel_network()
 
     def search_key_word_page(self, text):
@@ -177,6 +178,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
 
                         time.sleep(3)
                         self.handler_cancel_btn()
+                        time.sleep(1)
                         self.handler_android_err()
                         self.rotating_logger.info('--enter store info')
                         store_base_information = self.handle_live_store_base_info()

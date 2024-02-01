@@ -110,4 +110,6 @@ class NameCollectionENum(Enum):
     enter_store_permission_activity = 'com.tencent.mm/.pluginsdk.permission.RequestFloatWindowPermissionDialog'
     #开始页面
     we_chat_start_page = 'com.tencent.mm/.ui.LauncherUI'
+    # 設置
+    setting = 'com.android.settings/.Settings$AppDrawOverlaySettingsActivity'
 
