@@ -214,8 +214,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.check_spider_status()
 
     def updated_store_data(self, store_name):
-        if not self.redis_con.get('chat_up_key'):
-            self.redis_con.set('chat_up_key', 1, 24*60*60)
+        if not self.redis_con.get(store_name, ):
+            self.redis_con.set(store_name, 1, 24*60*60)
             update_data = self.session.query(CheckCollectionStatus).filter_by(
                 finder_store_name='{}'.format(store_name)).first()
 
@@ -389,9 +389,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         collection_result = []
         stop_cycle_condition = True
 
-        self.processing_sleep(NameCollectionENum.enter_live_store_activity.value)
+        self.processing_sleep(NameCollectionENum.fl9.value)
 
         content = self.check_now_activity_status().output
+
         if NameCollectionENum.enter_live_store_activity.value in content:
             self.handler_cancel_btn()
             if self.ui_device(resourceId=NameCollectionENum.fl9.value).exists:
