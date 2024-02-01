@@ -9,5 +9,10 @@ database:
   password: test5432
   database_name: datatest
 
+redis_info:
+  host: 127.0.0.1
+  port: 6379
+  dbname: unique_lock
+
 logHandler:
   log_conf_path: config/log.conf

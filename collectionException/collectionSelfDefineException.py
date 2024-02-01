@@ -15,3 +15,12 @@ class ElementNotFoundException(Exception):
 
     def __str__(self):
         return '{}'.format(self.name)
+
+
+class AndroidSysNotException(Exception):
+    def __init__(self):
+        super().__init__()
+        self.name = 'AndroidSysNotException'
+
+    def __str__(self):
+        return '{}'.format(self.name)

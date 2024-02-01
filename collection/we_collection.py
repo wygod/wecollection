@@ -1,63 +1,67 @@
 # -*- encoding:utf-8 -*-
-import datetime
-import math
-import re
 import time
-import base64
-from omegaconf import OmegaConf
 
-from common.collectionLog import CollectionLog
-from common.collectionCommon import InitDeviceApp
-from pgDataBase.databaseInit import InitDatabaseOperation
-from CollectionEnum.collectionEnum import NameCollectionENum
-from pgDataBase.weInitChatMain import WeCollectionShopProduct, WeCollectionBaseInfo, CheckCollectionStatus
+import redis
+
+from . import *
 
 
 class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog):
 
     def __init__(self, config, device_ip, elements_value):
-        InitDeviceApp.__init__(self, config, device_ip)
-        InitDatabaseOperation.__init__(self, config)
-        CollectionLog.__init__(self, config.logHandler.log_conf_path)
-        self.screen = self.screen_size()
+        self.config = config
+        self.device_serial = device_ip
         self.elements_value = elements_value
+        InitDeviceApp.__init__(self, self.config, self.device_serial)
+        InitDatabaseOperation.__init__(self, self.config)
+        CollectionLog.__init__(self, self.config.logHandler.log_conf_path)
+        self.screen = self.screen_size()
+        self.redis_con = redis.StrictRedis(host=self.config.redis_info.host, port=6379, db=0)
         self.last_class = ''
 
     def check_spider_status(self):
         time.sleep(5)
-        content = self.check_now_activity_status().output
-        if NameCollectionENum.we_chat_start_page.value in content:
-            self.handler_cancel_network()
-            self.move_to_button()
-        elif NameCollectionENum.enter_live_main_activity.value in content:
-            self.handler_cancel_network()
-            self.move_to_project_main()
-            self.iter_to_live()
-        elif NameCollectionENum.enter_more_live_activity.value in content:
-            self.handler_cancel_network()
-            self.iter_to_live()
-        elif NameCollectionENum.enter_live_store_activity.value in content:
-            self.handler_cancel_network()
-            if self.last_class == '':
+        try:
+            self.start_current_app()
+            self.handler_android_err()
+            content = self.check_now_activity_status().output
+            if NameCollectionENum.we_chat_start_page.value in content:
+                print(1)
+                self.move_to_button()
                 self.move_to_project_main()
                 self.iter_to_live()
-            else:
+            elif NameCollectionENum.enter_live_main_activity.value in content:
+                print(2)
+                self.move_to_project_main()
+                self.iter_to_live()
+            elif NameCollectionENum.enter_more_live_activity.value in content:
+                print(3)
+                self.iter_to_live()
+            elif NameCollectionENum.enter_live_store_activity.value in content:
+                print(4)
+                if self.last_class == '':
+                    self.move_to_project_main()
+                    self.iter_to_live()
+                else:
+                    self.click_enter_live_page(self.last_class)
+            elif NameCollectionENum.enter_store_profile_activity.value in content:
+                print(5)
+                self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
+                                     steps=2)
+                time.sleep(2)
                 self.click_enter_live_page(self.last_class)
-        elif NameCollectionENum.enter_store_profile_activity.value in content:
-            self.handler_cancel_network()
-            self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
-                                 steps=2)
-            time.sleep(2)
-            self.handler_cancel_network()
-            self.click_enter_live_page(self.last_class)
-        elif NameCollectionENum.enter_store_permission_activity.value in content:
-            self.handler_cancel_btn()
+            elif NameCollectionENum.enter_store_permission_activity.value in content:
+                print(6)
+                self.check_spider_status()
+            else:
+                self.move_to_button()
+                self.move_to_live()
+                self.iter_to_live()
+        except u2.exceptions.GatewayError as e:
+            print(e)
+            print('start e')
+            self.check_atx_instrument()
             self.check_spider_status()
-        else:
-            self.start_current_app()
-            self.move_to_button()
-            self.move_to_live()
-            self.iter_to_live()
 
     def handler_cancel_btn(self):
         content = self.check_now_activity_status().output
@@ -69,6 +73,12 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         if self.ui_device(resourceId=NameCollectionENum.jlg.value).exists:
             self.ui_device(resourceId=NameCollectionENum.mm_alert_ok_btn.value).click()
             time.sleep(1)
+
+    def handler_android_err(self):
+        if self.ui_device(resourceId=NameCollectionENum.a_err_close.value).exists:
+            self.ui_device(resourceId=NameCollectionENum.a_err_close.value).click()
+            time.sleep(1)
+        self.handler_cancel_network()
 
     def search_key_word_page(self, text):
 
@@ -94,7 +104,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                          int(self.screen[1] * 0.2),
                                          steps=2)
                     time.sleep(3)
-                    self.handler_cancel_network()
+                    self.handler_android_err()
                     main_iter_number = 0
                 sub_main_iter_number = 0
                 for per_value in per_nuw_value:
@@ -103,22 +113,15 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                              int(self.screen[1] * 0.2),
                                              steps=2)
                         time.sleep(3)
-                        self.handler_cancel_network()
+                        self.handler_android_err()
                         sub_main_iter_number = 0
                     if per_nuw_key != per_value:
                         self.last_class = per_nuw_key + ":" + per_value
                         self.move_to_main_page(per_nuw_key, per_value)
-                        time.sleep(4)
-                        content = self.check_now_activity_status().output
-                        if NameCollectionENum.enter_more_live_activity.value not in content:
-                            self.check_spider_status()
                         sub_main_iter_number = sub_main_iter_number + 1
                     else:
                         self.last_class = per_nuw_key
                         self.move_to_main_page(per_nuw_key, None)
-                        if NameCollectionENum.enter_more_live_activity.value not in content:
-                            self.check_spider_status()
-                        time.sleep(4)
                 main_iter_number = main_iter_number + 1
         else:
             self.check_spider_status()
@@ -127,80 +130,104 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         self.rotating_logger.info('--{} : {} --'.format(text, sub_text))
         content = self.check_now_activity_status().output
         if NameCollectionENum.enter_more_live_activity.value in content:
-            self.handler_cancel_network()
-            self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).click()
-            self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
-            time.sleep(2.0)
-            # 進入 推出
-            self.handler_cancel_network()
-            self.ui_device(resourceId=NameCollectionENum.k69.value).click()
-            time.sleep(1.0)
-            self.click_enter_live_page(sub_text)
-            time.sleep(1.0)
-            self.ui_device(resourceId=NameCollectionENum.igx.value).click_exists()
+            self.handler_android_err()
+            try:
+                i = 0
+                while True:
+                    time.sleep(1)
+                    if self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).exists or i > 10:
+                        break
+                    i = i + 1
+                self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).click()
+                self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
+                time.sleep(2.0)
+                # 進入 推出
+                self.handler_android_err()
+                self.ui_device(resourceId=NameCollectionENum.k69.value).click()
+                time.sleep(1.0)
+                self.click_enter_live_page(sub_text)
+                time.sleep(1.0)
+                self.ui_device(resourceId=NameCollectionENum.igx.value).click_exists()
+            except u2.exceptions.UiObjectNotFoundError as e:
+                print(e)
+                self.check_spider_status()
         else:
             self.check_spider_status()
 
     def click_enter_live_page(self, store_class):
         store_name = ""
         while True:
-            self.handler_cancel_btn()
-            self.handler_cancel_network()
-            content = self.check_now_activity_status().output
-            print(content)
-            if NameCollectionENum.enter_live_store_activity.value in content:
-                sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
-                self.rotating_logger.info('--click live page: {} -- {} --'.format(store_class, sub_store_name))
-                if sub_store_name == "" or sub_store_name == store_name:
-                    self.rotating_logger.info('--click end page: {} -- {} --'.format(store_class, sub_store_name))
-                    break
+            try:
+                self.handler_cancel_btn()
+                self.handler_android_err()
+                content = self.check_now_activity_status().output
+                if NameCollectionENum.enter_live_store_activity.value in content:
+                    sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
+                    self.rotating_logger.info('--click live page: {} -- {} --'.format(store_class, sub_store_name))
+                    if sub_store_name == "" or sub_store_name == store_name:
+                        self.rotating_logger.info('--click end page: {} -- {} --'.format(store_class, sub_store_name))
+                        break
 
-                if self.updated_store_data(sub_store_name):
-                    self.rotating_logger.info('--click live info: {} -- {} --'.format(store_class, sub_store_name))
-                    store_live_active_information = self.handler_live_active_level_info()
-                    self.handler_cancel_btn()
-                    self.ui_device(resourceId=NameCollectionENum.k3o.value).click()
-                    time.sleep(3)
-                    self.handler_cancel_btn()
-                    self.handler_cancel_network()
-                    self.rotating_logger.info('--enter store info')
-                    store_base_information = self.handle_live_store_base_info()
-                    self.handler_cancel_network()
-                    store_live_product_information, store_info_base = self.handler_live_product_info()
+                    if self.updated_store_data(sub_store_name):
+                        self.rotating_logger.info('--click live info: {} -- {} --'.format(store_class, sub_store_name))
+                        store_live_active_information = self.handler_live_active_level_info()
+                        self.handler_cancel_btn()
+                        self.handler_android_err()
+                        self.ui_device(resourceId=NameCollectionENum.k3o.value).click()
 
-                    self.rotating_logger.info('--click live info end : {} -- {} --'.format(store_class, sub_store_name))
-                    if len(store_base_information) > 0 and len(store_info_base) > 0:
-                        self.handle_we_collection_store_database(store_class,
-                                                                 store_base_information,
-                                                                 store_info_base,
-                                                                 store_live_active_information)
+                        time.sleep(3)
+                        self.handler_cancel_btn()
+                        self.handler_android_err()
+                        self.rotating_logger.info('--enter store info')
+                        store_base_information = self.handle_live_store_base_info()
+                        self.handler_android_err()
+                        store_live_product_information, store_info_base = self.handler_live_product_info()
 
-                        self.rotating_logger.info('--click live info shop start : {} -- {} --'.format(store_class,
-                                                                                                      sub_store_name))
-                        self.handle_we_collection_shop_database(store_base_information, store_live_product_information)
-                        self.rotating_logger.info(
-                            '--click live info shop end : {} -- {} --'.format(store_class, sub_store_name))
-                        self.handle_we_collection_status_database(store_base_information)
-                        self.rotating_logger.info('--write live info end: {} -- {} --'.format(store_class, sub_store_name))
-                store_name = sub_store_name
+                        self.rotating_logger.info('--click live info end : {} -- {} --'.format(store_class, sub_store_name))
+                        if len(store_base_information) > 0 and len(store_info_base) > 0:
+                            self.handle_we_collection_store_database(store_class,
+                                                                     store_base_information,
+                                                                     store_info_base,
+                                                                     store_live_active_information)
+
+                            self.rotating_logger.info('--click live info shop start : {} -- {} --'.format(store_class,
+                                                                                                          sub_store_name))
+                            self.handle_we_collection_shop_database(store_base_information, store_live_product_information)
+                            self.rotating_logger.info(
+                                '--click live info shop end : {} -- {} --'.format(store_class, sub_store_name))
+                            self.handle_we_collection_status_database(store_base_information)
+                            self.rotating_logger.info('--write live info end: {} -- {} --'.format(store_class, sub_store_name))
+                    store_name = sub_store_name
+                    time.sleep(1)
+                    self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7), int(self.screen[0] * 0.5),
+                                         int(self.screen[1] * 0.15), steps=2)
+                    print('start screen next store')
+                else:
+                    self.check_spider_status()
+            except u2.exceptions.GatewayError as e:
+                print(e)
+                self.check_atx_instrument()
                 time.sleep(1)
-                self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7), int(self.screen[0] * 0.5),
-                                     int(self.screen[1] * 0.15), steps=2)
-                print('start screen next store')
-            else:
+                self.check_spider_status()
+            except u2.exceptions.UiObjectNotFoundError as e:
+                print(e)
                 self.check_spider_status()
 
     def updated_store_data(self, store_name):
+        if not self.redis_con.get('chat_up_key'):
+            self.redis_con.set('chat_up_key', 1, 24*60*60)
+            update_data = self.session.query(CheckCollectionStatus).filter_by(
+                finder_store_name='{}'.format(store_name)).first()
 
-        update_data = self.session.query(CheckCollectionStatus).filter_by(
-            finder_store_name='{}'.format(store_name)).first()
-        if update_data:
-            delta = datetime.datetime.now() - datetime.datetime.strptime(
-                update_data.finder_id_update_date.strftime('%Y-%m-%d %H:%M:%S'),
-                '%Y-%m-%d %H:%M:%S')
-            return True if delta.days >= 1 else False
+            if update_data:
+                delta = datetime.datetime.now() - datetime.datetime.strptime(
+                    update_data.finder_id_update_date.strftime('%Y-%m-%d %H:%M:%S'),
+                    '%Y-%m-%d %H:%M:%S')
+                return True if delta.days >= 1 else False
+            else:
+                return True
         else:
-            return True
+            return False
 
     def handle_live_store_photo_info(self, element):
         data = '沒有發現認證信息'
@@ -218,7 +245,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
     def handle_live_store_base_info(self):
         time.sleep(3)
         self.handler_cancel_btn()
-        self.handler_cancel_network()
+        self.handler_android_err()
         store_base_info = {}
         content = self.check_now_activity_status().output
 
@@ -235,11 +262,11 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             if self.ui_device(resourceId=NameCollectionENum.jqi.value).exists:
                 self.ui_device(resourceId=NameCollectionENum.jqi.value).click()
                 time.sleep(1)
-                self.handler_cancel_network()
+                self.handler_android_err()
                 if self.ui_device(resourceId=NameCollectionENum.obc.value, text="更多信息").exists:
                     self.ui_device(resourceId=NameCollectionENum.obc.value, text="更多信息").click()
                     time.sleep(1)
-                    self.handler_cancel_network()
+                    self.handler_android_err()
                     if self.ui_device(resourceId=NameCollectionENum.cu2.value).exists:
                         store_base_info['finder_id'] = self.get_sub_title(NameCollectionENum.cu2.value)
                         self.rotating_logger.info(
@@ -361,14 +388,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         store_info_base = {}
         collection_result = []
         stop_cycle_condition = True
-        i = 0
-        while True:
-            content = self.check_now_activity_status().output
-            if NameCollectionENum.enter_live_store_activity.value in content or i > 10:
-                print("total {} ---".format(i))
-                break
-            time.sleep(1)
-            i = i + 1
+
+        self.processing_sleep(NameCollectionENum.enter_live_store_activity.value)
 
         content = self.check_now_activity_status().output
         if NameCollectionENum.enter_live_store_activity.value in content:
@@ -382,7 +403,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             self.rotating_logger.info("iter store info")
             i = 0
             while stop_cycle_condition:
-                self.handler_cancel_network()
+                self.handler_android_err()
                 index_max = self.handler_receive_verify_info(NameCollectionENum.l7n_xpath.value)
                 print("{} iter....".format(i))
                 print(index_max)
@@ -517,6 +538,16 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             except Exception as e:
                 print(e)
 
+    def add_store(self, store_base_information):
+        store_id = self.session.query(WeChatLive).filter_by(
+            finder_id='{}'.format(store_base_information['finder_id'])).first()
+        if not store_id:
+            we_chat_live = WeChatLive()
+            we_chat_live.finder_id = store_base_information['finder_id']
+            we_chat_live.finder_store_name = store_base_information['store_name']
+            we_chat_live.finder_id_update_date = datetime.datetime.now()
+            self.insert_data_to_database(we_chat_live)
+
 
 class WeConfigParse:
     def __init__(self):
@@ -525,12 +556,3 @@ class WeConfigParse:
     @staticmethod
     def parse_base_config(config_path):
         return OmegaConf.load(config_path)
-
-
-class WeCollectionOperator(WeCollectionHandleMain):
-    def __init__(self, parse_config_value, device_ip):
-        self.elements_value = WeConfigParse.parse_base_config('config/elements.yaml')
-        WeCollectionHandleMain.__init__(self, parse_config_value, device_ip, self.elements_value)
-
-    def cycle_living_store(self):
-        self.iter_to_live()

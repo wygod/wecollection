@@ -4,6 +4,7 @@ from enum import Enum
 
 class NameCollectionENum(Enum):
     mm = 'com.tencent.mm'
+    a_err_close = 'android:id/aerr_close'
     nuw = 'com.tencent.mm:id/nuw'
     nqn = 'com.tencent.mm:id/nqn'
     fs4 = 'com.tencent.mm:id/fs4'

@@ -46,3 +46,11 @@ class CheckCollectionStatus(Base):
     finder_store_name = Column(Text, comment='商店名称', nullable=False)
     finder_id_status = Column(Integer, comment='商店检查状态', nullable=False)
     finder_id_update_date = Column(DATE, default=datetime.datetime.now(), comment='商店检查时间', nullable=False)
+
+
+class WeChatLive(Base):
+    __tablename__ = 'we_chat_all_store'
+    id = Column(Integer, comment='we_collection_store_id', primary_key=True, autoincrement=True)
+    finder_id = Column(String(length=100), comment='达人id', unique=True, nullable=False)
+    finder_store_name = Column(Text, comment='商店名称', nullable=False)
+    finder_id_update_date = Column(DATE, default=datetime.datetime.now(), comment='商店检查时间', nullable=False)

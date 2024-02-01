@@ -50,6 +50,15 @@ class InitDeviceApp(InitVenv):
     def __init__(self, config, device_serial):
         InitVenv.__init__(self, config=config, device_serial=device_serial)
 
+    def processing_sleep(self, task):
+        i = 0
+        while True:
+            if self.ui_device(resourceId=task).exists or i > 10:
+                break
+            print("iter {} ".format(i))
+            time.sleep(1)
+            i = i + 1
+
     def screen_size(self):
         return self.ui_device.window_size()
 
@@ -81,7 +90,7 @@ class InitDeviceApp(InitVenv):
         if NameCollectionENum.we_chat_start_page.value in content:
             if self.ui_device.xpath('//*[@text="直播"]').exists:
                 self.ui_device.xpath('//*[@text="直播"]').click()
-                time.sleep(6)
+                time.sleep(2)
                 self.move_to_project_main()
             else:
                 self.move_to_button()
@@ -104,6 +113,8 @@ class InitDeviceApp(InitVenv):
 
         print("start")
         content = self.check_now_activity_status().output
+        self.processing_sleep(NameCollectionENum.enter_live_main_activity.value)
+
         if NameCollectionENum.enter_live_main_activity.value in content:
             if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
                 self.ui_device(resourceId=NameCollectionENum.b1h.value).click()
