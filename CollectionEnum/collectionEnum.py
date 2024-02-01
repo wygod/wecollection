@@ -56,6 +56,9 @@ class NameCollectionENum(Enum):
 
     b1h = "com.tencent.mm:id/b1h"
     mm_alert_cancel_btn = "com.tencent.mm:id/mm_alert_cancel_btn"
+    # 没有网络
+    jlg = 'com.tencent.mm:id/jlg'
+    mm_alert_ok_btn = 'com.tencent.mm:id/mm_alert_ok_btn'
 
     l77 = '//*[@resource-id="com.tencent.mm:id/l77"]'
     l74 = 'com.tencent.mm:id/l74'

@@ -17,8 +17,8 @@ app = Celery(
 
 
 def spider_run(parse_config_value, device_ip):
-    we_run_app = WeCollectionOperator(parse_config_value, device_ip)
     try:
+        we_run_app = WeCollectionOperator(parse_config_value, device_ip)
         we_run_app.destroy_current_app()
         time.sleep(2)
         we_run_app.start_current_app()
@@ -26,8 +26,11 @@ def spider_run(parse_config_value, device_ip):
         we_run_app.cycle_living_store()
         we_run_app.destroy_current_app()
     except uiautomator2.exceptions.GatewayError as e:
-        we_run_app.start_uiautomator2()
-        we_run_app.check_spider_status()
+        init_env = InitDeviceApp(parse_config_value, device_ip)
+        init_env.check_atx_instrument()
+        init_env.start_uiautomator2()
+        spider_run(parse_config_value, device_ip)
+        print("try restart")
         print(e)
 
 
