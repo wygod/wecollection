@@ -50,10 +50,10 @@ class InitDeviceApp(InitVenv):
     def __init__(self, config, device_serial):
         InitVenv.__init__(self, config=config, device_serial=device_serial)
 
-    def processing_sleep(self, task):
+    def processing_sleep(self, task, step=10):
         i = 0
         while True:
-            if self.ui_device(resourceId=task).exists or i > 10:
+            if self.ui_device(resourceId=task).exists or i > step:
                 break
             print("iter {} ".format(i))
             time.sleep(1)
@@ -113,7 +113,7 @@ class InitDeviceApp(InitVenv):
 
         print("start")
         content = self.check_now_activity_status().output
-        self.processing_sleep(NameCollectionENum.enter_live_main_activity.value)
+        self.processing_sleep(NameCollectionENum.b1h.value)
 
         if NameCollectionENum.enter_live_main_activity.value in content:
             if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:

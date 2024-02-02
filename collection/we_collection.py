@@ -2,6 +2,7 @@
 import time
 
 import redis
+from packaging.version import InvalidVersion
 
 from . import *
 
@@ -24,9 +25,13 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         try:
             self.start_current_app()
             self.handler_android_err()
+            self.handler_setting_page()
             content = self.check_now_activity_status().output
             if NameCollectionENum.we_chat_start_page.value in content:
                 print(1)
+                if self.ui_device(resourceId=NameCollectionENum.a4p.value).exists:
+                    self.ui_device(resourceId=NameCollectionENum.a4p.value).click()
+                    time.sleep(1)
                 self.move_to_button()
                 self.move_to_project_main()
                 self.iter_to_live()
@@ -53,14 +58,21 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             elif NameCollectionENum.enter_store_permission_activity.value in content:
                 print(6)
                 self.check_spider_status()
+            elif NameCollectionENum.setting.value in content:
+                print(7)
+                time.sleep(2)
+                self.ui_device.xpath('//*[@content-desc="向上导航"]').click()
+                time.sleep(2)
+                self.check_spider_status()
             else:
                 self.move_to_button()
                 self.move_to_live()
                 self.iter_to_live()
-        except u2.exceptions.GatewayError as e:
+        except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
             print(e)
             print('start e')
             self.check_atx_instrument()
+            self.start_uiautomator2()
             self.check_spider_status()
 
     def handler_cancel_btn(self):
@@ -80,6 +92,11 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             time.sleep(1)
 
         self.handler_cancel_network()
+
+    def handler_setting_page(self):
+        if self.ui_device(resourceId=NameCollectionENum.action_bar_title.value, text='显示在其他应用的上层').exists:
+            self.ui_device.xpath('//*[@content-desc="向上导航"]').click()
+            time.sleep(2)
 
     def search_key_word_page(self, text):
 
@@ -133,12 +150,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         if NameCollectionENum.enter_more_live_activity.value in content:
             self.handler_android_err()
             try:
-                i = 0
-                while True:
-                    time.sleep(1)
-                    if self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).exists or i > 10:
-                        break
-                    i = i + 1
+                self.processing_sleep(NameCollectionENum.nuw.value)
                 self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).click()
                 self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
                 time.sleep(2.0)
@@ -149,7 +161,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.click_enter_live_page(sub_text)
                 time.sleep(1.0)
                 self.ui_device(resourceId=NameCollectionENum.igx.value).click_exists()
-            except u2.exceptions.UiObjectNotFoundError as e:
+            except uiautomator2.exceptions.UiObjectNotFoundError as e:
                 print(e)
                 self.check_spider_status()
         else:
@@ -161,6 +173,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             try:
                 self.handler_cancel_btn()
                 self.handler_android_err()
+                self.handler_setting_page()
+                time.sleep(2)
                 content = self.check_now_activity_status().output
                 if NameCollectionENum.enter_live_store_activity.value in content:
                     sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
@@ -180,12 +194,16 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                         self.handler_cancel_btn()
                         time.sleep(1)
                         self.handler_android_err()
+                        time.sleep(1)
+                        self.handler_setting_page()
+                        time.sleep(2)
                         self.rotating_logger.info('--enter store info')
                         store_base_information = self.handle_live_store_base_info()
                         self.handler_android_err()
                         store_live_product_information, store_info_base = self.handler_live_product_info()
 
-                        self.rotating_logger.info('--click live info end : {} -- {} --'.format(store_class, sub_store_name))
+                        self.rotating_logger.info(
+                            '--click live info end : {} -- {} --'.format(store_class, sub_store_name))
                         if len(store_base_information) > 0 and len(store_info_base) > 0:
                             self.handle_we_collection_store_database(store_class,
                                                                      store_base_information,
@@ -194,30 +212,42 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
 
                             self.rotating_logger.info('--click live info shop start : {} -- {} --'.format(store_class,
                                                                                                           sub_store_name))
-                            self.handle_we_collection_shop_database(store_base_information, store_live_product_information)
+                            self.handle_we_collection_shop_database(store_base_information,
+                                                                    store_live_product_information)
                             self.rotating_logger.info(
                                 '--click live info shop end : {} -- {} --'.format(store_class, sub_store_name))
                             self.handle_we_collection_status_database(store_base_information)
-                            self.rotating_logger.info('--write live info end: {} -- {} --'.format(store_class, sub_store_name))
+                            self.rotating_logger.info(
+                                '--write live info end: {} -- {} --'.format(store_class, sub_store_name))
                     store_name = sub_store_name
                     time.sleep(1)
-                    self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7), int(self.screen[0] * 0.5),
-                                         int(self.screen[1] * 0.15), steps=2)
+                    self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7),
+                                         int(self.screen[0] * 0.5),
+                                         int(self.screen[1] * 0.15), steps=5)
                     print('start screen next store')
                 else:
+                    time.sleep(1)
                     self.check_spider_status()
-            except u2.exceptions.GatewayError as e:
+            except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
                 print(e)
-                self.check_atx_instrument()
+                i = 0
+                while i >= 2:
+                    if i >= 2:
+                        print("start instrument {}".format(i))
+                        break
+                    self.check_atx_instrument()
+                    i = i + 1
+                time.sleep(1)
+                self.start_uiautomator2()
                 time.sleep(1)
                 self.check_spider_status()
-            except u2.exceptions.UiObjectNotFoundError as e:
+            except uiautomator2.exceptions.UiObjectNotFoundError as e:
                 print(e)
                 self.check_spider_status()
 
     def updated_store_data(self, store_name):
         if not self.redis_con.get(store_name, ):
-            self.redis_con.set(store_name, 1, 24*60*60)
+            self.redis_con.set(store_name, 1, 24 * 60 * 60)
             update_data = self.session.query(CheckCollectionStatus).filter_by(
                 finder_store_name='{}'.format(store_name)).first()
 
@@ -248,6 +278,9 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         time.sleep(3)
         self.handler_cancel_btn()
         self.handler_android_err()
+        time.sleep(1)
+        self.handler_setting_page()
+        time.sleep(2)
         store_base_info = {}
         content = self.check_now_activity_status().output
 
@@ -390,7 +423,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         store_info_base = {}
         collection_result = []
         stop_cycle_condition = True
-
+        print("ha----")
         self.processing_sleep(NameCollectionENum.fl9.value)
 
         content = self.check_now_activity_status().output

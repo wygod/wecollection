@@ -6,7 +6,7 @@ import time
 import redis
 import base64
 import datetime
-import uiautomator2 as u2
+import uiautomator2
 from omegaconf import OmegaConf
 
 from common.collectionLog import CollectionLog
