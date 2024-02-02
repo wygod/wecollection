@@ -1,21 +1,31 @@
 # -*-encoding:utf-8 -*-
 
 import argparse
+from ppadb.client import Client as adbClient
+
 import celery_work
 from collection.we_collection import WeConfigParse
 
-if __name__ == "__main__":
 
+def read_device(host, port):
+    adb_shell = adbClient(host=host, port=port)
+    return [i.serial for i in adb_shell.devices()]
+
+
+if __name__ == "__main__":
     collection_arg = argparse.ArgumentParser()
     collection_arg.add_argument()
     collection_arg.add_argument(
-        "--conf",
+        "--host",
         type=str,
-        help="adb 相關環境配置文件",
+        help="主机 ip",
+    )
+    collection_arg.add_argument(
+        "--port",
+        type=str,
+        help="adb port",
     )
     collection_arg_parse = collection_arg.parse_args()
-
-    parse_config_value_conf = WeConfigParse.parse_base_config(collection_arg_parse.conf)
-    device = parse_config_value_conf.device
+    device = read_device(collection_arg_parse.host, collection_arg_parse.port)
     for i_device in device:
-        celery_work.main.delay(parse_config_value_conf, i_device)
+        celery_work.main(i_device)
