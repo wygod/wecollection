@@ -44,14 +44,5 @@ def spider_run(parse_config_value, device_ip, rec=False):
 @app.task()
 def main(device):
     parse_config_value = WeConfigParse.parse_base_config('config/config.yaml')
-    iter_number = 0
     while True:
-        try:
-            spider_run(parse_config_value, device)
-        except uiautomator2.UiAutomationNotConnectedError as e:
-            init_env = InitVenv(config=parse_config_value, device_serial=device)
-            init_env.check_atx_instrument(low=8 if iter_number < 8 else iter_number)
-            if init_env.ui_device.uiautomator.running():
-                iter_number = 0
-                print('restart atx successful')
-            print(e)
+        spider_run(parse_config_value, device)
