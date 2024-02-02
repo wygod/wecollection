@@ -11,14 +11,10 @@ from common.collectionCommon import InitVenv, InitDeviceApp
 from collection.we_collection import WeCollectionHandleMain, WeConfigParse
 
 
-broker = 'redis://localhost:6379/1'
-backend = 'redis://localhost:6379/2'
-
 app = Celery(
     'celeryDemo',
-    broker=broker,
-    backend=backend
 )
+app.config_from_object('celery_config')
 
 
 def spider_run(parse_config_value, device_ip, rec=False):
