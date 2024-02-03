@@ -1,7 +1,4 @@
 # -*- encoding:utf-8 -*-
-import time
-
-import redis
 from packaging.version import InvalidVersion
 
 from . import *
@@ -10,6 +7,11 @@ from . import *
 class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog):
 
     def __init__(self, config, device_ip, elements_value):
+        """
+        :param config: 包含环境配置文件
+        :param device_ip: 设备识别码
+        :param elements_value:分类
+        """
         self.config = config
         self.device_serial = device_ip
         self.elements_value = elements_value
@@ -24,6 +26,13 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         self.invalid_count = 1
 
     def check_spider_status(self):
+        """
+        处理异常和重启函数
+        :return:
+        """
+
+        self.rotating_logger.info("check_spider_status: starting")
+
         time.sleep(5)
         try:
             self.start_current_app()
@@ -31,49 +40,50 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             self.handler_setting_page()
             content = self.check_now_activity_status().output
             if NameCollectionENum.we_chat_start_page.value in content:
-                print(1)
                 if self.ui_device(resourceId=NameCollectionENum.a4p.value).exists:
                     self.ui_device(resourceId=NameCollectionENum.a4p.value).click()
                     time.sleep(1)
+                self.rotating_logger.info("activity: wechat 首页")
                 self.move_to_button()
                 self.move_to_project_main()
                 self.iter_to_live()
             elif NameCollectionENum.enter_live_main_activity.value in content:
-                print(2)
+                self.rotating_logger.info("activity: wechat 直播列表页")
                 self.move_to_project_main()
                 self.iter_to_live()
             elif NameCollectionENum.enter_more_live_activity.value in content:
-                print(3)
+                self.rotating_logger.info("activity: wechat 直播列表详情页")
                 self.iter_to_live()
             elif NameCollectionENum.enter_live_store_activity.value in content:
-                print(4)
                 if self.last_class == '':
+                    self.rotating_logger.info("activity: wechat 直播列表页， 没有分类")
                     self.move_to_project_main()
                     self.iter_to_live()
                 else:
+                    self.rotating_logger.info("activity: wechat 直播列表页， 有分类")
                     self.click_enter_live_page(self.last_class)
             elif NameCollectionENum.enter_store_profile_activity.value in content:
-                print(5)
                 self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
                                      steps=2)
                 time.sleep(2)
+                self.rotating_logger.info("activity: wechat 直播基本信息页")
                 self.click_enter_live_page(self.last_class)
             elif NameCollectionENum.enter_store_permission_activity.value in content:
-                print(6)
+                self.rotating_logger.info("activity: wechat 直播列表页 授权页")
                 self.check_spider_status()
             elif NameCollectionENum.setting.value in content:
-                print(7)
+                self.rotating_logger.info("activity: android 权限设置")
                 time.sleep(2)
                 self.ui_device.xpath('//*[@content-desc="向上导航"]').click()
                 time.sleep(2)
                 self.check_spider_status()
             else:
+                self.rotating_logger.info("activity: wechat starting")
                 self.move_to_button()
                 self.move_to_live()
                 self.iter_to_live()
         except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
-            print(e)
-            print('start e')
+            self.rotating_logger.info("exception : wechat restarting {}".format(e))
             if self.invalid_count > 3:
                 self.destroy_current_app()
                 self.invalid_count = 0
@@ -87,17 +97,29 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             self.check_spider_status()
 
     def handler_cancel_btn(self):
+        """
+        处理出现权限异常
+        :return:
+        """
         content = self.check_now_activity_status().output
         if NameCollectionENum.enter_store_permission_activity.value in content:
             self.ui_device(resourceId=NameCollectionENum.mm_alert_cancel_btn.value).click()
             time.sleep(1)
 
     def handler_cancel_network(self):
+        """
+        处理网络异常
+        :return:
+        """
         if self.ui_device(resourceId=NameCollectionENum.jlg.value).exists:
             self.ui_device(resourceId=NameCollectionENum.mm_alert_ok_btn.value).click()
             time.sleep(1)
 
     def handler_android_err(self):
+        """
+        处理系统异常
+        :return:
+        """
         if self.ui_device(resourceId=NameCollectionENum.a_err_close.value).exists:
             self.ui_device(resourceId=NameCollectionENum.a_err_close.value).click()
             time.sleep(1)
@@ -105,25 +127,39 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         self.handler_cancel_network()
 
     def handler_setting_page(self):
+        """
+        处理进入权限设置
+        :return:
+        """
         if self.ui_device(resourceId=NameCollectionENum.action_bar_title.value, text='显示在其他应用的上层').exists:
             self.ui_device.xpath('//*[@content-desc="向上导航"]').click()
             time.sleep(2)
 
     def search_key_word_page(self, text):
-
+        """
+        搜索页面
+        :param text: 直播间名
+        :return:
+        """
         if self.ui_device(resourceId=NameCollectionENum.b1i.value).exists:
             self.ui_device(resourceId=NameCollectionENum.b1i.value).click()
             self.ui_device.xpath("//android.widget.EditText").set_text(text)
             self.ui_device.xpath('//*[@content-desc="搜索"]').click()
             self.ui_device.xpath('//*[@content-desc="{}"]'.format(text)).click()
-            # 可以添加獲取數據退
             self.ui_device(resourceId=NameCollectionENum.aa4.value).click()
 
             self.ui_device.swipe(int(self.screen[0] * 0.1), int(self.screen[1] * 0.5),
                                  int(self.screen[0]), int(self.screen[1] * 0.5),
                                  steps=2)
 
+            self.handle_live_store_base_info()
+
     def iter_to_live(self):
+        """
+        搜集各种类型直播间
+        :return:
+        """
+        self.rotating_logger.info("start function iter to live")
         content = self.check_now_activity_status().output
         if NameCollectionENum.enter_more_live_activity.value in content:
             main_iter_number = 0
@@ -151,13 +187,16 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                         sub_main_iter_number = 0
                     if per_nuw_key != per_value:
                         self.last_class = per_nuw_key + ":" + per_value
+                        self.rotating_logger.info(f"start {self.last_class}")
                         self.move_to_main_page(per_nuw_key, per_value)
                         sub_main_iter_number = sub_main_iter_number + 1
                     else:
                         self.last_class = per_nuw_key
+                        self.rotating_logger.info(f"start {self.last_class}")
                         self.move_to_main_page(per_nuw_key, None)
                 main_iter_number = main_iter_number + 1
         else:
+            self.rotating_logger.info("restart into live")
             if self.iter_to_live_number >= 3:
                 self.destroy_current_app()
                 self.iter_to_live_number = 0
@@ -166,7 +205,13 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             self.check_spider_status()
 
     def move_to_main_page(self, text, sub_text):
-        self.rotating_logger.info('--{} : {} --'.format(text, sub_text))
+        """
+        进入直播间，并获取相关数据
+        :param text: 大类
+        :param sub_text: 小类
+        :return:
+        """
+        self.rotating_logger.info('move_to_main_page: {} : {}'.format(text, sub_text))
         content = self.check_now_activity_status().output
         if NameCollectionENum.enter_more_live_activity.value in content:
             self.handler_android_err()
@@ -175,21 +220,28 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).click()
                 self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
                 time.sleep(2.0)
-                # 進入 推出
                 self.handler_android_err()
                 self.ui_device(resourceId=NameCollectionENum.k69.value).click()
                 time.sleep(1.0)
+                self.rotating_logger.info('开始获取直播间信息: {} : {}'.format(text, sub_text))
                 self.click_enter_live_page(sub_text)
                 time.sleep(1.0)
                 self.ui_device(resourceId=NameCollectionENum.igx.value).click_exists()
             except uiautomator2.exceptions.UiObjectNotFoundError as e:
-                print(e)
+                self.rotating_logger.info('move_to_main_page {} : {} : {}'.format(e, text, sub_text))
                 self.check_spider_status()
         else:
+            self.rotating_logger.info('move_to_main_page activity error, restart : {} : {}'.format(text, sub_text))
             self.check_spider_status()
 
     def click_enter_live_page(self, store_class):
+        """
+        进入具体的直播间，获取直播数据
+        :param store_class:
+        :return:
+        """
         store_name = ""
+        self.rotating_logger.info('click_enter_live_page {} '.format(store_class))
         while True:
             try:
                 self.handler_cancel_btn()
@@ -199,20 +251,19 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 content = self.check_now_activity_status().output
                 if NameCollectionENum.enter_live_store_activity.value in content:
                     sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
-                    self.rotating_logger.info('--click live page: {} -- {} --'.format(store_class, sub_store_name))
                     if sub_store_name == "0x00" or sub_store_name == store_name:
-                        self.rotating_logger.info('--click end page: {} -- {} --'.format(store_class, sub_store_name))
+                        self.rotating_logger.info('--click page end: {} -- {} --'.format(store_class, sub_store_name))
                         if sub_store_name == "0x00":
                             self.store_count = self.store_count + 1
                         break
 
                     if self.updated_store_data(sub_store_name):
-                        self.rotating_logger.info('--click live info: {} -- {} --'.format(store_class, sub_store_name))
+                        self.rotating_logger.info('开始获取直播间数据 : {} : {}'.format(store_class, sub_store_name))
                         store_live_active_information = self.handler_live_active_level_info()
                         self.handler_cancel_btn()
                         self.handler_android_err()
                         self.ui_device(resourceId=NameCollectionENum.k3o.value).click()
-
+                        self.rotating_logger.info('开始获取直播间基本数据 : {} : {}'.format(store_class, sub_store_name))
                         time.sleep(3)
                         self.handler_cancel_btn()
                         time.sleep(1)
@@ -220,39 +271,37 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                         time.sleep(1)
                         self.handler_setting_page()
                         time.sleep(2)
-                        self.rotating_logger.info('--enter store info')
+                        self.rotating_logger.info(
+                            '开始获取直播间店铺数据 : {} : {}'.format(store_class, sub_store_name))
                         store_base_information = self.handle_live_store_base_info()
+                        self.add_store(store_base_information)
                         self.handler_android_err()
                         store_live_product_information, store_info_base = self.handler_live_product_info()
 
-                        self.rotating_logger.info(
-                            '--click live info end : {} -- {} --'.format(store_class, sub_store_name))
                         if len(store_base_information) > 0 and len(store_info_base) > 0:
+                            self.rotating_logger.info(
+                                '开始写直播间数据到数据库: {} -- {} --'.format(store_class, sub_store_name))
                             self.handle_we_collection_store_database(store_class,
                                                                      store_base_information,
                                                                      store_info_base,
                                                                      store_live_active_information)
 
-                            self.rotating_logger.info('--click live info shop start : {} -- {} --'.format(store_class,
-                                                                                                          sub_store_name))
                             self.handle_we_collection_shop_database(store_base_information,
                                                                     store_live_product_information)
-                            self.rotating_logger.info(
-                                '--click live info shop end : {} -- {} --'.format(store_class, sub_store_name))
+
                             self.handle_we_collection_status_database(store_base_information)
                             self.rotating_logger.info(
-                                '--write live info end: {} -- {} --'.format(store_class, sub_store_name))
+                                '--写入数据完成: {} -- {} --'.format(store_class, sub_store_name))
                     store_name = sub_store_name
                     time.sleep(1)
                     self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7),
                                          int(self.screen[0] * 0.5),
                                          int(self.screen[1] * 0.15), steps=5)
-                    print('start screen next store')
                 else:
                     time.sleep(1)
                     self.check_spider_status()
             except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
-                print(e)
+                self.rotating_logger.info('获取直播间数据异常， 重启: {} : {}'.format(e, store_class))
                 for _ in range(2):
                     self.check_atx_instrument()
 
@@ -261,11 +310,17 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 time.sleep(1)
                 self.check_spider_status()
             except uiautomator2.exceptions.UiObjectNotFoundError as e:
-                print(e)
+                self.rotating_logger.info('没有查询到元素, 重启: {} : {}'.format(store_class, e))
                 self.check_spider_status()
 
     def updated_store_data(self, store_name):
-        if not self.redis_con.get(store_name, ):
+        """
+        更新数据，使用redis控制只有一台设备在运行一个直播间
+        :param store_name:店名
+        :return:
+        """
+        if not self.redis_con.get(store_name):
+            self.rotating_logger.info('开始更新 : {} 数据'.format(store_name))
             self.redis_con.set(store_name, 1, 24 * 60 * 60)
             update_data = self.session.query(CheckCollectionStatus).filter_by(
                 finder_store_name='{}'.format(store_name)).first()
@@ -281,6 +336,11 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             return False
 
     def handle_live_store_photo_info(self, element):
+        """
+        获取认证信息和截图信息
+        :param element:
+        :return:
+        """
         data = '沒有發現認證信息'
         if self.ui_device(resourceId=element).exists:
             p = self.ui_device(resourceId=element).screenshot()
@@ -294,6 +354,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         return self.ui_device(resourceId=text).get_text() if self.ui_device(resourceId=text).exists else "0x00"
 
     def handle_live_store_base_info(self):
+        """
+        获取直播店数据
+        :return:
+        """
         time.sleep(3)
         self.handler_cancel_btn()
         self.handler_android_err()
@@ -304,7 +368,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         content = self.check_now_activity_status().output
 
         if NameCollectionENum.enter_store_profile_activity.value in content:
-
+            self.rotating_logger.info('开始获取直播间基本数据')
             store_base_info = {'store_name': self.get_sub_title(NameCollectionENum.fzn.value),
                                'store_province_city': self.get_sub_title(NameCollectionENum.ov9.value),
                                'video_name': self.get_sub_title(NameCollectionENum.g06.value),
@@ -335,6 +399,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         return store_base_info
 
     def handler_live_active_level_info(self):
+        """获取热度等信息"""
         store_active = {'store_look_hot_class': self.get_sub_title(NameCollectionENum.i94.value),
                         'store_like_class': self.get_sub_title(NameCollectionENum.f6i.value)}
         return store_active
@@ -346,7 +411,11 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         content.append(" ".join(content))
 
     def handler_receive_verify_info(self, element):
-
+        """
+        循环获取数据
+        :param element:
+        :return:
+        """
         content = []
         for per_element in self.ui_device.xpath(element).all():
             per_element_object = per_element.elem.getchildren()
@@ -365,6 +434,13 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         return content
 
     def handler_photo_product_info(self, elem, have_dict, have_temp_dict):
+        """
+        获取产品缩略图
+        :param elem: 页面元素名
+        :param have_dict:过滤字典
+        :param have_temp_dict: 删除字典
+        :return:
+        """
         content = {}
         content_list = self.ui_device.xpath(elem).all()
         for temp in content_list:
@@ -390,6 +466,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 result.append(temp_text)
 
     def handler_all_timeing_live_info(self):
+        """
+        预约直播时间
+        :return:
+        """
         time.sleep(3)
         if self.ui_device(resourceId=NameCollectionENum.fe7.value).exists:
             self.ui_device(resourceId=NameCollectionENum.fe7.value).click()
@@ -436,13 +516,16 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         return result_content
 
     def handler_live_product_info(self):
+        """
+        获取直播店产品
+        :return:
+        """
         last_product = 1
         have_dict = {}
         store_status = True
         store_info_base = {}
         collection_result = []
         stop_cycle_condition = True
-        print("ha----")
         self.processing_sleep(NameCollectionENum.fl9.value)
 
         content = self.check_now_activity_status().output
@@ -451,25 +534,21 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             self.handler_cancel_btn()
             if self.ui_device(resourceId=NameCollectionENum.fl9.value).exists:
                 self.ui_device(resourceId=NameCollectionENum.fl9.value).click()
-                print("start sleep 3")
 
             time.sleep(3)
             self.handler_cancel_btn()
-            self.rotating_logger.info("iter store info")
+            self.rotating_logger.info('开始循环获取商品')
             i = 0
             while stop_cycle_condition:
                 self.handler_android_err()
                 index_max = self.handler_receive_verify_info(NameCollectionENum.l7n_xpath.value)
-                print("{} iter....".format(i))
-                print(index_max)
                 i = i + 1
                 if not index_max or last_product == int(max(index_max)):
                     stop_cycle_condition = False
-                    self.rotating_logger.info("iter store info end")
+                    self.rotating_logger.info('获取商品信息结束')
                 else:
                     filter_dict = {}
                     have_temp_dict = {}
-                    self.rotating_logger.info("iter store info writing")
                     text_price_content = self.handler_receive_verify_info(NameCollectionENum.fll_xpath.value)
 
                     text_keep_complete = WeCollectionHandleMain.handler_keep_data_complete(text_price_content,
@@ -477,7 +556,6 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
 
                     photo_content = self.handler_photo_product_info(NameCollectionENum.huu_xpath.value, have_dict,
                                                                     have_temp_dict)
-                    print(photo_content)
                     for index_value in text_keep_complete:
                         temp = {
                             "shop_product_description": index_value[1],
@@ -498,7 +576,6 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
 
                     if store_status:
                         store_info_base["store_name"] = self.get_sub_title(NameCollectionENum.mui.value)
-                        self.rotating_logger.info("iter store info writing {}".format(store_info_base["store_name"]))
                         point = self.handler_receive_verify_info(NameCollectionENum.mub.value)
                         store_info_base["store_point"] = " ".join(point[0]) if point else '0x00'
                         store_status = False
@@ -508,7 +585,6 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.95),
                                          int(self.screen[0] * 0.5),
                                          int(self.screen[1] * 0.35), steps=2)
-                    # time.sleep(2)
 
             self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.22),
                                  int(self.screen[0] * 0.5), int(self.screen[1]),
@@ -551,9 +627,15 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                          'store_live_feature': store_base_information.get('store_live_feature', '0')})
                     self.session.commit()
             except Exception as e:
-                print(e)
+                self.rotating_logger.info(f'写入 {store_base_information["finder_id"]} 失败 :{e}')
 
     def handle_we_collection_shop_database(self, store_base_information, store_live_product_information):
+        """
+        写数据到数据产品表
+        :param store_base_information: 直播间基本信息
+        :param store_live_product_information:  产品基本信息
+        :return:
+        """
         if 'store_name' in store_base_information.keys():
             result = []
             for meta_value in store_live_product_information:
@@ -567,10 +649,15 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     we_collection_shop_product.product_update_date = datetime.datetime.now()
                     result.append(we_collection_shop_product)
                 except Exception as e:
-                    print(e)
+                    self.rotating_logger.info(e)
             self.insert_data_to_database(result)
 
     def handle_we_collection_status_database(self, store_base_information):
+        """
+        基本信息
+        :param store_base_information: 直播间基本信息
+        :return:
+        """
         if 'finder_id' in store_base_information.keys():
             try:
                 store_id = self.session.query(CheckCollectionStatus).filter_by(
@@ -591,9 +678,14 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     )
                     self.session.commit()
             except Exception as e:
-                print(e)
+                self.rotating_logger.info(e)
 
     def add_store(self, store_base_information):
+        """
+        增量添加直播间
+        :param store_base_information: 直播间基本信息
+        :return:
+        """
         store_id = self.session.query(WeChatLive).filter_by(
             finder_id='{}'.format(store_base_information['finder_id'])).first()
         if not store_id:
