@@ -19,6 +19,9 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         self.screen = self.screen_size()
         self.redis_con = redis.StrictRedis(host=self.config.redis_info.host, port=6379, db=0)
         self.last_class = ''
+        self.store_count = 1
+        self.iter_to_live_number = 1
+        self.invalid_count = 1
 
     def check_spider_status(self):
         time.sleep(5)
@@ -71,7 +74,15 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
             print(e)
             print('start e')
-            self.check_atx_instrument()
+            if self.invalid_count > 3:
+                self.destroy_current_app()
+                self.invalid_count = 0
+                time.sleep(1)
+            self.invalid_count = self.invalid_count + 1
+
+            for _ in range(2):
+                self.check_atx_instrument()
+
             self.start_uiautomator2()
             self.check_spider_status()
 
@@ -126,6 +137,11 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     main_iter_number = 0
                 sub_main_iter_number = 0
                 for per_value in per_nuw_value:
+                    if self.store_count > 3:
+                        self.destroy_current_app()
+                        time.sleep(3)
+                        self.store_count = 0
+                        self.check_spider_status()
                     if sub_main_iter_number > 5:
                         self.ui_device.swipe(int(self.screen[0] * 0.9), int(self.screen[1] * 0.2), 0,
                                              int(self.screen[1] * 0.2),
@@ -142,6 +158,11 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                         self.move_to_main_page(per_nuw_key, None)
                 main_iter_number = main_iter_number + 1
         else:
+            if self.iter_to_live_number >= 3:
+                self.destroy_current_app()
+                self.iter_to_live_number = 0
+                time.sleep(1)
+            self.iter_to_live_number = self.iter_to_live_number + 1
             self.check_spider_status()
 
     def move_to_main_page(self, text, sub_text):
@@ -150,7 +171,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         if NameCollectionENum.enter_more_live_activity.value in content:
             self.handler_android_err()
             try:
-                self.processing_sleep(NameCollectionENum.nuw.value)
+                self.processing_sleep(NameCollectionENum.nuw.value, 5)
                 self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).click()
                 self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
                 time.sleep(2.0)
@@ -179,8 +200,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 if NameCollectionENum.enter_live_store_activity.value in content:
                     sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
                     self.rotating_logger.info('--click live page: {} -- {} --'.format(store_class, sub_store_name))
-                    if sub_store_name == "" or sub_store_name == store_name:
+                    if sub_store_name == "0x00" or sub_store_name == store_name:
                         self.rotating_logger.info('--click end page: {} -- {} --'.format(store_class, sub_store_name))
+                        if sub_store_name == "0x00":
+                            self.store_count = self.store_count + 1
                         break
 
                     if self.updated_store_data(sub_store_name):
@@ -230,13 +253,9 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     self.check_spider_status()
             except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
                 print(e)
-                i = 0
-                while i >= 2:
-                    if i >= 2:
-                        print("start instrument {}".format(i))
-                        break
+                for _ in range(2):
                     self.check_atx_instrument()
-                    i = i + 1
+
                 time.sleep(1)
                 self.start_uiautomator2()
                 time.sleep(1)

@@ -27,7 +27,9 @@ def spider_run(parse_config_value, device_ip, rec=False):
         we_run_app.check_spider_status()
     except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
         init_env = InitDeviceApp(parse_config_value, device_ip)
-        init_env.check_atx_instrument()
+        for _ in range(2):
+            init_env.check_atx_instrument()
+
         init_env.start_uiautomator2()
         spider_run(parse_config_value, device_ip)
         print("GatewayError")

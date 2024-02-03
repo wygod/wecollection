@@ -22,7 +22,7 @@ if __name__ == "__main__":
     )
     collection_arg.add_argument(
         "--port",
-        type=str,
+        type=int,
         help="adb port",
     )
     collection_arg_parse = collection_arg.parse_args()

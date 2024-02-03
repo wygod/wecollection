@@ -16,7 +16,6 @@ def read_device(host, port):
 if __name__ == "__main__":
 
     collection_arg = argparse.ArgumentParser()
-    collection_arg.add_argument()
     collection_arg.add_argument(
         "--host",
         type=str,
@@ -24,7 +23,7 @@ if __name__ == "__main__":
     )
     collection_arg.add_argument(
         "--port",
-        type=str,
+        type=int,
         help="adb port",
     )
     collection_arg_parse = collection_arg.parse_args()

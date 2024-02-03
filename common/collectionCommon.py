@@ -113,7 +113,7 @@ class InitDeviceApp(InitVenv):
 
         print("start")
         content = self.check_now_activity_status().output
-        self.processing_sleep(NameCollectionENum.b1h.value)
+        self.processing_sleep(NameCollectionENum.b1h.value, 5)
 
         if NameCollectionENum.enter_live_main_activity.value in content:
             if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
