@@ -1,4 +1,6 @@
 # -*- encoding:utf-8 -*-
+import time
+
 from packaging.version import InvalidVersion
 
 from . import *
@@ -221,7 +223,21 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
                 time.sleep(2.0)
                 self.handler_android_err()
-                self.ui_device(resourceId=NameCollectionENum.k69.value).click()
+                index_zero = 0
+                while True:
+                    if self.ui_device(resourceId=NameCollectionENum.f98.value).exists:
+                        result = self.handler_receive_verify_info(NameCollectionENum.f98_xpath)
+                        index = [i for i, j in enumerate(result) if '直播已结束' not in j]
+                        if index:
+                            index_zero = index[0]
+                            break
+                        else:
+                            self.ui_device.swipe(int(self.screen[0]*0.5), int(self.screen[1]*0.3),
+                                                 int(self.screen[0]*0.5), int(self.screen[1]*0.9), steps=1)
+                    else:
+                        break
+
+                self.ui_device(resourceId=NameCollectionENum.k69.value, index=index_zero).click()
                 time.sleep(1.0)
                 self.rotating_logger.info('开始获取直播间信息: {} : {}'.format(text, sub_text))
                 self.click_enter_live_page(sub_text)
@@ -263,7 +279,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                         self.handler_cancel_btn()
                         self.handler_android_err()
                         self.ui_device(resourceId=NameCollectionENum.k3o.value).click()
-                        self.rotating_logger.info('开始获取直播间基本数据 : {} : {}'.format(store_class, sub_store_name))
+                        self.rotating_logger.info(
+                            '开始获取直播间基本数据 : {} : {}'.format(store_class, sub_store_name))
                         time.sleep(3)
                         self.handler_cancel_btn()
                         time.sleep(1)

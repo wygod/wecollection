@@ -27,3 +27,7 @@
 2、pip install -r requirement.txt
 
 3、python -m uiautomator2 init() 在设备上安装atx uiautomator
+
+4、celery --app=start_app_multitasking worker -l info
+
+5、运行start_app_multitasking.py {单设备直接运行start_app_single.py}
