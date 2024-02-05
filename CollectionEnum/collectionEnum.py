@@ -49,7 +49,7 @@ class NameCollectionENum(Enum):
     l7n = 'com.tencent.mm:id/l7n'
     l7n_xpath = '//*[@resource-id="com.tencent.mm:id/l7n"]'
 
-    #index 和  图片
+    # index 和  图片
     fll = 'com.tencent.mm:id/fll'
     fll_xpath = '//*[@resource-id="com.tencent.mm:id/fll"]'
     hhu = 'com.tencent.mm:id/hhu'
@@ -89,7 +89,7 @@ class NameCollectionENum(Enum):
     # title
     ord = 'com.tencent.mm:id/ord'
     ord_xpath = '//*[@resource-id="com.tencent.mm:id/ord"]'
-    #time
+    # time
     orc = 'com.tencent.mm:id/orc'
     orc_xpath = '//*[@resource-id="com.tencent.mm:id/orc"]'
     # 退出预约
@@ -112,8 +112,7 @@ class NameCollectionENum(Enum):
     enter_store_detail_activity = 'com.tencent.mm/.plugin.appbrand.ui.AppBrandPluginUI'
     # 授权页面
     enter_store_permission_activity = 'com.tencent.mm/.pluginsdk.permission.RequestFloatWindowPermissionDialog'
-    #开始页面
+    # 开始页面
     we_chat_start_page = 'com.tencent.mm/.ui.LauncherUI'
     # 設置
     setting = 'com.android.settings/.Settings$AppDrawOverlaySettingsActivity'
-

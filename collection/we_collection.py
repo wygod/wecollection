@@ -243,7 +243,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.click_enter_live_page(sub_text)
                 time.sleep(1.0)
                 self.ui_device(resourceId=NameCollectionENum.igx.value).click_exists()
-            except uiautomator2.exceptions.UiObjectNotFoundError as e:
+            except (uiautomator2.exceptions.UiObjectNotFoundError, KeyError) as e:
                 self.rotating_logger.info('move_to_main_page {} : {} : {}'.format(e, text, sub_text))
                 self.check_spider_status()
         else:
