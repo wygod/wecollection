@@ -310,7 +310,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                 '--写入数据完成: {} -- {} --'.format(store_class, sub_store_name))
                     store_name = sub_store_name
                     time.sleep(1)
-                    self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.7),
+                    self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.6),
                                          int(self.screen[0] * 0.5),
                                          int(self.screen[1] * 0.15), steps=5)
                 else:

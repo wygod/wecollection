@@ -93,8 +93,8 @@ class InitDeviceApp(InitVenv):
         :return:
         """
 
-        if self.ui_device(resourceId=NameCollectionENum.recent_apps.value).exists:
-            return self.ui_device.window_size()[0], int(self.ui_device.window_size()[1]*0.9)
+        # if self.ui_device(resourceId=NameCollectionENum.recent_apps.value).exists:
+        #     return self.ui_device.window_size()[0], int(self.ui_device.window_size()[1]*0.9)
         return self.ui_device.window_size()
 
     def check_now_activity_status(self):

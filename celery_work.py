@@ -41,7 +41,10 @@ def spider_run(parse_config_value, device_ip, rec=False):
 
 @app.task()
 def main(device):
-    print("start {}".format(device))
     parse_config_value = WeConfigParse.parse_base_config('config/config.yaml')
     while True:
         spider_run(parse_config_value, device)
+
+
+if __name__ == "__main__":
+    app.start()
