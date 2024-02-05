@@ -53,7 +53,7 @@ class InitVenv:
         """
         try:
             start_instrument_cmd = "am instrument -w -r -e debug false -e class com.github.uiautomator.stub.Stub com.github.uiautomator.test/androidx.test.runner.AndroidJUnitRunner"
-            self.ui_device.shell(start_instrument_cmd, timeout=random.randint(low, 2*low))
+            self.ui_device.shell(start_instrument_cmd, timeout=random.randint(low, 2 * low))
         except Exception as e:
             print('check value')
             print(e)
@@ -92,6 +92,9 @@ class InitDeviceApp(InitVenv):
         设备大小
         :return:
         """
+
+        if self.ui_device(resourceId=NameCollectionENum.recent_apps.value).exists:
+            return self.ui_device.window_size()[0], int(self.ui_device.window_size()[1]*0.9)
         return self.ui_device.window_size()
 
     def check_now_activity_status(self):

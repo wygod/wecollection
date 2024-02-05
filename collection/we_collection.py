@@ -1,5 +1,4 @@
 # -*- encoding:utf-8 -*-
-import time
 
 from packaging.version import InvalidVersion
 
