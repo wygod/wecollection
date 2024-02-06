@@ -253,12 +253,11 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                     self.ui_device(resourceId=NameCollectionENum.igx.value).click()
                             else:
                                 self.ui_device(resourceId=NameCollectionENum.k69.value).click()
-                                end_iter = random.randint(10, 30)
-                                for _ in range(end_iter):
+                                for _ in range(main_iter_number):
                                     time.sleep(1)
                                     self.ui_device.swipe_ext('down', scale=0.7)
 
-                                for _ in range(end_iter):
+                                for _ in range(main_iter_number):
                                     time.sleep(1)
                                     self.ui_device.swipe_ext('up', scale=0.7)
                             load_number = 1
