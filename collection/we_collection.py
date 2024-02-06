@@ -272,7 +272,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                 for i_index in index:
                                     self.ui_device(resourceId=NameCollectionENum.k69.value, index=i_index).click()
                                     time.sleep(1.0)
-                                    self.click_enter_live_page(sub_text)
+                                    self.move_to_main_class_page(sub_text)
                         time.sleep(2.0)
                         self.ui_device.swipe_ext('up', scale=0.8)
                         time.sleep(2.0)
@@ -287,6 +287,74 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         else:
             self.rotating_logger.info('move_to_main_page activity error, restart : {} : {}'.format(text, sub_text))
             self.check_spider_status()
+
+    def move_to_main_class_page(self, store_class):
+        try:
+            self.handler_cancel_btn()
+            self.handler_android_err()
+            self.handler_setting_page()
+            time.sleep(2)
+            content = self.check_now_activity_status().output
+            if NameCollectionENum.enter_live_store_activity.value in content:
+                sub_store_name = self.get_sub_title(NameCollectionENum.ify.value)
+
+                if self.updated_store_data(sub_store_name):
+                    self.rotating_logger.info('开始获取直播间数据 : {} : {}'.format(store_class, sub_store_name))
+                    store_live_active_information = self.handler_live_active_level_info()
+                    self.handler_cancel_btn()
+                    self.handler_android_err()
+                    self.ui_device(resourceId=NameCollectionENum.k3o.value).click()
+                    self.rotating_logger.info(
+                        '开始获取直播间基本数据 : {} : {}'.format(store_class, sub_store_name))
+                    time.sleep(3)
+                    self.handler_cancel_btn()
+                    time.sleep(1)
+                    self.handler_android_err()
+                    time.sleep(1)
+                    self.handler_setting_page()
+                    time.sleep(2)
+                    self.rotating_logger.info(
+                        '开始获取直播间店铺数据 : {} : {}'.format(store_class, sub_store_name))
+                    store_base_information = self.handle_live_store_base_info()
+                    self.add_store(store_base_information)
+                    self.handler_android_err()
+                    store_live_product_information, store_info_base = self.handler_live_product_info()
+
+                    if len(store_base_information) > 0 and len(store_info_base) > 0:
+                        self.rotating_logger.info(
+                            '开始写直播间数据到数据库: {} -- {} --'.format(store_class, sub_store_name))
+                        self.handle_we_collection_store_database(store_class,
+                                                                 store_base_information,
+                                                                 store_info_base,
+                                                                 store_live_active_information)
+
+                        self.handle_we_collection_shop_database(store_base_information,
+                                                                store_live_product_information)
+
+                        self.handle_we_collection_status_database(store_base_information)
+                        self.rotating_logger.info(
+                            '--写入数据完成: {} -- {} --'.format(store_class, sub_store_name))
+                store_name = sub_store_name
+                time.sleep(1)
+                self.ui_device.swipe(int(self.screen[0] * 0.5), int(self.screen[1] * 0.6),
+                                     int(self.screen[0] * 0.5),
+                                     int(self.screen[1] * 0.15), steps=5)
+            else:
+                time.sleep(1)
+                self.check_spider_status()
+        except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
+            self.rotating_logger.info('获取直播间数据异常， 重启: {} : {}'.format(e, store_class))
+            for _ in range(2):
+                self.check_atx_instrument()
+
+            time.sleep(1)
+            self.start_uiautomator2()
+            time.sleep(1)
+            self.check_spider_status()
+        except uiautomator2.exceptions.UiObjectNotFoundError as e:
+            self.rotating_logger.info('没有查询到元素, 重启: {} : {}'.format(store_class, e))
+            self.check_spider_status()
+
 
     def move_to_main_page(self, text, sub_text):
         """
