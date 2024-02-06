@@ -12,6 +12,7 @@ class NameCollectionENum(Enum):
     nqn = 'com.tencent.mm:id/nqn'
     fs4 = 'com.tencent.mm:id/fs4'
     k69 = 'com.tencent.mm:id/k69'
+    k69_xpath = '//*[@resource-id="com.tencent.mm:id/k69"]'
     igx = "com.tencent.mm:id/igx"
     fuv = 'com.tencent.mm:id/fuv'
 

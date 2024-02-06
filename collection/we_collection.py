@@ -1,4 +1,6 @@
 # -*- encoding:utf-8 -*-
+import random
+import time
 
 from packaging.version import InvalidVersion
 
@@ -203,6 +205,88 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.iter_to_live_number = 0
                 time.sleep(1)
             self.iter_to_live_number = self.iter_to_live_number + 1
+            self.check_spider_status()
+
+    def random_move_some_page(self):
+        pass
+
+    def scroll_main_page(self, text, sub_text):
+        content = self.check_now_activity_status().output
+        if NameCollectionENum.enter_more_live_activity.value in content:
+            self.handler_android_err()
+            try:
+                self.processing_sleep(NameCollectionENum.nuw.value, 5)
+                self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).click()
+                self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
+                time.sleep(2.0)
+                self.handler_android_err()
+                self.rotating_logger.info('开始获取直播间信息: {} : {}'.format(text, sub_text))
+                load_number = 1
+                sleep_number = 1
+                main_iter_number = 1
+                while True:
+                    if sleep_number >= 2:
+                        self.ui_device.swipe_ext('left', scale=0.7)
+                        time.sleep(3)
+                        self.ui_device(resourceId=NameCollectionENum.b1h.value).click()
+                        time.sleep(3)
+                        sleep_number = 1
+
+                    if self.ui_device(resourceId=NameCollectionENum.f98.value).exists:
+                        if load_number >= 2:
+                            random_number_iter = round(random.random())
+                            if random_number_iter:
+                                self.ui_device.swipe_ext('left', scale=0.7)
+                                time.sleep(2)
+                                random_number = round(random.random())
+                                if random_number:
+                                    for _ in range(random.randint(10, 20)):
+                                        time.sleep(1)
+                                        self.ui_device.swipe_ext('up', scale=0.6)
+                                else:
+                                    self.ui_device(resourceId=NameCollectionENum.k69.value).click()
+                                    time.sleep(1)
+                                    for _ in range(random.randint(3, 20)):
+                                        time.sleep(1)
+                                        self.ui_device.swipe_ext('up', scale=0.6)
+                                    time.sleep(1)
+                                    self.ui_device(resourceId=NameCollectionENum.igx.value).click()
+                            else:
+                                self.ui_device(resourceId=NameCollectionENum.k69.value).click()
+                                end_iter = random.randint(10, 30)
+                                for _ in range(end_iter):
+                                    time.sleep(1)
+                                    self.ui_device.swipe_ext('down', scale=0.7)
+
+                                for _ in range(end_iter):
+                                    time.sleep(1)
+                                    self.ui_device.swipe_ext('up', scale=0.7)
+                            load_number = 1
+                        time.sleep(1)
+                        if self.ui_device(resourceId=NameCollectionENum.f98.value, text='加载中').exists:
+                            load_number = load_number + 1
+                        else:
+                            # 获取数据
+                            result = self.handler_receive_verify_info(NameCollectionENum.f98_xpath.value)
+                            index = [i for i, j in enumerate(result) if '直播已结束' not in j]
+                            if index:
+                                for i_index in index:
+                                    self.ui_device(resourceId=NameCollectionENum.k69.value, index=i_index).click()
+                                    time.sleep(1.0)
+                                    self.click_enter_live_page(sub_text)
+                        time.sleep(2.0)
+                        self.ui_device.swipe_ext('up', scale=0.8)
+                        time.sleep(2.0)
+                    else:
+                        time.sleep(5)
+                        sleep_number = sleep_number + 1
+                    main_iter_number = main_iter_number + 1
+            except (uiautomator2.exceptions.UiObjectNotFoundError, KeyError) as e:
+                self.rotating_logger.info('move_to_main_page {} : {} : {}'.format(e, text, sub_text))
+                self.check_spider_status()
+
+        else:
+            self.rotating_logger.info('move_to_main_page activity error, restart : {} : {}'.format(text, sub_text))
             self.check_spider_status()
 
     def move_to_main_page(self, text, sub_text):
