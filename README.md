@@ -28,15 +28,15 @@
 
 3、python -m uiautomator2 init() 在设备上安装atx uiautomator
 
-4、celery --app=celery_worker worker -l info
+4、在config.py中设置adb启动的ip默认是127.0.0.1， 端口是5037， 设置postgresql数据库， redis数据库。在celery_config.py中配置celery 
+broker等redis数据地址。
 
-5、运行start_app_multitasking.py {单设备直接运行start_app_single.py}
 
 
 启动步骤：
 
 1、在启动条件部分安装完adb之后， 进入adb目录下，adb start-server; adb devices -l列出所有的devices
 
-2、启动条件中第四步会启动celery工作， 之后使用celery --app=celery_worker flower --port=***就可以启动flower进行web查看
+2、启动celery：celery --app=celery_worker worker -l info工作， 之后使用celery --app=celery_worker flower --port=***就可以启动flower进行web查看
 
 3、 在终端启动start_app_multitasking.py {python start_app_multitasking.py}即可启动运行
