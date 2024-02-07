@@ -355,7 +355,6 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
             self.rotating_logger.info('没有查询到元素, 重启: {} : {}'.format(store_class, e))
             self.check_spider_status()
 
-
     def move_to_main_page(self, text, sub_text):
         """
         进入直播间，并获取相关数据
