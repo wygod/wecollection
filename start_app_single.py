@@ -19,11 +19,13 @@ if __name__ == "__main__":
     collection_arg.add_argument(
         "--host",
         type=str,
+        default='127.0.0.1',
         help="主机 ip",
     )
     collection_arg.add_argument(
         "--port",
         type=int,
+        default=5037,
         help="adb port",
     )
     collection_arg_parse = collection_arg.parse_args()

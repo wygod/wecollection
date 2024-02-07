@@ -1,0 +1,116 @@
+2024-02-07 10:23:40 - celery_work - INFO -23052 : start running
+2024-02-07 10:24:41 - celery_work - INFO -23176 : start running
+2024-02-07 10:25:47 - celery_work - INFO -17736 : start running
+2024-02-07 10:26:07 - we_collection - INFO -17736 : 开始获取直播间信息: 购物 : 服饰
+2024-02-07 10:30:52 - celery_work - INFO -9220 : start running
+2024-02-07 10:31:04 - we_collection - INFO -9220 : 开始获取直播间信息: 购物 : 服饰
+2024-02-07 10:49:48 - celery_work - INFO -28076 : start running
+2024-02-07 10:50:01 - we_collection - INFO -28076 : 开始获取直播间信息: 购物 : 服饰
+2024-02-07 10:50:43 - we_collection - INFO -28076 : 开始更新 : 濮院羊绒小镇清仓店 数据
+2024-02-07 10:50:44 - we_collection - INFO -28076 : 开始获取直播间数据 : 服饰 : 濮院羊绒小镇清仓店
+2024-02-07 10:51:06 - we_collection - INFO -28076 : 开始获取直播间基本数据 : 服饰 : 濮院羊绒小镇清仓店
+2024-02-07 10:51:21 - we_collection - INFO -28076 : 开始获取直播间店铺数据 : 服饰 : 濮院羊绒小镇清仓店
+2024-02-07 10:51:33 - we_collection - INFO -28076 : 开始获取直播间基本数据
+2024-02-07 10:52:06 - we_collection - INFO -28076 : --enter store base info
+2024-02-07 10:52:16 - we_collection - INFO -28076 : --enter store base info === : sphIpHcT7sXd3jG
+2024-02-07 10:52:43 - we_collection - INFO -28076 : 开始循环获取商品
+2024-02-07 10:53:38 - we_collection - INFO -28076 : 获取商品信息结束
+2024-02-07 10:54:27 - we_collection - INFO -28076 : 开始写直播间数据到数据库: 服饰 -- 濮院羊绒小镇清仓店 --
+2024-02-07 10:54:27 - we_collection - INFO -28076 : writing database sphIpHcT7sXd3jG
+2024-02-07 10:54:27 - we_collection - INFO -28076 : --写入数据完成: 服饰 -- 濮院羊绒小镇清仓店 --
+2024-02-07 10:56:06 - celery_work - INFO -14828 : start running
+2024-02-07 10:56:16 - we_collection - INFO -14828 : 开始获取直播间信息: 购物 : 服饰
+2024-02-07 10:56:36 - we_collection - INFO -14828 : 开始更新 : 鄂家魅力羊绒甄选 数据
+2024-02-07 10:56:36 - we_collection - INFO -14828 : 开始获取直播间数据 : 服饰 : 鄂家魅力羊绒甄选
+2024-02-07 10:56:41 - we_collection - INFO -14828 : 开始获取直播间基本数据 : 服饰 : 鄂家魅力羊绒甄选
+2024-02-07 10:56:49 - we_collection - INFO -14828 : 开始获取直播间店铺数据 : 服饰 : 鄂家魅力羊绒甄选
+2024-02-07 10:56:55 - we_collection - INFO -14828 : 开始获取直播间基本数据
+2024-02-07 10:57:09 - we_collection - INFO -14828 : --enter store base info
+2024-02-07 10:57:14 - we_collection - INFO -14828 : --enter store base info === : sphAMGzgXx6Wn22
+2024-02-07 10:57:33 - we_collection - INFO -14828 : 开始循环获取商品
+2024-02-07 10:57:57 - we_collection - INFO -14828 : 获取商品信息结束
+2024-02-07 10:58:51 - we_collection - INFO -14828 : 开始写直播间数据到数据库: 服饰 -- 鄂家魅力羊绒甄选 --
+2024-02-07 10:58:51 - we_collection - INFO -14828 : writing database sphAMGzgXx6Wn22
+2024-02-07 10:58:51 - we_collection - INFO -14828 : --写入数据完成: 服饰 -- 鄂家魅力羊绒甄选 --
+2024-02-07 10:59:04 - we_collection - INFO -14828 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : 购物 : 服饰
+2024-02-07 10:59:04 - we_collection - INFO -14828 : check_spider_status: starting
+2024-02-07 10:59:10 - we_collection - INFO -14828 : activity: wechat 直播列表页， 没有分类
+2024-02-07 10:59:21 - we_collection - INFO -14828 : start function iter to live
+2024-02-07 10:59:21 - we_collection - INFO -14828 : start 购物:服饰
+2024-02-07 11:01:59 - celery_work - INFO -17816 : start running
+2024-02-07 11:02:16 - we_collection - INFO -17816 : 开始获取直播间信息: 购物 : 服饰
+2024-02-07 11:02:27 - we_collection - INFO -17816 : 开始更新 : 鄂尔多斯市精选羊绒 数据
+2024-02-07 11:02:27 - we_collection - INFO -17816 : 开始获取直播间数据 : 服饰 : 鄂尔多斯市精选羊绒
+2024-02-07 11:02:28 - we_collection - INFO -17816 : 开始获取直播间基本数据 : 服饰 : 鄂尔多斯市精选羊绒
+2024-02-07 11:02:37 - we_collection - INFO -17816 : 开始获取直播间店铺数据 : 服饰 : 鄂尔多斯市精选羊绒
+2024-02-07 11:02:43 - we_collection - INFO -17816 : 开始获取直播间基本数据
+2024-02-07 11:02:51 - we_collection - INFO -17816 : --enter store base info
+2024-02-07 11:02:54 - we_collection - INFO -17816 : --enter store base info === : sphyzqRH5t4bAHE
+2024-02-07 11:03:10 - we_collection - INFO -17816 : 开始循环获取商品
+2024-02-07 11:03:33 - we_collection - INFO -17816 : 获取商品信息结束
+2024-02-07 11:03:48 - we_collection - INFO -17816 : 开始写直播间数据到数据库: 服饰 -- 鄂尔多斯市精选羊绒 --
+2024-02-07 11:03:48 - we_collection - INFO -17816 : writing database sphyzqRH5t4bAHE
+2024-02-07 11:03:48 - we_collection - INFO -17816 : --写入数据完成: 服饰 -- 鄂尔多斯市精选羊绒 --
+2024-02-07 11:04:02 - we_collection - INFO -17816 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : 购物 : 服饰
+2024-02-07 11:04:02 - we_collection - INFO -17816 : check_spider_status: starting
+2024-02-07 11:04:13 - we_collection - INFO -17816 : activity: wechat 直播列表页， 没有分类
+2024-02-07 11:06:27 - celery_work - INFO -30156 : start running
+2024-02-07 11:06:45 - we_collection - INFO -30156 : 开始获取直播间信息: 购物 : 服饰
+2024-02-07 11:07:13 - we_collection - INFO -30156 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : 购物 : 服饰
+2024-02-07 11:07:13 - we_collection - INFO -30156 : check_spider_status: starting
+2024-02-07 11:07:19 - we_collection - INFO -30156 : activity: wechat 直播列表页， 没有分类
+2024-02-07 11:11:53 - celery_work - INFO -20788 : start running
+2024-02-07 11:12:05 - we_collection - INFO -20788 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 11:12:23 - we_collection - INFO -20788 : 开始更新 : PY羊绒工厂 数据
+2024-02-07 11:12:23 - we_collection - INFO -20788 : 开始获取直播间数据 : 服饰 : PY羊绒工厂
+2024-02-07 11:12:25 - we_collection - INFO -20788 : 开始获取直播间基本数据 : 服饰 : PY羊绒工厂
+2024-02-07 11:12:34 - we_collection - INFO -20788 : 开始获取直播间店铺数据 : 服饰 : PY羊绒工厂
+2024-02-07 11:12:40 - we_collection - INFO -20788 : 开始获取直播间基本数据
+2024-02-07 11:12:46 - we_collection - INFO -20788 : --enter store base info
+2024-02-07 11:12:54 - we_collection - INFO -20788 : --enter store base info === : sphgS9i2qktQskw
+2024-02-07 11:13:30 - we_collection - INFO -20788 : 开始循环获取商品
+2024-02-07 11:13:43 - we_collection - INFO -20788 : 获取商品信息结束
+2024-02-07 11:18:29 - celery_work - INFO -15984 : start running
+2024-02-07 11:18:41 - we_collection - INFO -15984 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 11:20:16 - celery_work - INFO -24548 : start running
+2024-02-07 11:20:20 - we_collection - INFO -24548 : move_to_main_page activity error, restart : 购物 : 服饰
+2024-02-07 11:20:20 - we_collection - INFO -24548 : check_spider_status: starting
+2024-02-07 11:20:29 - we_collection - INFO -24548 : activity: wechat 直播列表详情页
+2024-02-07 11:20:29 - we_collection - INFO -24548 : start function iter to live
+2024-02-07 11:20:29 - we_collection - INFO -24548 : start 购物:服饰
+2024-02-07 11:20:50 - celery_work - INFO -11292 : start running
+2024-02-07 11:21:00 - we_collection - INFO -11292 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 11:21:38 - we_collection - INFO -11292 : 开始更新 : 鄂家高端羊绒制品店 数据
+2024-02-07 11:21:38 - we_collection - INFO -11292 : 开始获取直播间数据 : 服饰 : 鄂家高端羊绒制品店
+2024-02-07 11:21:39 - we_collection - INFO -11292 : 开始获取直播间基本数据 : 服饰 : 鄂家高端羊绒制品店
+2024-02-07 14:51:33 - celery_work - INFO -19548 : start running
+2024-02-07 14:51:40 - we_collection - INFO -19548 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 14:51:56 - we_collection - INFO -19548 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : 购物 : 服饰
+2024-02-07 14:51:56 - we_collection - INFO -19548 : check_spider_status: starting
+2024-02-07 14:52:08 - we_collection - INFO -19548 : activity: wechat 直播列表页， 没有分类
+2024-02-07 14:52:17 - we_collection - INFO -19548 : start function iter to live
+2024-02-07 14:52:17 - we_collection - INFO -19548 : start 购物:服饰
+2024-02-07 14:52:17 - we_collection - INFO -19548 : move_to_main_page: 购物 : 服饰
+2024-02-07 14:52:21 - we_collection - INFO -19548 : 开始获取直播间信息: 购物 : 服饰
+2024-02-07 14:52:21 - we_collection - INFO -19548 : click_enter_live_page 服饰 
+2024-02-07 14:52:51 - we_collection - INFO -19548 : 开始获取直播间基本数据
+2024-02-07 14:52:55 - we_collection - INFO -19548 : --enter store base info
+2024-02-07 14:52:58 - we_collection - INFO -19548 : --enter store base info === : sphse8MbsvibP95
+2024-02-07 14:53:04 - we_collection - INFO -19548 : 开始获取直播间店铺数据 : 服饰 : sphse8MbsvibP95
+2024-02-07 14:53:04 - we_collection - INFO -19548 : 开始更新 : sphse8MbsvibP95 数据
+2024-02-07 14:53:08 - we_collection - INFO -19548 : 开始循环获取商品
+2024-02-07 14:54:15 - celery_work - INFO -15828 : start running
+2024-02-07 14:54:21 - we_collection - INFO -15828 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 14:54:37 - we_collection - INFO -15828 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : 购物 : 服饰
+2024-02-07 14:55:55 - celery_work - INFO -15860 : start running
+2024-02-07 14:55:58 - we_collection - INFO -15860 : move_to_main_page activity error, restart : 购物 : 服饰
+2024-02-07 14:56:17 - celery_work - INFO -18388 : start running
+2024-02-07 14:56:20 - we_collection - INFO -18388 : move_to_main_page activity error, restart : 购物 : 服饰
+2024-02-07 14:56:28 - celery_work - INFO -20136 : start running
+2024-02-07 14:56:34 - we_collection - INFO -20136 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 14:57:24 - celery_work - INFO -23868 : start running
+2024-02-07 14:57:30 - we_collection - INFO -23868 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 14:58:13 - celery_work - INFO -9992 : start running
+2024-02-07 14:58:19 - we_collection - INFO -9992 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 14:59:19 - celery_work - INFO -13808 : start running
+2024-02-07 14:59:25 - we_collection - INFO -13808 : 开始获取直播间信息 ---: 购物 : 服饰
