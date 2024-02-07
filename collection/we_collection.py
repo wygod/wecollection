@@ -197,7 +197,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     if per_nuw_key != per_value:
                         self.last_class = per_nuw_key + ":" + per_value
                         self.rotating_logger.info(f"start {self.last_class}")
-                        self.move_to_main_page(per_nuw_key, per_value)
+                        # 从主页刷新
+                        self.scroll_main_page(per_nuw_key, per_value)
+                        # 从直播间刷新
+                        # self.move_to_main_page(per_nuw_key, per_value)
                         sub_main_iter_number = sub_main_iter_number + 1
                     else:
                         self.last_class = per_nuw_key
@@ -218,20 +221,21 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         if NameCollectionENum.enter_more_live_activity.value in content:
             self.handler_android_err()
             try:
-                self.processing_sleep(NameCollectionENum.nuw.value, 5)
-                self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).click()
-                self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
+                # self.processing_sleep(NameCollectionENum.nuw.value, 5)
+                # self.ui_device(resourceId=NameCollectionENum.nuw.value, text='{}'.format(text)).click()
+                # self.ui_device(resourceId=NameCollectionENum.nqn.value, text="{}".format(sub_text)).click()
                 time.sleep(2.0)
                 self.handler_android_err()
                 self.rotating_logger.info('开始获取直播间信息 ---: {} : {}'.format(text, sub_text))
                 load_number = 1
+                load_status = False
                 sleep_number = 1
                 stop_condition = 0
                 main_iter_number = 1
+                last_collection = []
                 while True:
                     if stop_condition > 3:
                         break
-
                     if sleep_number >= 3:
                         self.ui_device.swipe_ext('right', scale=0.7)
                         time.sleep(3)
@@ -244,49 +248,56 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                         if load_number >= 2:
                             print("出现加载，正在休息， 加载其他数据")
                             random_number_iter = round(random.random())
-                            if random_number_iter:
+                            if random_number_iter or main_iter_number < 10:
                                 self.ui_device.swipe_ext('right', scale=0.9)
                                 time.sleep(2)
                                 random_number = round(random.random())
                                 if random_number:
-                                    for _ in range(random.randint(10, 20)):
+                                    for _ in range(random.randint(4, 6)):
                                         time.sleep(1)
                                         self.ui_device.swipe_ext('up', scale=0.6)
+                                    self.move_to_project_main()
                                 else:
                                     self.ui_device(resourceId=NameCollectionENum.k69.value).click()
                                     time.sleep(1)
-                                    for _ in range(random.randint(3, 20)):
+                                    for _ in range(random.randint(3, 6)):
                                         time.sleep(1)
                                         self.ui_device.swipe_ext('up', scale=0.6)
                                     time.sleep(1)
                                     self.ui_device(resourceId=NameCollectionENum.igx.value).click()
-                            else:
-                                for _ in range(main_iter_number):
-                                    time.sleep(1)
-                                    self.ui_device.swipe_ext('down', scale=0.9)
-
-                                for _ in range(main_iter_number):
-                                    time.sleep(1)
-                                    self.ui_device.swipe_ext('up', scale=0.9)
+                                    self.move_to_project_main()
+                                time.sleep(2.0)
                             load_number = 1
+                            load_status = False
                             stop_condition = stop_condition + 1
                         time.sleep(1)
-                        if self.ui_device(resourceId=NameCollectionENum.f98.value, text='加载中').exists:
+
+                        if load_status or self.ui_device(resourceId=NameCollectionENum.ili.value, text='正在加载...').exists:
                             print("正在加载")
                             load_number = load_number + 1
                         else:
                             # 获取数据
-                            result = self.handler_receive_verify_info(NameCollectionENum.k69_xpath.value)
-                            index = [i for i, j in enumerate(result) if '直播已结束' not in j]
+                            k69_result = self.handler_receive_verify_info(NameCollectionENum.k69_xpath.value)
+                            k69_text = [jk.elem.get('text') for jk in self.ui_device.xpath(NameCollectionENum.fuv_xpath.value).all()]
 
-                            if index:
+                            temp_collection = set(k69_text).difference(set(last_collection))
+
+                            result = zip(k69_result, k69_text)
+                            index = filter(lambda x: True if x[1] in temp_collection else False,
+                                           [(i, j[1]) for i, j in enumerate(result) if '直播已结束' not in j[0]])
+
+                            if index and temp_collection:
                                 for i_index in index:
                                     self.handler_cancel_btn()
                                     self.handler_android_err()
-                                    self.ui_device(resourceId=NameCollectionENum.k69.value, index=i_index).click()
-                                    time.sleep(1.0)
-                                    self.move_to_main_class_page(sub_text)
+                                    print(i_index)
+                                    # self.ui_device(resourceId=NameCollectionENum.k69.value, index=i_index[0]).click()
+                                    # time.sleep(1.0)
+                                    # self.move_to_main_class_page(sub_text)
+                            if not temp_collection:
+                                load_status = True
 
+                            last_collection = k69_text
                         time.sleep(2.0)
                         self.ui_device.drag(int(self.screen[0] * 0.5), int(self.screen[1] * 0.85),
                                             int(self.screen[0] * 0.5),
@@ -299,11 +310,11 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     main_iter_number = main_iter_number + 1
             except (uiautomator2.exceptions.UiObjectNotFoundError, KeyError) as e:
                 self.rotating_logger.info('move_to_main_page {} : {} : {}'.format(e, text, sub_text))
-                # self.check_spider_status()
+                self.check_spider_status()
 
         else:
             self.rotating_logger.info('move_to_main_page activity error, restart : {} : {}'.format(text, sub_text))
-            # self.check_spider_status()
+            self.check_spider_status()
 
     def move_to_main_class_page(self, store_class):
         try:

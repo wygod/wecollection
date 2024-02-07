@@ -114,3 +114,77 @@
 2024-02-07 14:58:19 - we_collection - INFO -9992 : 开始获取直播间信息 ---: 购物 : 服饰
 2024-02-07 14:59:19 - celery_work - INFO -13808 : start running
 2024-02-07 14:59:25 - we_collection - INFO -13808 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 15:01:37 - celery_work - INFO -444 : start running
+2024-02-07 15:01:43 - we_collection - INFO -444 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 16:07:49 - celery_work - INFO -18924 : start running
+2024-02-07 16:08:08 - we_collection - INFO -18924 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 16:13:35 - celery_work - INFO -18824 : start running
+2024-02-07 16:13:41 - we_collection - INFO -18824 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 16:14:54 - we_collection - INFO -18824 : 开始获取直播间基本数据
+2024-02-07 16:15:05 - we_collection - INFO -18824 : --enter store base info
+2024-02-07 16:15:08 - we_collection - INFO -18824 : --enter store base info === : spheRnfsYRYm9y4
+2024-02-07 16:15:15 - we_collection - INFO -18824 : 开始获取直播间店铺数据 : 服饰 : spheRnfsYRYm9y4
+2024-02-07 16:15:15 - we_collection - INFO -18824 : 开始更新 : spheRnfsYRYm9y4 数据
+2024-02-07 16:15:25 - we_collection - INFO -18824 : 开始循环获取商品
+2024-02-07 16:18:35 - celery_work - INFO -20036 : start running
+2024-02-07 16:18:42 - we_collection - INFO -20036 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 16:19:58 - we_collection - INFO -20036 : 开始获取直播间基本数据
+2024-02-07 16:20:19 - celery_work - INFO -23568 : start running
+2024-02-07 16:20:25 - we_collection - INFO -23568 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 16:23:31 - celery_work - INFO -19112 : start running
+2024-02-07 16:23:36 - we_collection - INFO -19112 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 16:35:26 - celery_work - INFO -6840 : start running
+2024-02-07 16:35:32 - we_collection - INFO -6840 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 16:43:38 - celery_work - INFO -8600 : start running
+2024-02-07 16:43:43 - we_collection - INFO -8600 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 16:44:07 - we_collection - INFO -8600 : 开始获取直播间基本数据
+2024-02-07 16:44:59 - celery_work - INFO -18312 : start running
+2024-02-07 16:45:04 - we_collection - INFO -18312 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 16:47:14 - celery_work - INFO -29404 : start running
+2024-02-07 16:47:20 - we_collection - INFO -29404 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:05:32 - celery_work - INFO -24068 : start running
+2024-02-07 17:05:38 - we_collection - INFO -24068 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:06:09 - celery_work - INFO -21780 : start running
+2024-02-07 17:06:14 - we_collection - INFO -21780 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:06:29 - celery_work - INFO -21300 : start running
+2024-02-07 17:06:34 - we_collection - INFO -21300 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:06:51 - celery_work - INFO -21444 : start running
+2024-02-07 17:06:56 - we_collection - INFO -21444 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:08:16 - celery_work - INFO -12540 : start running
+2024-02-07 17:08:21 - we_collection - INFO -12540 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:08:41 - celery_work - INFO -2996 : start running
+2024-02-07 17:08:46 - we_collection - INFO -2996 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:09:15 - celery_work - INFO -30048 : start running
+2024-02-07 17:09:21 - we_collection - INFO -30048 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:14:13 - celery_work - INFO -27024 : start running
+2024-02-07 17:14:19 - we_collection - INFO -27024 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:28:45 - celery_work - INFO -21660 : start running
+2024-02-07 17:28:52 - we_collection - INFO -21660 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:29:39 - celery_work - INFO -23416 : start running
+2024-02-07 17:29:45 - we_collection - INFO -23416 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:33:44 - celery_work - INFO -14268 : start running
+2024-02-07 17:33:51 - we_collection - INFO -14268 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:35:32 - celery_work - INFO -27944 : start running
+2024-02-07 17:35:39 - we_collection - INFO -27944 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:37:26 - celery_work - INFO -26712 : start running
+2024-02-07 17:37:33 - we_collection - INFO -26712 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:38:46 - celery_work - INFO -5844 : start running
+2024-02-07 17:38:51 - we_collection - INFO -5844 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:39:57 - we_collection - INFO -5844 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/b1h'], method: None : 购物 : 服饰
+2024-02-07 17:39:57 - we_collection - INFO -5844 : check_spider_status: starting
+2024-02-07 17:40:02 - we_collection - INFO -5844 : activity: wechat 直播列表详情页
+2024-02-07 17:40:02 - we_collection - INFO -5844 : start function iter to live
+2024-02-07 17:40:02 - we_collection - INFO -5844 : start 购物:服饰
+2024-02-07 17:40:04 - we_collection - INFO -5844 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:40:29 - we_collection - INFO -5844 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/b1h'], method: None : 购物 : 服饰
+2024-02-07 17:40:29 - we_collection - INFO -5844 : check_spider_status: starting
+2024-02-07 17:40:34 - we_collection - INFO -5844 : activity: wechat 直播列表详情页
+2024-02-07 17:40:34 - we_collection - INFO -5844 : start function iter to live
+2024-02-07 17:40:34 - we_collection - INFO -5844 : start 购物:服饰
+2024-02-07 17:40:36 - we_collection - INFO -5844 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:41:00 - we_collection - INFO -5844 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/b1h'], method: None : 购物 : 服饰
+2024-02-07 17:41:00 - we_collection - INFO -5844 : check_spider_status: starting
+2024-02-07 17:41:06 - we_collection - INFO -5844 : activity: wechat 直播列表详情页
+2024-02-07 17:41:06 - we_collection - INFO -5844 : start function iter to live
+2024-02-07 17:41:06 - we_collection - INFO -5844 : start 购物:服饰
+2024-02-07 17:41:08 - we_collection - INFO -5844 : 开始获取直播间信息 ---: 购物 : 服饰
