@@ -28,6 +28,7 @@ class NameCollectionENum(Enum):
     ili = 'com.tencent.mm:id/ili'
     f98_xpath = '//*[@resource-id="com.tencent.mm:id/f98"]'
 
+
     fxd = 'com.tencent.mm:id/fxd'
     ifz = 'com.tencent.mm:id/ifz'
     g06 = 'com.tencent.mm:id/g06'

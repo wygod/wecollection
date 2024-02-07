@@ -188,3 +188,5 @@
 2024-02-07 17:41:06 - we_collection - INFO -5844 : start function iter to live
 2024-02-07 17:41:06 - we_collection - INFO -5844 : start 购物:服饰
 2024-02-07 17:41:08 - we_collection - INFO -5844 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-07 17:46:24 - celery_work - INFO -15376 : start running
+2024-02-07 17:46:29 - we_collection - INFO -15376 : 开始获取直播间信息 ---: 购物 : 服饰
