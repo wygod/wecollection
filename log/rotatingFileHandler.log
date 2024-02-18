@@ -1,341 +1,266 @@
-2024-02-07 10:23:40 - celery_work - INFO -23052 : start running
-2024-02-07 10:24:41 - celery_work - INFO -23176 : start running
-2024-02-07 10:25:47 - celery_work - INFO -17736 : start running
-2024-02-07 10:26:07 - we_collection - INFO -17736 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢: ¹ºÎï : ·şÊÎ
-2024-02-07 10:30:52 - celery_work - INFO -9220 : start running
-2024-02-07 10:31:04 - we_collection - INFO -9220 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢: ¹ºÎï : ·şÊÎ
-2024-02-07 10:49:48 - celery_work - INFO -28076 : start running
-2024-02-07 10:50:01 - we_collection - INFO -28076 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢: ¹ºÎï : ·şÊÎ
-2024-02-07 10:50:43 - we_collection - INFO -28076 : ¿ªÊ¼¸üĞÂ : å§ÔºÑòÈŞĞ¡ÕòÇå²Öµê Êı¾İ
-2024-02-07 10:50:44 - we_collection - INFO -28076 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äÊı¾İ : ·şÊÎ : å§ÔºÑòÈŞĞ¡ÕòÇå²Öµê
-2024-02-07 10:51:06 - we_collection - INFO -28076 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ : ·şÊÎ : å§ÔºÑòÈŞĞ¡ÕòÇå²Öµê
-2024-02-07 10:51:21 - we_collection - INFO -28076 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äµêÆÌÊı¾İ : ·şÊÎ : å§ÔºÑòÈŞĞ¡ÕòÇå²Öµê
-2024-02-07 10:51:33 - we_collection - INFO -28076 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ
-2024-02-07 10:52:06 - we_collection - INFO -28076 : --enter store base info
-2024-02-07 10:52:16 - we_collection - INFO -28076 : --enter store base info === : sphIpHcT7sXd3jG
-2024-02-07 10:52:43 - we_collection - INFO -28076 : ¿ªÊ¼Ñ­»·»ñÈ¡ÉÌÆ·
-2024-02-07 10:53:38 - we_collection - INFO -28076 : »ñÈ¡ÉÌÆ·ĞÅÏ¢½áÊø
-2024-02-07 10:54:27 - we_collection - INFO -28076 : ¿ªÊ¼Ğ´Ö±²¥¼äÊı¾İµ½Êı¾İ¿â: ·şÊÎ -- å§ÔºÑòÈŞĞ¡ÕòÇå²Öµê --
-2024-02-07 10:54:27 - we_collection - INFO -28076 : writing database sphIpHcT7sXd3jG
-2024-02-07 10:54:27 - we_collection - INFO -28076 : --Ğ´ÈëÊı¾İÍê³É: ·şÊÎ -- å§ÔºÑòÈŞĞ¡ÕòÇå²Öµê --
-2024-02-07 10:56:06 - celery_work - INFO -14828 : start running
-2024-02-07 10:56:16 - we_collection - INFO -14828 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢: ¹ºÎï : ·şÊÎ
-2024-02-07 10:56:36 - we_collection - INFO -14828 : ¿ªÊ¼¸üĞÂ : ¶õ¼Ò÷ÈÁ¦ÑòÈŞÕçÑ¡ Êı¾İ
-2024-02-07 10:56:36 - we_collection - INFO -14828 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äÊı¾İ : ·şÊÎ : ¶õ¼Ò÷ÈÁ¦ÑòÈŞÕçÑ¡
-2024-02-07 10:56:41 - we_collection - INFO -14828 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ : ·şÊÎ : ¶õ¼Ò÷ÈÁ¦ÑòÈŞÕçÑ¡
-2024-02-07 10:56:49 - we_collection - INFO -14828 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äµêÆÌÊı¾İ : ·şÊÎ : ¶õ¼Ò÷ÈÁ¦ÑòÈŞÕçÑ¡
-2024-02-07 10:56:55 - we_collection - INFO -14828 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ
-2024-02-07 10:57:09 - we_collection - INFO -14828 : --enter store base info
-2024-02-07 10:57:14 - we_collection - INFO -14828 : --enter store base info === : sphAMGzgXx6Wn22
-2024-02-07 10:57:33 - we_collection - INFO -14828 : ¿ªÊ¼Ñ­»·»ñÈ¡ÉÌÆ·
-2024-02-07 10:57:57 - we_collection - INFO -14828 : »ñÈ¡ÉÌÆ·ĞÅÏ¢½áÊø
-2024-02-07 10:58:51 - we_collection - INFO -14828 : ¿ªÊ¼Ğ´Ö±²¥¼äÊı¾İµ½Êı¾İ¿â: ·şÊÎ -- ¶õ¼Ò÷ÈÁ¦ÑòÈŞÕçÑ¡ --
-2024-02-07 10:58:51 - we_collection - INFO -14828 : writing database sphAMGzgXx6Wn22
-2024-02-07 10:58:51 - we_collection - INFO -14828 : --Ğ´ÈëÊı¾İÍê³É: ·şÊÎ -- ¶õ¼Ò÷ÈÁ¦ÑòÈŞÕçÑ¡ --
-2024-02-07 10:59:04 - we_collection - INFO -14828 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : ¹ºÎï : ·şÊÎ
-2024-02-07 10:59:04 - we_collection - INFO -14828 : check_spider_status: starting
-2024-02-07 10:59:10 - we_collection - INFO -14828 : activity: wechat Ö±²¥ÁĞ±íÒ³£¬ Ã»ÓĞ·ÖÀà
-2024-02-07 10:59:21 - we_collection - INFO -14828 : start function iter to live
-2024-02-07 10:59:21 - we_collection - INFO -14828 : start ¹ºÎï:·şÊÎ
-2024-02-07 11:01:59 - celery_work - INFO -17816 : start running
-2024-02-07 11:02:16 - we_collection - INFO -17816 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢: ¹ºÎï : ·şÊÎ
-2024-02-07 11:02:27 - we_collection - INFO -17816 : ¿ªÊ¼¸üĞÂ : ¶õ¶û¶àË¹ÊĞ¾«Ñ¡ÑòÈŞ Êı¾İ
-2024-02-07 11:02:27 - we_collection - INFO -17816 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äÊı¾İ : ·şÊÎ : ¶õ¶û¶àË¹ÊĞ¾«Ñ¡ÑòÈŞ
-2024-02-07 11:02:28 - we_collection - INFO -17816 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ : ·şÊÎ : ¶õ¶û¶àË¹ÊĞ¾«Ñ¡ÑòÈŞ
-2024-02-07 11:02:37 - we_collection - INFO -17816 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äµêÆÌÊı¾İ : ·şÊÎ : ¶õ¶û¶àË¹ÊĞ¾«Ñ¡ÑòÈŞ
-2024-02-07 11:02:43 - we_collection - INFO -17816 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ
-2024-02-07 11:02:51 - we_collection - INFO -17816 : --enter store base info
-2024-02-07 11:02:54 - we_collection - INFO -17816 : --enter store base info === : sphyzqRH5t4bAHE
-2024-02-07 11:03:10 - we_collection - INFO -17816 : ¿ªÊ¼Ñ­»·»ñÈ¡ÉÌÆ·
-2024-02-07 11:03:33 - we_collection - INFO -17816 : »ñÈ¡ÉÌÆ·ĞÅÏ¢½áÊø
-2024-02-07 11:03:48 - we_collection - INFO -17816 : ¿ªÊ¼Ğ´Ö±²¥¼äÊı¾İµ½Êı¾İ¿â: ·şÊÎ -- ¶õ¶û¶àË¹ÊĞ¾«Ñ¡ÑòÈŞ --
-2024-02-07 11:03:48 - we_collection - INFO -17816 : writing database sphyzqRH5t4bAHE
-2024-02-07 11:03:48 - we_collection - INFO -17816 : --Ğ´ÈëÊı¾İÍê³É: ·şÊÎ -- ¶õ¶û¶àË¹ÊĞ¾«Ñ¡ÑòÈŞ --
-2024-02-07 11:04:02 - we_collection - INFO -17816 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : ¹ºÎï : ·şÊÎ
-2024-02-07 11:04:02 - we_collection - INFO -17816 : check_spider_status: starting
-2024-02-07 11:04:13 - we_collection - INFO -17816 : activity: wechat Ö±²¥ÁĞ±íÒ³£¬ Ã»ÓĞ·ÖÀà
-2024-02-07 11:06:27 - celery_work - INFO -30156 : start running
-2024-02-07 11:06:45 - we_collection - INFO -30156 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢: ¹ºÎï : ·şÊÎ
-2024-02-07 11:07:13 - we_collection - INFO -30156 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : ¹ºÎï : ·şÊÎ
-2024-02-07 11:07:13 - we_collection - INFO -30156 : check_spider_status: starting
-2024-02-07 11:07:19 - we_collection - INFO -30156 : activity: wechat Ö±²¥ÁĞ±íÒ³£¬ Ã»ÓĞ·ÖÀà
-2024-02-07 11:11:53 - celery_work - INFO -20788 : start running
-2024-02-07 11:12:05 - we_collection - INFO -20788 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 11:12:23 - we_collection - INFO -20788 : ¿ªÊ¼¸üĞÂ : PYÑòÈŞ¹¤³§ Êı¾İ
-2024-02-07 11:12:23 - we_collection - INFO -20788 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äÊı¾İ : ·şÊÎ : PYÑòÈŞ¹¤³§
-2024-02-07 11:12:25 - we_collection - INFO -20788 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ : ·şÊÎ : PYÑòÈŞ¹¤³§
-2024-02-07 11:12:34 - we_collection - INFO -20788 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äµêÆÌÊı¾İ : ·şÊÎ : PYÑòÈŞ¹¤³§
-2024-02-07 11:12:40 - we_collection - INFO -20788 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ
-2024-02-07 11:12:46 - we_collection - INFO -20788 : --enter store base info
-2024-02-07 11:12:54 - we_collection - INFO -20788 : --enter store base info === : sphgS9i2qktQskw
-2024-02-07 11:13:30 - we_collection - INFO -20788 : ¿ªÊ¼Ñ­»·»ñÈ¡ÉÌÆ·
-2024-02-07 11:13:43 - we_collection - INFO -20788 : »ñÈ¡ÉÌÆ·ĞÅÏ¢½áÊø
-2024-02-07 11:18:29 - celery_work - INFO -15984 : start running
-2024-02-07 11:18:41 - we_collection - INFO -15984 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 11:20:16 - celery_work - INFO -24548 : start running
-2024-02-07 11:20:20 - we_collection - INFO -24548 : move_to_main_page activity error, restart : ¹ºÎï : ·şÊÎ
-2024-02-07 11:20:20 - we_collection - INFO -24548 : check_spider_status: starting
-2024-02-07 11:20:29 - we_collection - INFO -24548 : activity: wechat Ö±²¥ÁĞ±íÏêÇéÒ³
-2024-02-07 11:20:29 - we_collection - INFO -24548 : start function iter to live
-2024-02-07 11:20:29 - we_collection - INFO -24548 : start ¹ºÎï:·şÊÎ
-2024-02-07 11:20:50 - celery_work - INFO -11292 : start running
-2024-02-07 11:21:00 - we_collection - INFO -11292 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 11:21:38 - we_collection - INFO -11292 : ¿ªÊ¼¸üĞÂ : ¶õ¼Ò¸ß¶ËÑòÈŞÖÆÆ·µê Êı¾İ
-2024-02-07 11:21:38 - we_collection - INFO -11292 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äÊı¾İ : ·şÊÎ : ¶õ¼Ò¸ß¶ËÑòÈŞÖÆÆ·µê
-2024-02-07 11:21:39 - we_collection - INFO -11292 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ : ·şÊÎ : ¶õ¼Ò¸ß¶ËÑòÈŞÖÆÆ·µê
-2024-02-07 14:51:33 - celery_work - INFO -19548 : start running
-2024-02-07 14:51:40 - we_collection - INFO -19548 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 14:51:56 - we_collection - INFO -19548 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : ¹ºÎï : ·şÊÎ
-2024-02-07 14:51:56 - we_collection - INFO -19548 : check_spider_status: starting
-2024-02-07 14:52:08 - we_collection - INFO -19548 : activity: wechat Ö±²¥ÁĞ±íÒ³£¬ Ã»ÓĞ·ÖÀà
-2024-02-07 14:52:17 - we_collection - INFO -19548 : start function iter to live
-2024-02-07 14:52:17 - we_collection - INFO -19548 : start ¹ºÎï:·şÊÎ
-2024-02-07 14:52:17 - we_collection - INFO -19548 : move_to_main_page: ¹ºÎï : ·şÊÎ
-2024-02-07 14:52:21 - we_collection - INFO -19548 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢: ¹ºÎï : ·şÊÎ
-2024-02-07 14:52:21 - we_collection - INFO -19548 : click_enter_live_page ·şÊÎ 
-2024-02-07 14:52:51 - we_collection - INFO -19548 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ
-2024-02-07 14:52:55 - we_collection - INFO -19548 : --enter store base info
-2024-02-07 14:52:58 - we_collection - INFO -19548 : --enter store base info === : sphse8MbsvibP95
-2024-02-07 14:53:04 - we_collection - INFO -19548 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äµêÆÌÊı¾İ : ·şÊÎ : sphse8MbsvibP95
-2024-02-07 14:53:04 - we_collection - INFO -19548 : ¿ªÊ¼¸üĞÂ : sphse8MbsvibP95 Êı¾İ
-2024-02-07 14:53:08 - we_collection - INFO -19548 : ¿ªÊ¼Ñ­»·»ñÈ¡ÉÌÆ·
-2024-02-07 14:54:15 - celery_work - INFO -15828 : start running
-2024-02-07 14:54:21 - we_collection - INFO -15828 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 14:54:37 - we_collection - INFO -15828 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : ¹ºÎï : ·şÊÎ
-2024-02-07 14:55:55 - celery_work - INFO -15860 : start running
-2024-02-07 14:55:58 - we_collection - INFO -15860 : move_to_main_page activity error, restart : ¹ºÎï : ·şÊÎ
-2024-02-07 14:56:17 - celery_work - INFO -18388 : start running
-2024-02-07 14:56:20 - we_collection - INFO -18388 : move_to_main_page activity error, restart : ¹ºÎï : ·şÊÎ
-2024-02-07 14:56:28 - celery_work - INFO -20136 : start running
-2024-02-07 14:56:34 - we_collection - INFO -20136 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 14:57:24 - celery_work - INFO -23868 : start running
-2024-02-07 14:57:30 - we_collection - INFO -23868 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 14:58:13 - celery_work - INFO -9992 : start running
-2024-02-07 14:58:19 - we_collection - INFO -9992 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 14:59:19 - celery_work - INFO -13808 : start running
-2024-02-07 14:59:25 - we_collection - INFO -13808 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 15:01:37 - celery_work - INFO -444 : start running
-2024-02-07 15:01:43 - we_collection - INFO -444 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 16:07:49 - celery_work - INFO -18924 : start running
-2024-02-07 16:08:08 - we_collection - INFO -18924 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 16:13:35 - celery_work - INFO -18824 : start running
-2024-02-07 16:13:41 - we_collection - INFO -18824 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 16:14:54 - we_collection - INFO -18824 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ
-2024-02-07 16:15:05 - we_collection - INFO -18824 : --enter store base info
-2024-02-07 16:15:08 - we_collection - INFO -18824 : --enter store base info === : spheRnfsYRYm9y4
-2024-02-07 16:15:15 - we_collection - INFO -18824 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äµêÆÌÊı¾İ : ·şÊÎ : spheRnfsYRYm9y4
-2024-02-07 16:15:15 - we_collection - INFO -18824 : ¿ªÊ¼¸üĞÂ : spheRnfsYRYm9y4 Êı¾İ
-2024-02-07 16:15:25 - we_collection - INFO -18824 : ¿ªÊ¼Ñ­»·»ñÈ¡ÉÌÆ·
-2024-02-07 16:18:35 - celery_work - INFO -20036 : start running
-2024-02-07 16:18:42 - we_collection - INFO -20036 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 16:19:58 - we_collection - INFO -20036 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ
-2024-02-07 16:20:19 - celery_work - INFO -23568 : start running
-2024-02-07 16:20:25 - we_collection - INFO -23568 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 16:23:31 - celery_work - INFO -19112 : start running
-2024-02-07 16:23:36 - we_collection - INFO -19112 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 16:35:26 - celery_work - INFO -6840 : start running
-2024-02-07 16:35:32 - we_collection - INFO -6840 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 16:43:38 - celery_work - INFO -8600 : start running
-2024-02-07 16:43:43 - we_collection - INFO -8600 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 16:44:07 - we_collection - INFO -8600 : ¿ªÊ¼»ñÈ¡Ö±²¥¼ä»ù±¾Êı¾İ
-2024-02-07 16:44:59 - celery_work - INFO -18312 : start running
-2024-02-07 16:45:04 - we_collection - INFO -18312 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 16:47:14 - celery_work - INFO -29404 : start running
-2024-02-07 16:47:20 - we_collection - INFO -29404 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:05:32 - celery_work - INFO -24068 : start running
-2024-02-07 17:05:38 - we_collection - INFO -24068 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:06:09 - celery_work - INFO -21780 : start running
-2024-02-07 17:06:14 - we_collection - INFO -21780 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:06:29 - celery_work - INFO -21300 : start running
-2024-02-07 17:06:34 - we_collection - INFO -21300 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:06:51 - celery_work - INFO -21444 : start running
-2024-02-07 17:06:56 - we_collection - INFO -21444 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:08:16 - celery_work - INFO -12540 : start running
-2024-02-07 17:08:21 - we_collection - INFO -12540 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:08:41 - celery_work - INFO -2996 : start running
-2024-02-07 17:08:46 - we_collection - INFO -2996 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:09:15 - celery_work - INFO -30048 : start running
-2024-02-07 17:09:21 - we_collection - INFO -30048 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:14:13 - celery_work - INFO -27024 : start running
-2024-02-07 17:14:19 - we_collection - INFO -27024 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:28:45 - celery_work - INFO -21660 : start running
-2024-02-07 17:28:52 - we_collection - INFO -21660 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:29:39 - celery_work - INFO -23416 : start running
-2024-02-07 17:29:45 - we_collection - INFO -23416 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:33:44 - celery_work - INFO -14268 : start running
-2024-02-07 17:33:51 - we_collection - INFO -14268 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:35:32 - celery_work - INFO -27944 : start running
-2024-02-07 17:35:39 - we_collection - INFO -27944 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:37:26 - celery_work - INFO -26712 : start running
-2024-02-07 17:37:33 - we_collection - INFO -26712 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:38:46 - celery_work - INFO -5844 : start running
-2024-02-07 17:38:51 - we_collection - INFO -5844 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:39:57 - we_collection - INFO -5844 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/b1h'], method: None : ¹ºÎï : ·şÊÎ
-2024-02-07 17:39:57 - we_collection - INFO -5844 : check_spider_status: starting
-2024-02-07 17:40:02 - we_collection - INFO -5844 : activity: wechat Ö±²¥ÁĞ±íÏêÇéÒ³
-2024-02-07 17:40:02 - we_collection - INFO -5844 : start function iter to live
-2024-02-07 17:40:02 - we_collection - INFO -5844 : start ¹ºÎï:·şÊÎ
-2024-02-07 17:40:04 - we_collection - INFO -5844 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:40:29 - we_collection - INFO -5844 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/b1h'], method: None : ¹ºÎï : ·şÊÎ
-2024-02-07 17:40:29 - we_collection - INFO -5844 : check_spider_status: starting
-2024-02-07 17:40:34 - we_collection - INFO -5844 : activity: wechat Ö±²¥ÁĞ±íÏêÇéÒ³
-2024-02-07 17:40:34 - we_collection - INFO -5844 : start function iter to live
-2024-02-07 17:40:34 - we_collection - INFO -5844 : start ¹ºÎï:·şÊÎ
-2024-02-07 17:40:36 - we_collection - INFO -5844 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:41:00 - we_collection - INFO -5844 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/b1h'], method: None : ¹ºÎï : ·şÊÎ
-2024-02-07 17:41:00 - we_collection - INFO -5844 : check_spider_status: starting
-2024-02-07 17:41:06 - we_collection - INFO -5844 : activity: wechat Ö±²¥ÁĞ±íÏêÇéÒ³
-2024-02-07 17:41:06 - we_collection - INFO -5844 : start function iter to live
-2024-02-07 17:41:06 - we_collection - INFO -5844 : start ¹ºÎï:·şÊÎ
-2024-02-07 17:41:08 - we_collection - INFO -5844 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 17:46:24 - celery_work - INFO -15376 : start running
-2024-02-07 17:46:29 - we_collection - INFO -15376 : ¿ªÊ¼»ñÈ¡Ö±²¥¼äĞÅÏ¢ ---: ¹ºÎï : ·şÊÎ
-2024-02-07 18:30:08 - celery_work - INFO -19884 : start running
-2024-02-07 18:30:11 - we_collection - INFO -19884 : check_spider_status: starting
-2024-02-07 18:30:25 - we_collection - INFO -19884 : activity: wechat é¦–é¡µ
-2024-02-07 18:31:24 - we_collection - INFO -19884 : start function iter to live
-2024-02-07 18:31:25 - we_collection - INFO -19884 : restart into live
-2024-02-07 18:31:25 - we_collection - INFO -19884 : check_spider_status: starting
-2024-02-07 18:31:32 - we_collection - INFO -19884 : activity: wechat ç›´æ’­åˆ—è¡¨é¡µ
-2024-02-07 18:31:35 - we_collection - INFO -19884 : start function iter to live
-2024-02-07 18:31:35 - we_collection - INFO -19884 : start è´­ç‰©:æœé¥°
-2024-02-07 18:31:40 - we_collection - INFO -19884 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:32:44 - celery_work - INFO -12724 : start running
-2024-02-07 18:32:47 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:32:54 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åˆ—è¡¨è¯¦æƒ…é¡µ
-2024-02-07 18:32:54 - we_collection - INFO -12724 : start function iter to live
-2024-02-07 18:32:54 - we_collection - INFO -12724 : start è´­ç‰©:æœé¥°
-2024-02-07 18:32:57 - we_collection - INFO -12724 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:33:08 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:33:19 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åŸºæœ¬ä¿¡æ¯é¡µ
-2024-02-07 18:33:19 - we_collection - INFO -12724 : click_enter_live_page è´­ç‰©:æœé¥° 
-2024-02-07 18:33:24 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:33:30 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åˆ—è¡¨è¯¦æƒ…é¡µ
-2024-02-07 18:33:30 - we_collection - INFO -12724 : start function iter to live
-2024-02-07 18:33:31 - we_collection - INFO -12724 : start è´­ç‰©:æœé¥°
-2024-02-07 18:33:34 - we_collection - INFO -12724 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:33:43 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:33:54 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åŸºæœ¬ä¿¡æ¯é¡µ
-2024-02-07 18:33:54 - we_collection - INFO -12724 : click_enter_live_page è´­ç‰©:æœé¥° 
-2024-02-07 18:33:58 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:34:05 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åˆ—è¡¨è¯¦æƒ…é¡µ
-2024-02-07 18:34:05 - we_collection - INFO -12724 : start function iter to live
-2024-02-07 18:34:05 - we_collection - INFO -12724 : start è´­ç‰©:æœé¥°
-2024-02-07 18:34:08 - we_collection - INFO -12724 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:34:18 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:34:28 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åŸºæœ¬ä¿¡æ¯é¡µ
-2024-02-07 18:34:28 - we_collection - INFO -12724 : click_enter_live_page è´­ç‰©:æœé¥° 
-2024-02-07 18:34:33 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:34:39 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åˆ—è¡¨è¯¦æƒ…é¡µ
-2024-02-07 18:34:39 - we_collection - INFO -12724 : start function iter to live
-2024-02-07 18:34:39 - we_collection - INFO -12724 : start è´­ç‰©:æœé¥°
-2024-02-07 18:34:42 - we_collection - INFO -12724 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:34:52 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:35:03 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åŸºæœ¬ä¿¡æ¯é¡µ
-2024-02-07 18:35:03 - we_collection - INFO -12724 : click_enter_live_page è´­ç‰©:æœé¥° 
-2024-02-07 18:35:07 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:35:13 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åˆ—è¡¨è¯¦æƒ…é¡µ
-2024-02-07 18:35:13 - we_collection - INFO -12724 : start function iter to live
-2024-02-07 18:35:13 - we_collection - INFO -12724 : start è´­ç‰©:æœé¥°
-2024-02-07 18:35:16 - we_collection - INFO -12724 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:35:26 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:35:37 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åŸºæœ¬ä¿¡æ¯é¡µ
-2024-02-07 18:35:37 - we_collection - INFO -12724 : click_enter_live_page è´­ç‰©:æœé¥° 
-2024-02-07 18:35:41 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:35:47 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åˆ—è¡¨è¯¦æƒ…é¡µ
-2024-02-07 18:35:47 - we_collection - INFO -12724 : start function iter to live
-2024-02-07 18:35:47 - we_collection - INFO -12724 : start è´­ç‰©:æœé¥°
-2024-02-07 18:35:50 - we_collection - INFO -12724 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:36:00 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:36:11 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åŸºæœ¬ä¿¡æ¯é¡µ
-2024-02-07 18:36:11 - we_collection - INFO -12724 : click_enter_live_page è´­ç‰©:æœé¥° 
-2024-02-07 18:36:15 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:36:21 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åˆ—è¡¨è¯¦æƒ…é¡µ
-2024-02-07 18:36:21 - we_collection - INFO -12724 : start function iter to live
-2024-02-07 18:36:22 - we_collection - INFO -12724 : start è´­ç‰©:æœé¥°
-2024-02-07 18:36:25 - we_collection - INFO -12724 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:36:34 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:36:45 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åŸºæœ¬ä¿¡æ¯é¡µ
-2024-02-07 18:36:45 - we_collection - INFO -12724 : click_enter_live_page è´­ç‰©:æœé¥° 
-2024-02-07 18:36:49 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:36:55 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åˆ—è¡¨è¯¦æƒ…é¡µ
-2024-02-07 18:36:55 - we_collection - INFO -12724 : start function iter to live
-2024-02-07 18:36:55 - we_collection - INFO -12724 : start è´­ç‰©:æœé¥°
-2024-02-07 18:36:58 - we_collection - INFO -12724 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:37:08 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:37:19 - we_collection - INFO -12724 : activity: wechat ç›´æ’­åŸºæœ¬ä¿¡æ¯é¡µ
-2024-02-07 18:37:19 - we_collection - INFO -12724 : click_enter_live_page è´­ç‰©:æœé¥° 
-2024-02-07 18:37:23 - we_collection - INFO -12724 : check_spider_status: starting
-2024-02-07 18:37:49 - celery_work - INFO -1192 : start running
-2024-02-07 18:37:52 - we_collection - INFO -1192 : check_spider_status: starting
-2024-02-07 18:37:59 - we_collection - INFO -1192 : activity: wechat ç›´æ’­åˆ—è¡¨è¯¦æƒ…é¡µ
-2024-02-07 18:37:59 - we_collection - INFO -1192 : start function iter to live
-2024-02-07 18:37:59 - we_collection - INFO -1192 : start è´­ç‰©:æœé¥°
-2024-02-07 18:38:05 - we_collection - INFO -1192 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:39:11 - we_collection - INFO -1192 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
-2024-02-07 18:39:18 - we_collection - INFO -1192 : --enter store base info
-2024-02-07 18:39:25 - we_collection - INFO -1192 : --enter store base info === : spheBVhaZ45TBlU
-2024-02-07 18:39:36 - we_collection - INFO -1192 : å¼€å§‹è·å–ç›´æ’­é—´åº—é“ºæ•°æ® : æœé¥° : spheBVhaZ45TBlU
-2024-02-07 18:39:36 - we_collection - INFO -1192 : å¼€å§‹æ›´æ–° : spheBVhaZ45TBlU æ•°æ®
-2024-02-07 18:41:03 - celery_work - INFO -5020 : start running
-2024-02-07 18:41:06 - we_collection - INFO -5020 : check_spider_status: starting
-2024-02-07 18:41:22 - we_collection - INFO -5020 : activity: wechat ç›´æ’­åˆ—è¡¨é¡µï¼Œ æ²¡æœ‰åˆ†ç±»
-2024-02-07 18:41:44 - we_collection - INFO -5020 : start function iter to live
-2024-02-07 18:41:44 - we_collection - INFO -5020 : restart into live
-2024-02-07 18:41:44 - we_collection - INFO -5020 : check_spider_status: starting
-2024-02-07 18:41:54 - we_collection - INFO -5020 : activity: wechat ç›´æ’­åˆ—è¡¨é¡µï¼Œ æ²¡æœ‰åˆ†ç±»
-2024-02-07 18:42:13 - we_collection - INFO -5020 : start function iter to live
-2024-02-07 18:42:13 - we_collection - INFO -5020 : start è´­ç‰©:æœé¥°
-2024-02-07 18:42:19 - we_collection - INFO -5020 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:42:59 - we_collection - INFO -5020 : check_spider_status: starting
-2024-02-07 18:43:17 - we_collection - INFO -5020 : activity: wechat é¦–é¡µ
-2024-02-07 18:43:50 - we_collection - INFO -5020 : start function iter to live
-2024-02-07 18:43:50 - we_collection - INFO -5020 : start è´­ç‰©:æœé¥°
-2024-02-07 18:43:56 - we_collection - INFO -5020 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:44:28 - we_collection - INFO -5020 : æ²¡æœ‰æŸ¥è¯¢åˆ°å…ƒç´ , é‡å¯: æœé¥° : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k3o'], method: None
-2024-02-07 18:44:28 - we_collection - INFO -5020 : check_spider_status: starting
-2024-02-07 18:44:34 - we_collection - INFO -5020 : activity: wechat ç›´æ’­åˆ—è¡¨è¯¦æƒ…é¡µ
-2024-02-07 18:44:34 - we_collection - INFO -5020 : start function iter to live
-2024-02-07 18:44:34 - we_collection - INFO -5020 : start è´­ç‰©:æœé¥°
-2024-02-07 18:44:39 - we_collection - INFO -5020 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 18:45:59 - we_collection - INFO -5020 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
-2024-02-07 18:46:06 - we_collection - INFO -5020 : --enter store base info
-2024-02-07 18:46:11 - we_collection - INFO -5020 : --enter store base info === : spheBVhaZ45TBlU
-2024-02-07 18:46:36 - we_collection - INFO -5020 : å¼€å§‹è·å–ç›´æ’­é—´åº—é“ºæ•°æ® : æœé¥° : spheBVhaZ45TBlU
-2024-02-07 18:47:13 - we_collection - INFO -5020 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : è´­ç‰© : æœé¥°
-2024-02-07 18:47:13 - we_collection - INFO -5020 : check_spider_status: starting
-2024-02-07 18:47:25 - we_collection - INFO -5020 : activity: wechat ç›´æ’­åˆ—è¡¨é¡µï¼Œ æœ‰åˆ†ç±»
-2024-02-07 18:47:25 - we_collection - INFO -5020 : click_enter_live_page è´­ç‰©:æœé¥° 
-2024-02-07 18:48:10 - we_collection - INFO -5020 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
-2024-02-07 18:48:17 - we_collection - INFO -5020 : --enter store base info
-2024-02-07 18:48:24 - we_collection - INFO -5020 : --enter store base info === : spheBVhaZ45TBlU
-2024-02-07 18:48:39 - we_collection - INFO -5020 : å¼€å§‹è·å–ç›´æ’­é—´åº—é“ºæ•°æ® : è´­ç‰©:æœé¥° : spheBVhaZ45TBlU
-2024-02-07 18:52:56 - celery_work - INFO -17856 : start running
-2024-02-07 18:52:59 - we_collection - INFO -17856 : check_spider_status: starting
-2024-02-07 18:53:16 - we_collection - INFO -17856 : activity: wechat ç›´æ’­åŸºæœ¬ä¿¡æ¯é¡µ
-2024-02-07 18:53:16 - we_collection - INFO -17856 : click_enter_live_page  
-2024-02-07 18:54:09 - celery_work - INFO -15124 : start running
-2024-02-07 18:54:12 - we_collection - INFO -15124 : check_spider_status: starting
-2024-02-07 18:55:42 - celery_work - INFO -12600 : start running
-2024-02-07 18:55:45 - we_collection - INFO -12600 : check_spider_status: starting
-2024-02-07 18:55:53 - celery_work - INFO -10984 : start running
-2024-02-07 18:55:56 - we_collection - INFO -10984 : check_spider_status: starting
-2024-02-07 18:56:14 - we_collection - INFO -10984 : activity: wechat é¦–é¡µ
-2024-02-07 18:56:57 - we_collection - INFO -10984 : start function iter to live
-2024-02-07 18:56:57 - we_collection - INFO -10984 : restart into live
-2024-02-07 18:56:57 - we_collection - INFO -10984 : check_spider_status: starting
-2024-02-07 18:57:10 - we_collection - INFO -10984 : activity: wechat ç›´æ’­åˆ—è¡¨é¡µ
-2024-02-07 18:57:13 - we_collection - INFO -10984 : start function iter to live
-2024-02-07 18:57:15 - we_collection - INFO -10984 : start è´­ç‰©:æœé¥°
-2024-02-07 18:57:24 - we_collection - INFO -10984 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 19:01:10 - celery_work - INFO -3920 : start running
-2024-02-07 19:01:13 - we_collection - INFO -3920 : check_spider_status: starting
-2024-02-07 19:01:28 - we_collection - INFO -3920 : activity: wechat é¦–é¡µ
-2024-02-07 19:02:06 - we_collection - INFO -3920 : start function iter to live
-2024-02-07 19:02:07 - we_collection - INFO -3920 : start è´­ç‰©:æœé¥°
-2024-02-07 19:02:12 - we_collection - INFO -3920 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
-2024-02-07 19:02:58 - we_collection - INFO -3920 : check_spider_status: starting
-2024-02-07 19:03:09 - we_collection - INFO -3920 : activity: wechat é¦–é¡µ
-2024-02-07 19:03:34 - we_collection - INFO -3920 : start function iter to live
-2024-02-07 19:03:34 - we_collection - INFO -3920 : start è´­ç‰©:æœé¥°
-2024-02-07 19:03:39 - we_collection - INFO -3920 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
+2024-02-18 14:32:19 - celery_work - INFO -5632 : starting time : 1708237939.9810438
+2024-02-18 14:32:19 - we_collection - INFO -5632 : check_spider_status: starting
+2024-02-18 14:32:19 - we_collection - INFO -5632 : check start wechat time : 1708237939.9810438
+2024-02-18 14:32:26 - we_collection - INFO -5632 : activity: wechat é¦–é¡µ
+2024-02-18 14:32:46 - we_collection - INFO -5632 : start function iter to live
+2024-02-18 14:32:47 - we_collection - INFO -5632 : start è´­ç‰©:æœé¥°
+2024-02-18 14:32:51 - we_collection - INFO -5632 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
+2024-02-18 14:33:24 - we_collection - INFO -5632 : active_level time : 26.71485137939453
+2024-02-18 14:33:33 - we_collection - INFO -5632 : store_base time : 4.376625061035156
+2024-02-18 14:33:50 - we_collection - INFO -5632 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/k69', index=1], method: None : è´­ç‰© : æœé¥°
+2024-02-18 14:33:50 - we_collection - INFO -5632 : check_spider_status: starting
+2024-02-18 14:33:50 - we_collection - INFO -5632 : check start wechat time : 1708238030.7193506
+2024-02-18 14:33:53 - we_collection - INFO -5632 : start è´­ç‰©:é£Ÿå“
+2024-02-18 14:33:54 - we_collection - INFO -5632 : move_to_main_page activity error, restart : è´­ç‰© : é£Ÿå“
+2024-02-18 14:33:54 - we_collection - INFO -5632 : check_spider_status: starting
+2024-02-18 14:33:54 - we_collection - INFO -5632 : check start wechat time : 1708238034.7013128
+2024-02-18 14:33:56 - we_collection - INFO -5632 : start è´­ç‰©:ç¾å¦†
+2024-02-18 14:33:57 - we_collection - INFO -5632 : move_to_main_page activity error, restart : è´­ç‰© : ç¾å¦†
+2024-02-18 14:33:57 - we_collection - INFO -5632 : check_spider_status: starting
+2024-02-18 14:33:57 - we_collection - INFO -5632 : check start wechat time : 1708238037.9946945
+2024-02-18 14:34:00 - we_collection - INFO -5632 : start è´­ç‰©:æ•°ç å®¶ç”µ
+2024-02-18 14:34:01 - we_collection - INFO -5632 : move_to_main_page activity error, restart : è´­ç‰© : æ•°ç å®¶ç”µ
+2024-02-18 14:34:01 - we_collection - INFO -5632 : check_spider_status: starting
+2024-02-18 14:34:01 - we_collection - INFO -5632 : check start wechat time : 1708238041.5937362
+2024-02-18 14:34:04 - we_collection - INFO -5632 : start è´­ç‰©:ç å®æ–‡ç©
+2024-02-18 14:34:05 - we_collection - INFO -5632 : move_to_main_page activity error, restart : è´­ç‰© : ç å®æ–‡ç©
+2024-02-18 14:34:05 - we_collection - INFO -5632 : check_spider_status: starting
+2024-02-18 14:34:05 - we_collection - INFO -5632 : check start wechat time : 1708238045.1413002
+2024-02-18 14:34:07 - we_collection - INFO -5632 : start è´­ç‰©:å›¾ä¹¦
+2024-02-18 14:34:08 - we_collection - INFO -5632 : move_to_main_page activity error, restart : è´­ç‰© : å›¾ä¹¦
+2024-02-18 14:34:08 - we_collection - INFO -5632 : check_spider_status: starting
+2024-02-18 14:34:08 - we_collection - INFO -5632 : check start wechat time : 1708238048.7003813
+2024-02-18 14:34:10 - we_collection - INFO -5632 : start è´­ç‰©:å®¶è£…æ—¥ç”¨
+2024-02-18 14:34:12 - we_collection - INFO -5632 : move_to_main_page activity error, restart : è´­ç‰© : å®¶è£…æ—¥ç”¨
+2024-02-18 14:34:12 - we_collection - INFO -5632 : check_spider_status: starting
+2024-02-18 14:34:12 - we_collection - INFO -5632 : check start wechat time : 1708238052.057914
+2024-02-18 14:37:21 - celery_work - INFO -328 : starting time : 1708238241.973535
+2024-02-18 14:37:21 - we_collection - INFO -328 : check_spider_status: starting
+2024-02-18 14:37:21 - we_collection - INFO -328 : check start wechat time : 1708238241.973535
+2024-02-18 14:37:28 - we_collection - INFO -328 : activity: wechat é¦–é¡µ
+2024-02-18 14:37:41 - we_collection - INFO -328 : start function iter to live
+2024-02-18 14:37:42 - we_collection - INFO -328 : start è´­ç‰©:æœé¥°
+2024-02-18 14:37:46 - we_collection - INFO -328 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
+2024-02-18 14:38:20 - we_collection - INFO -328 : active_level time : 28.28716731071472
+2024-02-18 14:38:31 - we_collection - INFO -328 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 14:38:41 - we_collection - INFO -328 : --enter store base info
+2024-02-18 14:38:48 - we_collection - INFO -328 : --enter store base info === : sphMLhqHJQGzQF8
+2024-02-18 14:38:53 - we_collection - INFO -328 : store_base time : 25.47899889945984
+2024-02-18 14:39:25 - we_collection - INFO -328 : active_level time : 22.10279655456543
+2024-02-18 14:39:36 - we_collection - INFO -328 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 14:39:46 - we_collection - INFO -328 : --enter store base info
+2024-02-18 14:39:53 - we_collection - INFO -328 : --enter store base info === : sphjmD5rrxG2DYV
+2024-02-18 14:39:58 - we_collection - INFO -328 : store_base time : 24.77886652946472
+2024-02-18 14:39:58 - we_collection - INFO -328 : å¼€å§‹æ›´æ–° : sphjmD5rrxG2DYV æ•°æ®
+2024-02-18 14:40:09 - we_collection - INFO -328 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 14:40:53 - we_collection - INFO -328 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 14:40:57 - we_collection - INFO -328 : live_product time 58.89312791824341
+2024-02-18 14:40:57 - we_collection - INFO -328 : write finish time 0.03595328330993652 
+2024-02-18 14:41:47 - we_collection - INFO -328 : active_level time : 41.142831563949585
+2024-02-18 14:41:57 - we_collection - INFO -328 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 14:42:07 - we_collection - INFO -328 : --enter store base info
+2024-02-18 14:42:14 - we_collection - INFO -328 : --enter store base info === : sph1orpGVVSOH2n
+2024-02-18 14:42:19 - we_collection - INFO -328 : store_base time : 24.76840591430664
+2024-02-18 14:42:19 - we_collection - INFO -328 : å¼€å§‹æ›´æ–° : sph1orpGVVSOH2n æ•°æ®
+2024-02-18 14:42:35 - we_collection - INFO -328 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 14:43:12 - we_collection - INFO -328 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 14:43:15 - we_collection - INFO -328 : live_product time 56.55411410331726
+2024-02-18 14:43:16 - we_collection - INFO -328 : write finish time 0.014518260955810547 
+2024-02-18 14:43:50 - we_collection - INFO -328 : active_level time : 27.300072193145752
+2024-02-18 14:44:03 - we_collection - INFO -328 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 14:44:23 - we_collection - INFO -328 : --enter store base info
+2024-02-18 14:44:30 - we_collection - INFO -328 : --enter store base info === : sph4wpQn5SBwcax
+2024-02-18 14:44:33 - we_collection - INFO -328 : store_base time : 33.500712633132935
+2024-02-18 14:44:33 - we_collection - INFO -328 : å¼€å§‹æ›´æ–° : sph4wpQn5SBwcax æ•°æ®
+2024-02-18 14:44:44 - we_collection - INFO -328 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 14:45:16 - we_collection - INFO -328 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 14:45:20 - we_collection - INFO -328 : live_product time 46.640782833099365
+2024-02-18 14:45:20 - we_collection - INFO -328 : write finish time 0.010000467300415039 
+2024-02-18 14:45:37 - we_collection - INFO -328 : move_to_main_page -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/b1h'], method: None : è´­ç‰© : æœé¥°
+2024-02-18 14:45:37 - we_collection - INFO -328 : check_spider_status: starting
+2024-02-18 14:45:37 - we_collection - INFO -328 : check start wechat time : 1708238737.7360241
+2024-02-18 14:45:44 - we_collection - INFO -328 : start è´­ç‰©:é£Ÿå“
+2024-02-18 14:45:48 - we_collection - INFO -328 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : é£Ÿå“
+2024-02-18 14:55:06 - celery_work - INFO -3532 : starting time : 1708239306.5420256
+2024-02-18 14:55:06 - we_collection - INFO -3532 : check_spider_status: starting
+2024-02-18 14:55:06 - we_collection - INFO -3532 : check start wechat time : 1708239306.5430808
+2024-02-18 14:55:12 - we_collection - INFO -3532 : activity: wechat é¦–é¡µ
+2024-02-18 14:55:26 - we_collection - INFO -3532 : start function iter to live
+2024-02-18 14:55:27 - we_collection - INFO -3532 : start è´­ç‰©:æœé¥°
+2024-02-18 14:55:30 - we_collection - INFO -3532 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
+2024-02-18 14:56:02 - we_collection - INFO -3532 : active_level time : 24.418437719345093
+2024-02-18 14:56:02 - we_collection - INFO -3532 : active_level time 1 : 6.461571216583252
+2024-02-18 14:56:13 - we_collection - INFO -3532 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 14:56:23 - we_collection - INFO -3532 : --enter store base info
+2024-02-18 14:56:30 - we_collection - INFO -3532 : --enter store base info === : sph1orpGVVSOH2n
+2024-02-18 14:56:34 - we_collection - INFO -3532 : store_base time : 24.992543697357178
+2024-02-18 14:58:29 - celery_work - INFO -7040 : starting time : 1708239509.9628842
+2024-02-18 14:58:29 - we_collection - INFO -7040 : check_spider_status: starting
+2024-02-18 14:58:29 - we_collection - INFO -7040 : check start wechat time : 1708239509.9628842
+2024-02-18 14:58:38 - we_collection - INFO -7040 : activity: wechat é¦–é¡µ
+2024-02-18 14:58:54 - we_collection - INFO -7040 : start function iter to live
+2024-02-18 14:58:55 - we_collection - INFO -7040 : start è´­ç‰©:æœé¥°
+2024-02-18 14:58:59 - we_collection - INFO -7040 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
+2024-02-18 14:59:38 - we_collection - INFO -7040 : active_level time : 32.33524489402771
+2024-02-18 14:59:38 - we_collection - INFO -7040 : active_level time 1 : 9.623827695846558
+2024-02-18 14:59:49 - we_collection - INFO -7040 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 15:00:00 - we_collection - INFO -7040 : --enter store base info
+2024-02-18 15:00:07 - we_collection - INFO -7040 : --enter store base info === : sph1orpGVVSOH2n
+2024-02-18 15:00:12 - we_collection - INFO -7040 : store_base time : 25.89791178703308
+2024-02-18 15:13:18 - celery_work - INFO -16764 : starting time : 1708240398.0957527
+2024-02-18 15:13:18 - we_collection - INFO -16764 : check_spider_status: starting
+2024-02-18 15:13:18 - we_collection - INFO -16764 : check start wechat time : 1708240398.0957527
+2024-02-18 15:13:26 - we_collection - INFO -16764 : activity: wechat é¦–é¡µ
+2024-02-18 15:13:45 - we_collection - INFO -16764 : start function iter to live
+2024-02-18 15:13:46 - we_collection - INFO -16764 : start è´­ç‰©:æœé¥°
+2024-02-18 15:13:51 - we_collection - INFO -16764 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
+2024-02-18 15:14:37 - we_collection - INFO -16764 : active_level time : 39.439993143081665
+2024-02-18 15:14:37 - we_collection - INFO -16764 : active_level time 1 : 15.676992416381836
+2024-02-18 15:17:56 - celery_work - INFO -7476 : starting time : 1708240676.673244
+2024-02-18 15:17:56 - we_collection - INFO -7476 : check_spider_status: starting
+2024-02-18 15:17:56 - we_collection - INFO -7476 : check start wechat time : 1708240676.673244
+2024-02-18 15:18:03 - we_collection - INFO -7476 : activity: wechat é¦–é¡µ
+2024-02-18 15:18:17 - we_collection - INFO -7476 : start function iter to live
+2024-02-18 15:18:18 - we_collection - INFO -7476 : start è´­ç‰©:æœé¥°
+2024-02-18 15:18:22 - we_collection - INFO -7476 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
+2024-02-18 15:18:55 - we_collection - INFO -7476 : active_level time : 26.466887712478638
+2024-02-18 15:18:55 - we_collection - INFO -7476 : active_level time 1 : 5.295521020889282
+2024-02-18 15:19:06 - we_collection - INFO -7476 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 15:19:17 - we_collection - INFO -7476 : --enter store base info
+2024-02-18 15:19:24 - we_collection - INFO -7476 : --enter store base info === : sph1orpGVVSOH2n
+2024-02-18 15:19:28 - we_collection - INFO -7476 : store_base time : 24.84184217453003
+2024-02-18 15:19:28 - we_collection - INFO -7476 : å¼€å§‹æ›´æ–° : sph1orpGVVSOH2n æ•°æ®
+2024-02-18 15:19:41 - we_collection - INFO -7476 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 15:20:19 - we_collection - INFO -7476 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 15:20:23 - we_collection - INFO -7476 : live_product time 54.60027527809143
+2024-02-18 15:20:23 - we_collection - INFO -7476 : write finish time 0.02389216423034668 
+2024-02-18 15:24:03 - we_collection - INFO -7476 : active_level time : 213.3319764137268
+2024-02-18 15:24:03 - we_collection - INFO -7476 : active_level time 1 : 71.09857630729675
+2024-02-18 15:24:45 - we_collection - INFO -7476 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 15:24:55 - we_collection - INFO -7476 : --enter store base info
+2024-02-18 15:25:01 - we_collection - INFO -7476 : --enter store base info === : sph3n8XQGGxf0Ct
+2024-02-18 15:25:08 - we_collection - INFO -7476 : store_base time : 26.63537049293518
+2024-02-18 15:25:08 - we_collection - INFO -7476 : å¼€å§‹æ›´æ–° : sph3n8XQGGxf0Ct æ•°æ®
+2024-02-18 15:26:00 - we_collection - INFO -7476 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 15:29:32 - we_collection - INFO -7476 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 15:29:38 - we_collection - INFO -7476 : live_product time 269.94145703315735
+2024-02-18 15:29:38 - we_collection - INFO -7476 : write finish time 0.010375261306762695 
+2024-02-18 15:30:18 - we_collection - INFO -7476 : active_level time : 29.582464456558228
+2024-02-18 15:30:18 - we_collection - INFO -7476 : active_level time 1 : 6.909776449203491
+2024-02-18 15:30:29 - we_collection - INFO -7476 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 15:30:39 - we_collection - INFO -7476 : --enter store base info
+2024-02-18 15:30:46 - we_collection - INFO -7476 : --enter store base info === : sphMLhqHJQGzQF8
+2024-02-18 15:30:51 - we_collection - INFO -7476 : store_base time : 25.519243478775024
+2024-02-18 15:30:51 - we_collection - INFO -7476 : å¼€å§‹æ›´æ–° : sphMLhqHJQGzQF8 æ•°æ®
+2024-02-18 15:31:04 - we_collection - INFO -7476 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 15:32:02 - we_collection - INFO -7476 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 15:32:07 - we_collection - INFO -7476 : live_product time 75.29027271270752
+2024-02-18 15:32:07 - we_collection - INFO -7476 : write finish time 0.009968996047973633 
+2024-02-18 15:36:31 - celery_work - INFO -13536 : starting time : 1708241791.6968942
+2024-02-18 15:36:31 - we_collection - INFO -13536 : check_spider_status: starting
+2024-02-18 15:36:31 - we_collection - INFO -13536 : check start wechat time : 1708241791.6968942
+2024-02-18 15:36:44 - celery_work - INFO -5136 : starting time : 1708241804.4292874
+2024-02-18 15:36:44 - we_collection - INFO -5136 : check_spider_status: starting
+2024-02-18 15:36:44 - we_collection - INFO -5136 : check start wechat time : 1708241804.4292874
+2024-02-18 15:36:50 - we_collection - INFO -5136 : activity: wechat é¦–é¡µ
+2024-02-18 15:37:04 - we_collection - INFO -5136 : start function iter to live
+2024-02-18 15:37:05 - we_collection - INFO -5136 : start è´­ç‰©:æœé¥°
+2024-02-18 15:37:09 - we_collection - INFO -5136 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
+2024-02-18 15:37:41 - we_collection - INFO -5136 : active_level time : 25.87664794921875
+2024-02-18 15:37:41 - we_collection - INFO -5136 : active_level time 1 : 5.9235522747039795
+2024-02-18 15:37:51 - we_collection - INFO -5136 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 15:38:01 - we_collection - INFO -5136 : --enter store base info
+2024-02-18 15:38:07 - we_collection - INFO -5136 : --enter store base info === : sphMLhqHJQGzQF8
+2024-02-18 15:38:13 - we_collection - INFO -5136 : store_base time : 25.02191472053528
+2024-02-18 15:38:13 - we_collection - INFO -5136 : å¼€å§‹æ›´æ–° : sphMLhqHJQGzQF8 æ•°æ®
+2024-02-18 15:38:24 - we_collection - INFO -5136 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 15:39:30 - we_collection - INFO -5136 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 15:39:53 - we_collection - INFO -5136 : live_product time 99.58575201034546
+2024-02-18 15:39:53 - we_collection - INFO -5136 : write finish time 0.023954153060913086 
+2024-02-18 15:40:19 - we_collection - INFO -5136 : active_level time : 16.109636306762695
+2024-02-18 15:40:19 - we_collection - INFO -5136 : active_level time 1 : 4.744007587432861
+2024-02-18 15:40:29 - we_collection - INFO -5136 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 15:40:38 - we_collection - INFO -5136 : --enter store base info
+2024-02-18 15:40:44 - we_collection - INFO -5136 : --enter store base info === : sph3n8XQGGxf0Ct
+2024-02-18 15:40:48 - we_collection - INFO -5136 : store_base time : 21.91925024986267
+2024-02-18 15:40:48 - we_collection - INFO -5136 : å¼€å§‹æ›´æ–° : sph3n8XQGGxf0Ct æ•°æ®
+2024-02-18 15:40:55 - we_collection - INFO -5136 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 15:41:23 - we_collection - INFO -5136 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 15:41:35 - we_collection - INFO -5136 : live_product time 47.575379610061646
+2024-02-18 15:41:35 - we_collection - INFO -5136 : write finish time 0.01994943618774414 
+2024-02-18 15:42:09 - we_collection - INFO -5136 : active_level time : 24.501813411712646
+2024-02-18 15:42:09 - we_collection - INFO -5136 : active_level time 1 : 7.834365606307983
+2024-02-18 15:42:21 - we_collection - INFO -5136 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 15:42:31 - we_collection - INFO -5136 : --enter store base info
+2024-02-18 15:42:37 - we_collection - INFO -5136 : --enter store base info === : sph1orpGVVSOH2n
+2024-02-18 15:42:42 - we_collection - INFO -5136 : store_base time : 24.4982750415802
+2024-02-18 15:42:42 - we_collection - INFO -5136 : å¼€å§‹æ›´æ–° : sph1orpGVVSOH2n æ•°æ®
+2024-02-18 15:42:43 - we_collection - INFO -5136 : live_product time 1.1219141483306885
+2024-02-18 15:42:43 - we_collection - INFO -5136 : write finish time 0.0 
+2024-02-18 15:43:21 - we_collection - INFO -5136 : active_level time : 28.15343141555786
+2024-02-18 15:43:21 - we_collection - INFO -5136 : active_level time 1 : 8.347054243087769
+2024-02-18 15:43:34 - we_collection - INFO -5136 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 15:43:52 - we_collection - INFO -5136 : --enter store base info
+2024-02-18 15:43:58 - we_collection - INFO -5136 : --enter store base info === : sph4wpQn5SBwcax
+2024-02-18 15:44:03 - we_collection - INFO -5136 : store_base time : 32.6688506603241
+2024-02-18 15:44:03 - we_collection - INFO -5136 : å¼€å§‹æ›´æ–° : sph4wpQn5SBwcax æ•°æ®
+2024-02-18 15:44:13 - we_collection - INFO -5136 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 15:45:02 - we_collection - INFO -5136 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 15:45:17 - we_collection - INFO -5136 : live_product time 74.11460089683533
+2024-02-18 15:45:17 - we_collection - INFO -5136 : write finish time 0.020950794219970703 
+2024-02-18 15:45:39 - we_collection - INFO -5136 : start è´­ç‰©:é£Ÿå“
+2024-02-18 15:45:40 - we_collection - INFO -5136 : start è´­ç‰©:ç¾å¦†
+2024-02-18 15:45:41 - we_collection - INFO -5136 : start è´­ç‰©:æ•°ç å®¶ç”µ
+2024-02-18 15:45:42 - we_collection - INFO -5136 : start è´­ç‰©:ç å®æ–‡ç©
+2024-02-18 15:45:43 - we_collection - INFO -5136 : start è´­ç‰©:å›¾ä¹¦
+2024-02-18 15:45:45 - we_collection - INFO -5136 : start è´­ç‰©:å®¶è£…æ—¥ç”¨
+2024-02-18 15:53:07 - celery_work - INFO -6220 : starting time : 1708242787.9566238
+2024-02-18 15:53:07 - we_collection - INFO -6220 : check_spider_status: starting
+2024-02-18 15:53:07 - we_collection - INFO -6220 : check start wechat time : 1708242787.9566238
+2024-02-18 15:53:14 - we_collection - INFO -6220 : activity: wechat é¦–é¡µ
+2024-02-18 15:53:27 - we_collection - INFO -6220 : start function iter to live
+2024-02-18 15:53:28 - we_collection - INFO -6220 : start è´­ç‰©:æœé¥°
+2024-02-18 15:53:32 - we_collection - INFO -6220 : å¼€å§‹è·å–ç›´æ’­é—´ä¿¡æ¯ ---: è´­ç‰© : æœé¥°
+2024-02-18 15:54:08 - we_collection - INFO -6220 : active_level time : 28.752026081085205
+2024-02-18 15:54:08 - we_collection - INFO -6220 : active_level time 1 : 6.83407735824585
+2024-02-18 15:54:19 - we_collection - INFO -6220 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 15:54:29 - we_collection - INFO -6220 : --enter store base info
+2024-02-18 15:54:35 - we_collection - INFO -6220 : --enter store base info === : sphMLhqHJQGzQF8
+2024-02-18 15:54:41 - we_collection - INFO -6220 : store_base time : 24.87863802909851
+2024-02-18 15:54:41 - we_collection - INFO -6220 : å¼€å§‹æ›´æ–° : sphMLhqHJQGzQF8 æ•°æ®
+2024-02-18 15:54:51 - we_collection - INFO -6220 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 15:58:39 - we_collection - INFO -6220 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 15:58:53 - we_collection - INFO -6220 : live_product time 251.9144790172577
+2024-02-18 15:58:53 - we_collection - INFO -6220 : write finish time 0.02800154685974121 
+2024-02-18 15:59:41 - we_collection - INFO -6220 : active_level time : 39.56486701965332
+2024-02-18 15:59:41 - we_collection - INFO -6220 : active_level time 1 : 24.145822763442993
+2024-02-18 15:59:53 - we_collection - INFO -6220 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 16:00:02 - we_collection - INFO -6220 : --enter store base info
+2024-02-18 16:00:08 - we_collection - INFO -6220 : --enter store base info === : sph3n8XQGGxf0Ct
+2024-02-18 16:00:16 - we_collection - INFO -6220 : store_base time : 25.784825801849365
+2024-02-18 16:00:16 - we_collection - INFO -6220 : å¼€å§‹æ›´æ–° : sph3n8XQGGxf0Ct æ•°æ®
+2024-02-18 16:00:17 - we_collection - INFO -6220 : live_product time 1.2228076457977295
+2024-02-18 16:00:17 - we_collection - INFO -6220 : write finish time 0.0 
+2024-02-18 16:00:49 - we_collection - INFO -6220 : active_level time : 20.514545917510986
+2024-02-18 16:00:49 - we_collection - INFO -6220 : active_level time 1 : 5.4321489334106445
+2024-02-18 16:00:59 - we_collection - INFO -6220 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 16:01:09 - we_collection - INFO -6220 : --enter store base info
+2024-02-18 16:01:15 - we_collection - INFO -6220 : --enter store base info === : sph1orpGVVSOH2n
+2024-02-18 16:01:22 - we_collection - INFO -6220 : store_base time : 25.546379327774048
+2024-02-18 16:01:22 - we_collection - INFO -6220 : å¼€å§‹æ›´æ–° : sph1orpGVVSOH2n æ•°æ®
+2024-02-18 16:01:23 - we_collection - INFO -6220 : live_product time 1.3307969570159912
+2024-02-18 16:01:23 - we_collection - INFO -6220 : write finish time 0.0 
+2024-02-18 16:01:51 - we_collection - INFO -6220 : active_level time : 17.97323751449585
+2024-02-18 16:01:51 - we_collection - INFO -6220 : active_level time 1 : 4.779369115829468
+2024-02-18 16:02:02 - we_collection - INFO -6220 : å¼€å§‹è·å–ç›´æ’­é—´åŸºæœ¬æ•°æ®
+2024-02-18 16:02:13 - we_collection - INFO -6220 : --enter store base info
+2024-02-18 16:02:19 - we_collection - INFO -6220 : --enter store base info === : sphEt74OjULKySA
+2024-02-18 16:02:24 - we_collection - INFO -6220 : store_base time : 25.00846767425537
+2024-02-18 16:02:24 - we_collection - INFO -6220 : å¼€å§‹æ›´æ–° : sphEt74OjULKySA æ•°æ®
+2024-02-18 16:02:31 - we_collection - INFO -6220 : å¼€å§‹å¾ªç¯è·å–å•†å“
+2024-02-18 16:09:16 - we_collection - INFO -6220 : è·å–å•†å“ä¿¡æ¯ç»“æŸ
+2024-02-18 16:09:31 - we_collection - INFO -6220 : live_product time 427.12160754203796
+2024-02-18 16:09:32 - we_collection - INFO -6220 : write finish time 0.47423362731933594 
+2024-02-18 16:09:51 - we_collection - INFO -6220 : start è´­ç‰©:é£Ÿå“
+2024-02-18 16:09:52 - we_collection - INFO -6220 : start è´­ç‰©:ç¾å¦†
+2024-02-18 16:09:53 - we_collection - INFO -6220 : start è´­ç‰©:æ•°ç å®¶ç”µ
