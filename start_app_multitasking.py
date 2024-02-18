@@ -27,4 +27,4 @@ if __name__ == "__main__":
     collection_arg_parse = collection_arg.parse_args()
     device = read_device(collection_arg_parse.host, collection_arg_parse.port)
     for i_device in device:
-        celery_work.main.delay(i_device)
+        celery_work.main.delay(i_device, False)

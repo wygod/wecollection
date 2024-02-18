@@ -28,7 +28,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
         self.iter_to_live_number = 1
         self.invalid_count = 1
 
-    def check_spider_status(self):
+    def check_spider_status(self, iter_status=False):
         """
         处理异常和重启函数
         :return:
@@ -47,42 +47,48 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.rotating_logger.info("activity: wechat 首页")
                 self.move_to_button()
                 self.move_to_project_main()
-                self.iter_to_live()
+                self.iter_to_live(iter_status)
             elif NameCollectionENum.enter_live_main_activity.value in content:
                 self.rotating_logger.info("activity: wechat 直播列表页")
                 self.move_to_project_main()
-                self.iter_to_live()
+                self.iter_to_live(iter_status)
             elif NameCollectionENum.enter_more_live_activity.value in content:
                 self.rotating_logger.info("activity: wechat 直播列表详情页")
-                self.iter_to_live()
+                self.iter_to_live(iter_status)
             elif NameCollectionENum.enter_live_store_activity.value in content:
                 if self.last_class == '':
                     self.rotating_logger.info("activity: wechat 直播列表页， 没有分类")
                     self.move_to_project_main()
-                    self.iter_to_live()
+                    self.iter_to_live(iter_status)
                 else:
                     self.rotating_logger.info("activity: wechat 直播列表页， 有分类")
-                    self.click_enter_live_page(self.last_class)
+                    if iter_status:
+                        self.click_enter_live_page(self.last_class)
+                    else:
+                        self.move_to_main_class_page(self.last_class)
             elif NameCollectionENum.enter_store_profile_activity.value in content:
                 self.ui_device.swipe(0, int(self.screen[1] * 0.5), int(self.screen[0] * 0.7), int(self.screen[1] * 0.5),
                                      steps=2)
                 time.sleep(2)
                 self.rotating_logger.info("activity: wechat 直播基本信息页")
-                self.click_enter_live_page(self.last_class)
+                if iter_status:
+                    self.click_enter_live_page(self.last_class)
+                else:
+                    self.move_to_main_class_page(self.last_class)
             elif NameCollectionENum.enter_store_permission_activity.value in content:
                 self.rotating_logger.info("activity: wechat 直播列表页 授权页")
-                self.check_spider_status()
+                self.check_spider_status(iter_status=iter_status)
             elif NameCollectionENum.setting.value in content:
                 self.rotating_logger.info("activity: android 权限设置")
                 time.sleep(2)
                 self.ui_device.xpath('//*[@content-desc="向上导航"]').click()
                 time.sleep(2)
-                self.check_spider_status()
+                self.check_spider_status(iter_status=iter_status)
             else:
                 self.rotating_logger.info("activity: wechat starting")
                 self.move_to_button()
                 self.move_to_live()
-                self.iter_to_live()
+                self.iter_to_live(iter_status)
         except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
             self.rotating_logger.info("exception : wechat restarting {}".format(e))
             if self.invalid_count > 3:
@@ -95,7 +101,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.check_atx_instrument()
 
             self.start_uiautomator2()
-            self.check_spider_status()
+            self.check_spider_status(iter_status=iter_status)
 
     def handler_cancel_btn(self):
         """
@@ -161,7 +167,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
 
             self.handle_live_store_base_info()
 
-    def iter_to_live(self):
+    def iter_to_live(self, iter_status):
         """
         搜集各种类型直播间
         :return:
@@ -196,14 +202,20 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                         self.last_class = per_nuw_key + ":" + per_value
                         self.rotating_logger.info(f"start {self.last_class}")
                         # 从主页刷新
-                        self.scroll_main_page(per_nuw_key, per_value)
+                        if iter_status:
+                            self.move_to_main_page(per_nuw_key, per_value)
+                        else:
+                            self.scroll_main_page(per_nuw_key, per_value)
                         # 从直播间刷新
-                        # self.move_to_main_page(per_nuw_key, per_value)
+                        #
                         sub_main_iter_number = sub_main_iter_number + 1
                     else:
                         self.last_class = per_nuw_key
                         self.rotating_logger.info(f"start {self.last_class}")
-                        self.move_to_main_page(per_nuw_key, None)
+                        if iter_status:
+                            self.move_to_main_page(per_nuw_key, None)
+                        else:
+                            self.scroll_main_page(per_nuw_key, None)
                 main_iter_number = main_iter_number + 1
         else:
             self.rotating_logger.info("restart into live")
@@ -212,7 +224,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.iter_to_live_number = 0
                 time.sleep(1)
             self.iter_to_live_number = self.iter_to_live_number + 1
-            self.check_spider_status()
+            self.check_spider_status(iter_status=iter_status)
 
     def scroll_main_page(self, text, sub_text):
         content = self.check_now_activity_status().output
@@ -423,10 +435,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 self.ui_device(resourceId=NameCollectionENum.igx.value).click_exists()
             except (uiautomator2.exceptions.UiObjectNotFoundError, KeyError) as e:
                 self.rotating_logger.info('move_to_main_page {} : {} : {}'.format(e, text, sub_text))
-                self.check_spider_status()
+                self.check_spider_status(iter_status=True)
         else:
             self.rotating_logger.info('move_to_main_page activity error, restart : {} : {}'.format(text, sub_text))
-            self.check_spider_status()
+            self.check_spider_status(iter_status=True)
 
     def click_enter_live_page(self, store_class):
         """
@@ -451,11 +463,8 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                     self.ui_device(resourceId=NameCollectionENum.k3o.value).click()
                     time.sleep(3)
                     self.handler_cancel_btn()
-                    time.sleep(1)
                     self.handler_android_err()
-                    time.sleep(1)
                     self.handler_setting_page()
-                    time.sleep(2)
 
                     store_base_information = self.handle_live_store_base_info()
                     sub_store_name = store_base_information.get('finder_id', None)
@@ -495,7 +504,7 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                                          int(self.screen[1] * 0.15), steps=5)
                 else:
                     time.sleep(1)
-                    self.check_spider_status()
+                    self.check_spider_status(iter_status=True)
             except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
                 self.rotating_logger.info('获取直播间数据异常， 重启: {} : {}'.format(e, store_class))
                 for _ in range(2):
@@ -504,10 +513,10 @@ class WeCollectionHandleMain(InitDeviceApp, InitDatabaseOperation, CollectionLog
                 time.sleep(1)
                 self.start_uiautomator2()
                 time.sleep(1)
-                self.check_spider_status()
+                self.check_spider_status(iter_status=True)
             except (uiautomator2.exceptions.UiObjectNotFoundError, KeyError) as e:
                 self.rotating_logger.info('没有查询到元素, 重启: {} : {}'.format(store_class, e))
-                self.check_spider_status()
+                self.check_spider_status(iter_status=True)
 
     def updated_store_data(self, store_name):
         """

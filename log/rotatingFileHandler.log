@@ -264,3 +264,213 @@
 2024-02-18 16:09:51 - we_collection - INFO -6220 : start 购物:食品
 2024-02-18 16:09:52 - we_collection - INFO -6220 : start 购物:美妆
 2024-02-18 16:09:53 - we_collection - INFO -6220 : start 购物:数码家电
+2024-02-18 16:22:51 - celery_work - INFO -12008 : start running
+2024-02-18 16:22:54 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 16:23:00 - we_collection - INFO -12008 : activity: wechat 首页
+2024-02-18 16:23:17 - we_collection - INFO -12008 : start function iter to live
+2024-02-18 16:23:18 - we_collection - INFO -12008 : start 购物:服饰
+2024-02-18 16:23:22 - we_collection - INFO -12008 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-18 16:24:12 - we_collection - INFO -12008 : 开始获取直播间基本数据
+2024-02-18 16:24:31 - we_collection - INFO -12008 : --enter store base info
+2024-02-18 16:24:37 - we_collection - INFO -12008 : --enter store base info === : sph4wpQn5SBwcax
+2024-02-18 16:24:44 - we_collection - INFO -12008 : 开始获取直播间店铺数据 : 服饰 : sph4wpQn5SBwcax
+2024-02-18 16:24:44 - we_collection - INFO -12008 : 开始更新 : sph4wpQn5SBwcax 数据
+2024-02-18 16:24:55 - we_collection - INFO -12008 : 开始循环获取商品
+2024-02-18 16:28:17 - we_collection - INFO -12008 : 获取商品信息结束
+2024-02-18 16:28:30 - we_collection - INFO -12008 : 开始写直播间数据到数据库: 服饰 -- sph4wpQn5SBwcax --
+2024-02-18 16:28:30 - we_collection - INFO -12008 : writing database sph4wpQn5SBwcax
+2024-02-18 16:28:30 - we_collection - INFO -12008 : --写入数据完成: 服饰 -- sph4wpQn5SBwcax --
+2024-02-18 16:29:38 - we_collection - INFO -12008 : 开始获取直播间基本数据
+2024-02-18 16:29:47 - we_collection - INFO -12008 : --enter store base info
+2024-02-18 16:29:53 - we_collection - INFO -12008 : --enter store base info === : sphgGfSU2D2xk7Y
+2024-02-18 16:30:00 - we_collection - INFO -12008 : 开始获取直播间店铺数据 : 服饰 : sphgGfSU2D2xk7Y
+2024-02-18 16:30:00 - we_collection - INFO -12008 : 开始更新 : sphgGfSU2D2xk7Y 数据
+2024-02-18 16:30:44 - we_collection - INFO -12008 : 开始循环获取商品
+2024-02-18 16:33:05 - we_collection - INFO -12008 : 获取商品信息结束
+2024-02-18 16:33:23 - we_collection - INFO -12008 : 开始写直播间数据到数据库: 服饰 -- sphgGfSU2D2xk7Y --
+2024-02-18 16:33:23 - we_collection - INFO -12008 : writing database sphgGfSU2D2xk7Y
+2024-02-18 16:33:23 - we_collection - INFO -12008 : --写入数据完成: 服饰 -- sphgGfSU2D2xk7Y --
+2024-02-18 16:34:09 - we_collection - INFO -12008 : 开始获取直播间基本数据
+2024-02-18 16:34:20 - we_collection - INFO -12008 : --enter store base info
+2024-02-18 16:34:26 - we_collection - INFO -12008 : --enter store base info === : sphXvmQXrx89E9h
+2024-02-18 16:34:31 - we_collection - INFO -12008 : 开始获取直播间店铺数据 : 服饰 : sphXvmQXrx89E9h
+2024-02-18 16:34:31 - we_collection - INFO -12008 : 开始更新 : sphXvmQXrx89E9h 数据
+2024-02-18 16:34:43 - we_collection - INFO -12008 : 开始循环获取商品
+2024-02-18 16:36:15 - we_collection - INFO -12008 : 获取商品信息结束
+2024-02-18 16:36:28 - we_collection - INFO -12008 : 开始写直播间数据到数据库: 服饰 -- sphXvmQXrx89E9h --
+2024-02-18 16:36:28 - we_collection - INFO -12008 : writing database sphXvmQXrx89E9h
+2024-02-18 16:36:28 - we_collection - INFO -12008 : --写入数据完成: 服饰 -- sphXvmQXrx89E9h --
+2024-02-18 16:37:11 - we_collection - INFO -12008 : 开始获取直播间基本数据
+2024-02-18 16:37:22 - we_collection - INFO -12008 : --enter store base info
+2024-02-18 16:37:28 - we_collection - INFO -12008 : --enter store base info === : sph5EDFnjAfW0JI
+2024-02-18 16:37:33 - we_collection - INFO -12008 : 开始获取直播间店铺数据 : 服饰 : sph5EDFnjAfW0JI
+2024-02-18 16:37:33 - we_collection - INFO -12008 : 开始更新 : sph5EDFnjAfW0JI 数据
+2024-02-18 16:37:45 - we_collection - INFO -12008 : 开始循环获取商品
+2024-02-18 16:56:19 - we_collection - INFO -12008 : 获取商品信息结束
+2024-02-18 16:56:34 - we_collection - INFO -12008 : 开始写直播间数据到数据库: 服饰 -- sph5EDFnjAfW0JI --
+2024-02-18 16:56:34 - we_collection - INFO -12008 : writing database sph5EDFnjAfW0JI
+2024-02-18 16:56:34 - we_collection - INFO -12008 : --写入数据完成: 服饰 -- sph5EDFnjAfW0JI --
+2024-02-18 16:57:29 - we_collection - INFO -12008 : 开始获取直播间基本数据
+2024-02-18 16:57:39 - we_collection - INFO -12008 : --enter store base info
+2024-02-18 16:57:44 - we_collection - INFO -12008 : --enter store base info === : sph2GLEDLwDcAKb
+2024-02-18 16:57:51 - we_collection - INFO -12008 : 开始获取直播间店铺数据 : 服饰 : sph2GLEDLwDcAKb
+2024-02-18 16:57:51 - we_collection - INFO -12008 : 开始更新 : sph2GLEDLwDcAKb 数据
+2024-02-18 16:58:00 - we_collection - INFO -12008 : 开始循环获取商品
+2024-02-18 17:11:06 - we_collection - INFO -12008 : 获取直播间数据异常， 重启: Invalid version: '' : 服饰
+2024-02-18 17:11:22 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:11:23 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:11:38 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:11:39 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:11:52 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:11:53 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:12:07 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:12:08 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:12:22 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:12:22 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:12:37 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:12:38 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:12:54 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:12:55 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:13:10 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:13:11 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:13:24 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:13:25 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:13:44 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:13:44 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:14:03 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:14:04 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:14:16 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:14:17 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:14:36 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:14:37 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:14:49 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:14:50 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:15:01 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:15:02 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:15:17 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:15:18 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:15:36 - we_collection - INFO -12008 : check_spider_status: starting
+2024-02-18 17:15:37 - we_collection - INFO -12008 : exception : wechat restarting Invalid version: ''
+2024-02-18 17:16:14 - celery_work - INFO -16232 : start running
+2024-02-18 17:16:17 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:16:29 - we_collection - INFO -16232 : activity: wechat 首页
+2024-02-18 17:17:04 - we_collection - INFO -16232 : start function iter to live
+2024-02-18 17:17:05 - we_collection - INFO -16232 : start 购物:服饰
+2024-02-18 17:17:09 - we_collection - INFO -16232 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-18 17:17:29 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:17:37 - we_collection - INFO -16232 : activity: wechat 直播基本信息页
+2024-02-18 17:17:37 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
+2024-02-18 17:17:44 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:17:46 - we_collection - INFO -16232 : activity: wechat 直播列表详情页
+2024-02-18 17:17:46 - we_collection - INFO -16232 : start function iter to live
+2024-02-18 17:17:47 - we_collection - INFO -16232 : start 购物:服饰
+2024-02-18 17:17:51 - we_collection - INFO -16232 : 开始获取直播间信息 ---: 购物 : 服饰
+2024-02-18 17:19:11 - we_collection - INFO -16232 : 开始获取直播间基本数据
+2024-02-18 17:19:21 - we_collection - INFO -16232 : --enter store base info
+2024-02-18 17:19:28 - we_collection - INFO -16232 : --enter store base info === : sphEt74OjULKySA
+2024-02-18 17:19:35 - we_collection - INFO -16232 : 开始获取直播间店铺数据 : 服饰 : sphEt74OjULKySA
+2024-02-18 17:19:35 - we_collection - INFO -16232 : 开始更新 : sphEt74OjULKySA 数据
+2024-02-18 17:19:47 - we_collection - INFO -16232 : 开始循环获取商品
+2024-02-18 17:26:46 - we_collection - INFO -16232 : 获取商品信息结束
+2024-02-18 17:27:00 - we_collection - INFO -16232 : 开始写直播间数据到数据库: 服饰 -- sphEt74OjULKySA --
+2024-02-18 17:27:00 - we_collection - INFO -16232 : writing database sphEt74OjULKySA
+2024-02-18 17:27:00 - we_collection - INFO -16232 : --写入数据完成: 服饰 -- sphEt74OjULKySA --
+2024-02-18 17:28:18 - we_collection - INFO -16232 : 开始获取直播间基本数据
+2024-02-18 17:28:28 - we_collection - INFO -16232 : --enter store base info
+2024-02-18 17:28:34 - we_collection - INFO -16232 : --enter store base info === : sph3n8XQGGxf0Ct
+2024-02-18 17:28:43 - we_collection - INFO -16232 : 开始获取直播间店铺数据 : 服饰 : sph3n8XQGGxf0Ct
+2024-02-18 17:28:43 - we_collection - INFO -16232 : 开始更新 : sph3n8XQGGxf0Ct 数据
+2024-02-18 17:29:05 - we_collection - INFO -16232 : 开始循环获取商品
+2024-02-18 17:32:33 - we_collection - INFO -16232 : 获取商品信息结束
+2024-02-18 17:32:45 - we_collection - INFO -16232 : 开始写直播间数据到数据库: 服饰 -- sph3n8XQGGxf0Ct --
+2024-02-18 17:32:45 - we_collection - INFO -16232 : writing database sph3n8XQGGxf0Ct
+2024-02-18 17:32:45 - we_collection - INFO -16232 : --写入数据完成: 服饰 -- sph3n8XQGGxf0Ct --
+2024-02-18 17:33:43 - we_collection - INFO -16232 : 开始获取直播间基本数据
+2024-02-18 17:34:04 - we_collection - INFO -16232 : --enter store base info
+2024-02-18 17:34:10 - we_collection - INFO -16232 : --enter store base info === : sph4wpQn5SBwcax
+2024-02-18 17:34:18 - we_collection - INFO -16232 : 开始获取直播间店铺数据 : 服饰 : sph4wpQn5SBwcax
+2024-02-18 17:35:18 - we_collection - INFO -16232 : 开始获取直播间基本数据
+2024-02-18 17:35:28 - we_collection - INFO -16232 : --enter store base info
+2024-02-18 17:35:34 - we_collection - INFO -16232 : --enter store base info === : sphFLl2npNhWRoz
+2024-02-18 17:35:41 - we_collection - INFO -16232 : 开始获取直播间店铺数据 : 服饰 : sphFLl2npNhWRoz
+2024-02-18 17:35:41 - we_collection - INFO -16232 : 开始更新 : sphFLl2npNhWRoz 数据
+2024-02-18 17:36:52 - we_collection - INFO -16232 : 开始获取直播间基本数据
+2024-02-18 17:37:01 - we_collection - INFO -16232 : --enter store base info
+2024-02-18 17:37:07 - we_collection - INFO -16232 : --enter store base info === : sph1orpGVVSOH2n
+2024-02-18 17:37:14 - we_collection - INFO -16232 : 开始获取直播间店铺数据 : 服饰 : sph1orpGVVSOH2n
+2024-02-18 17:37:14 - we_collection - INFO -16232 : 开始更新 : sph1orpGVVSOH2n 数据
+2024-02-18 17:37:25 - we_collection - INFO -16232 : 开始循环获取商品
+2024-02-18 17:39:22 - we_collection - INFO -16232 : 获取商品信息结束
+2024-02-18 17:39:38 - we_collection - INFO -16232 : 开始写直播间数据到数据库: 服饰 -- sph1orpGVVSOH2n --
+2024-02-18 17:39:38 - we_collection - INFO -16232 : writing database sph1orpGVVSOH2n
+2024-02-18 17:39:38 - we_collection - INFO -16232 : --写入数据完成: 服饰 -- sph1orpGVVSOH2n --
+2024-02-18 17:40:34 - we_collection - INFO -16232 : 开始获取直播间基本数据
+2024-02-18 17:40:43 - we_collection - INFO -16232 : --enter store base info
+2024-02-18 17:40:50 - we_collection - INFO -16232 : --enter store base info === : sphHVRT0hFAnYqL
+2024-02-18 17:40:56 - we_collection - INFO -16232 : 开始获取直播间店铺数据 : 服饰 : sphHVRT0hFAnYqL
+2024-02-18 17:40:56 - we_collection - INFO -16232 : 开始更新 : sphHVRT0hFAnYqL 数据
+2024-02-18 17:41:05 - we_collection - INFO -16232 : 开始循环获取商品
+2024-02-18 17:41:18 - we_collection - INFO -16232 : 获取商品信息结束
+2024-02-18 17:41:37 - we_collection - INFO -16232 : 开始写直播间数据到数据库: 服饰 -- sphHVRT0hFAnYqL --
+2024-02-18 17:41:38 - we_collection - INFO -16232 : writing database sphHVRT0hFAnYqL
+2024-02-18 17:41:38 - we_collection - INFO -16232 : --写入数据完成: 服饰 -- sphHVRT0hFAnYqL --
+2024-02-18 17:42:47 - we_collection - INFO -16232 : 开始获取直播间基本数据
+2024-02-18 17:42:57 - we_collection - INFO -16232 : --enter store base info
+2024-02-18 17:43:03 - we_collection - INFO -16232 : --enter store base info === : sphQaMtB7wm3v8X
+2024-02-18 17:43:10 - we_collection - INFO -16232 : 开始获取直播间店铺数据 : 服饰 : sphQaMtB7wm3v8X
+2024-02-18 17:43:10 - we_collection - INFO -16232 : 开始更新 : sphQaMtB7wm3v8X 数据
+2024-02-18 17:43:24 - we_collection - INFO -16232 : 开始循环获取商品
+2024-02-18 17:48:56 - we_collection - INFO -16232 : 获取商品信息结束
+2024-02-18 17:49:09 - we_collection - INFO -16232 : 开始写直播间数据到数据库: 服饰 -- sphQaMtB7wm3v8X --
+2024-02-18 17:49:09 - we_collection - INFO -16232 : writing database sphQaMtB7wm3v8X
+2024-02-18 17:49:09 - we_collection - INFO -16232 : --写入数据完成: 服饰 -- sphQaMtB7wm3v8X --
+2024-02-18 17:50:11 - we_collection - INFO -16232 : 开始获取直播间基本数据
+2024-02-18 17:50:21 - we_collection - INFO -16232 : --enter store base info
+2024-02-18 17:50:27 - we_collection - INFO -16232 : --enter store base info === : sphQGOz31uFpOep
+2024-02-18 17:50:35 - we_collection - INFO -16232 : 开始获取直播间店铺数据 : 服饰 : sphQGOz31uFpOep
+2024-02-18 17:50:35 - we_collection - INFO -16232 : 开始更新 : sphQGOz31uFpOep 数据
+2024-02-18 17:50:48 - we_collection - INFO -16232 : 开始循环获取商品
+2024-02-18 17:51:01 - we_collection - INFO -16232 : 获取商品信息结束
+2024-02-18 17:51:21 - we_collection - INFO -16232 : 开始写直播间数据到数据库: 服饰 -- sphQGOz31uFpOep --
+2024-02-18 17:51:21 - we_collection - INFO -16232 : writing database sphQGOz31uFpOep
+2024-02-18 17:51:21 - we_collection - INFO -16232 : --写入数据完成: 服饰 -- sphQGOz31uFpOep --
+2024-02-18 17:52:10 - we_collection - INFO -16232 : 没有查询到元素, 重启: 服饰 : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/f6i'], method: None
+2024-02-18 17:52:10 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:52:19 - we_collection - INFO -16232 : activity: wechat 直播列表页， 有分类
+2024-02-18 17:52:19 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
+2024-02-18 17:52:50 - we_collection - INFO -16232 : 没有查询到元素, 重启: 购物:服饰 : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/f6i'], method: None
+2024-02-18 17:52:50 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:53:08 - we_collection - INFO -16232 : activity: wechat 直播列表页， 有分类
+2024-02-18 17:53:08 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
+2024-02-18 17:53:38 - we_collection - INFO -16232 : 没有查询到元素, 重启: 购物:服饰 : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/f6i'], method: None
+2024-02-18 17:53:38 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:53:49 - we_collection - INFO -16232 : activity: wechat 直播列表页， 有分类
+2024-02-18 17:53:49 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
+2024-02-18 17:54:19 - we_collection - INFO -16232 : 没有查询到元素, 重启: 购物:服饰 : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/f6i'], method: None
+2024-02-18 17:54:19 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:54:31 - we_collection - INFO -16232 : activity: wechat 直播列表页， 有分类
+2024-02-18 17:54:31 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
+2024-02-18 17:54:56 - we_collection - INFO -16232 : 没有查询到元素, 重启: 购物:服饰 : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/f6i'], method: None
+2024-02-18 17:54:56 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:55:04 - we_collection - INFO -16232 : activity: wechat 直播列表页， 有分类
+2024-02-18 17:55:04 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
+2024-02-18 17:55:31 - we_collection - INFO -16232 : 没有查询到元素, 重启: 购物:服饰 : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/f6i'], method: None
+2024-02-18 17:55:31 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:55:39 - we_collection - INFO -16232 : activity: wechat 直播列表页， 有分类
+2024-02-18 17:55:39 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
+2024-02-18 17:56:06 - we_collection - INFO -16232 : 没有查询到元素, 重启: 购物:服饰 : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/f6i'], method: None
+2024-02-18 17:56:06 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:56:15 - we_collection - INFO -16232 : activity: wechat 直播列表页， 有分类
+2024-02-18 17:56:15 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
+2024-02-18 17:56:39 - we_collection - INFO -16232 : 没有查询到元素, 重启: 购物:服饰 : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/f6i'], method: None
+2024-02-18 17:56:39 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:56:48 - we_collection - INFO -16232 : activity: wechat 直播列表页， 有分类
+2024-02-18 17:56:48 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
+2024-02-18 17:57:13 - we_collection - INFO -16232 : 没有查询到元素, 重启: 购物:服饰 : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/f6i'], method: None
+2024-02-18 17:57:13 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:57:22 - we_collection - INFO -16232 : activity: wechat 直播列表页， 有分类
+2024-02-18 17:57:22 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
+2024-02-18 17:57:47 - we_collection - INFO -16232 : 没有查询到元素, 重启: 购物:服饰 : -32002 Client error: <> data: Selector [resourceId='com.tencent.mm:id/f6i'], method: None
+2024-02-18 17:57:47 - we_collection - INFO -16232 : check_spider_status: starting
+2024-02-18 17:57:59 - we_collection - INFO -16232 : activity: wechat 直播列表页， 有分类
+2024-02-18 17:57:59 - we_collection - INFO -16232 : click_enter_live_page 购物:服饰 
