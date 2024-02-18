@@ -1,4 +1,5 @@
 # -*- encoding:utf-8 -*-
+import time
 
 from common import *
 from CollectionEnum.collectionEnum import NameCollectionENum
@@ -102,6 +103,7 @@ class InitDeviceApp(InitVenv):
         安卓activity
         :return:
         """
+        time.sleep(1)
         activity_content = self.ui_device.shell('dumpsys activity top | grep ACTIVITY')
         return activity_content
 
@@ -169,7 +171,7 @@ class InitDeviceApp(InitVenv):
                 time.sleep(2)
 
         content = self.check_now_activity_status().output
-        self.processing_sleep(NameCollectionENum.b1h.value, 5)
+        # self.processing_sleep(NameCollectionENum.b1h.value, 5)
 
         if NameCollectionENum.enter_live_main_activity.value in content:
             if self.ui_device(resourceId=NameCollectionENum.b1h.value).exists:
