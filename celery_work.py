@@ -25,6 +25,7 @@ def spider_run(parse_config_value, device_ip, rec=False):
         if rec:
             we_run_app.destroy_current_app()
         time.sleep(3)
+        # we_run_app.scroll_main_page('购物', '服饰')
         we_run_app.check_spider_status()
     except (uiautomator2.exceptions.GatewayError, InvalidVersion) as e:
         print(e)

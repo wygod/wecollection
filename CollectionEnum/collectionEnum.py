@@ -15,6 +15,7 @@ class NameCollectionENum(Enum):
     k69_xpath = '//*[@resource-id="com.tencent.mm:id/k69"]'
     igx = "com.tencent.mm:id/igx"
     fuv = 'com.tencent.mm:id/fuv'
+    fuv_xpath = '//*[@resource-id="com.tencent.mm:id/fuv"]'
 
     fzn = "com.tencent.mm:id/fzn"
     ov9 = "com.tencent.mm:id/ov9"
@@ -22,8 +23,11 @@ class NameCollectionENum(Enum):
     jqi = "com.tencent.mm:id/jqi"
     obc = "com.tencent.mm:id/obc"
     cu2 = "com.tencent.mm:id/cu2"
+    bz2 = "com.tencent.mm:id/bz2"
     f98 = 'com.tencent.mm:id/f98'
+    ili = 'com.tencent.mm:id/ili'
     f98_xpath = '//*[@resource-id="com.tencent.mm:id/f98"]'
+
 
     fxd = 'com.tencent.mm:id/fxd'
     ifz = 'com.tencent.mm:id/ifz'

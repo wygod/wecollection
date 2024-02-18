@@ -7,7 +7,7 @@ class WeCollectionBaseInfo(Base):
     """
     直播数据
     """
-    __tablename__ = 'we_collection_store_info_1'
+    __tablename__ = 'we_collection_store_info'
     id = Column(Integer, comment='we_collection_store_id', primary_key=True, autoincrement=True)
     finder_id = Column(String(length=100), comment='达人id', unique=True, nullable=False)
     video_name = Column(String(length=300), comment='视频号名称', nullable=False)
@@ -27,7 +27,7 @@ class WeCollectionShopProduct(Base):
     """
     视频号产品
     """
-    __tablename__ = 'we_collection_shop_info_1'
+    __tablename__ = 'we_collection_shop_info'
     id = Column(Integer, comment='we_collection_store_id', primary_key=True, autoincrement=True)
     we_chat_shop_name = Column(Text, comment='商店名称', nullable=False)
     shop_product_description = Column(Text, comment='商品标题', nullable=False)
@@ -40,7 +40,7 @@ class CheckCollectionStatus(Base):
     """
     检查状态表
     """
-    __tablename__ = 'check_we_collection_status_1'
+    __tablename__ = 'check_we_collection_status'
     id = Column(Integer, comment='we_collection_store_id', primary_key=True, autoincrement=True)
     finder_id = Column(String(length=100), comment='达人id', unique=True, nullable=False)
     finder_store_name = Column(Text, comment='商店名称', nullable=False)
@@ -49,7 +49,7 @@ class CheckCollectionStatus(Base):
 
 
 class WeChatLive(Base):
-    __tablename__ = 'we_chat_all_store_1'
+    __tablename__ = 'we_chat_all_store'
     id = Column(Integer, comment='we_collection_store_id', primary_key=True, autoincrement=True)
     finder_id = Column(String(length=100), comment='达人id', unique=True, nullable=False)
     finder_store_name = Column(Text, comment='商店名称', nullable=False)

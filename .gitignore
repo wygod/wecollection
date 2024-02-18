@@ -2,3 +2,5 @@ venv/
 weditor/
 bg.jpg
 tmp.jpg
+__pycache__
+log/
